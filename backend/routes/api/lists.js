@@ -6,10 +6,17 @@ const List = require("../../models/List");
 const passport = require("passport");
 
 const { restoreUser } = require("../../config/passport");
-const { ObjectId } = require("mongodb");
+
+const { Configuration, OpenAIApi } = require("openai");
+const { OPENAI_API_KEY } = require("../../config/keys");
+const config = new Configuration({
+  apiKey: OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(config);
 
 //POST /api/lists
 //string
+
 router.post("/", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
   const newList = new List({
@@ -26,11 +33,30 @@ router.post("/", restoreUser, async (req, res, next) => {
   return res.json(list);
 });
 
- router.post("/image",restoreUser,async(req,res,next)=>{
-if(!req.user)return res.json(null);
-
- })
-
+router.get("/image/:id", restoreUser, async (req, res, next) => {
+  //   if (!req.user) return res.json(null);
+  try {
+    const list = await List.findOne({ _id: req.params.id });
+    let prompt;
+    if (list) {
+      prompt = `${list.artStyle} key visual of a ${list.gender} with ${list.hairColor} hair and happy, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
+      //console.log(prompt)
+      const numberOfImages = 1;
+      const imageSize = "1024x1024";
+      openai
+        .createImage({
+          prompt: prompt,
+          n: numberOfImages,
+          size: imageSize,
+        })
+        .then((data) => {
+          return res.json(data.data.data);
+        });
+    }
+  } catch (err) {
+    return res.json(err);
+  }
+});
 
 router.get("/:id", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
@@ -43,6 +69,5 @@ router.get("/:id", restoreUser, async (req, res, next) => {
     return res.json(err);
   }
 });
-
 
 module.exports = router;
