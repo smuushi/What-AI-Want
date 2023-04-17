@@ -1,0 +1,4 @@
+.SplashPageBox{
+    display: flex;
+    flex-direction: column;
+}

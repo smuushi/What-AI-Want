@@ -1,16 +1,16 @@
-
+import SplashCarouselLeft from "../Carousel/SplashCarouselLeft";
+import SplashCarouselRight from "../Carousel/SplashCarouselRight";
+import SplashCarouselLeft2 from "../Carousel/SplashCarouselLeft2";
+import "./SplashPage.css";
 
 function SplashPage() {
-
-
   return (
-    <>
-       {/* <button onClick={logoutUser}>Logout</button> */}
-      <h1>LoggedIn</h1>
-      <p>What-AI-Want</p>
-      <footer>Copyright &copy; 2022 What-AI-Want</footer>
-    </>
+    <div className="SplashPageBox">
+      <SplashCarouselLeft />
+      <SplashCarouselRight />
+      <SplashCarouselLeft2 />
+    </div>
   );
 }
 
-export default SplashPage
+export default SplashPage;

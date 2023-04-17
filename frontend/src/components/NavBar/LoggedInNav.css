@@ -5,7 +5,7 @@
     /* background-color: black; */
     gap: 10vw;
     /* margin-left: 20vw; */
-    padding-bottom: 20vh;
+    padding-bottom: 5vh;
 }
 
 .links-nav{
@@ -55,8 +55,8 @@
   }
   
   .dropdown-menu {
-    position: absolute;
-    right: 43.2vw;
+    position: relative;
+    /* right: 43.2vw; */
     z-index: 1;
   }
   
