@@ -1,12 +1,7 @@
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
+
 
 function SplashPage() {
-  const dispatch = useDispatch()
-  const logoutUser = (e) => {
-    e.preventDefault();
-    dispatch(logout());
-  };
+
 
   return (
     <>
