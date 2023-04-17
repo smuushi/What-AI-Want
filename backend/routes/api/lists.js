@@ -50,7 +50,9 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
           size: imageSize,
         })
         .then((data) => {
-          return res.json(data.data.data);
+          list.imageUrl = data.data.data[0].url;
+          list.save();
+          return res.json(list);
         });
     }
   } catch (err) {
