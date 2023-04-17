@@ -40,7 +40,7 @@ const singleFileUpload = async (buffer, title) => {
       Body: buffer,
       ContentType: 'image/jpeg'
     };
-    const result = await s3.upload(uploadParams).promise();
+    const result = await s3.upload(uploadParams);
   
     // Return the link if public. If private, return the name of the file in your
     // S3 bucket as the key in your database for subsequent retrieval.
@@ -92,7 +92,7 @@ const uploadToAWSWithURL = async (url, title) => {
 
     // const buffer = await blob.arrayBuffer();
 
-    singleFileUpload(buffer, title);
+    return singleFileUpload(buffer, title);
 }
 
 // uploadToAWSWithURL("https://cdn.discordapp.com/attachments/1096463008143781951/1097524638646542446/img-LtMfF5kyXN3ha0Jeo8sxhvee.png", "testupload.png")

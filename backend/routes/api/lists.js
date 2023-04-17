@@ -6,6 +6,8 @@ const List = require("../../models/List");
 const User = require("../../models/User")
 const passport = require("passport");
 
+const { uploadToAWSWithURL, getUrlFromAwsWithKey } = require("../../awsS3")
+
 const { restoreUser } = require("../../config/passport");
 
 const { Configuration, OpenAIApi } = require("openai");
@@ -38,7 +40,7 @@ router.post("/", restoreUser, async (req, res, next) => {
 router.get("/image/:id", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
   try {
-    const list = await List.findOne({ _id: req.params.id });
+    let list = await List.findOne({ _id: req.params.id });
     let prompt;
     if (list) {
       prompt = `${list.artStyle} key visual of a ${list.gender} with ${list.hairColor} hair and happy, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
@@ -51,9 +53,24 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
           n: numberOfImages,
           size: imageSize,
         })
-        .then((data) => {
+        .then(async (data) => {
+          
           list.imageUrl = data.data.data[0].url;
+
+          const imageKey = await uploadToAWSWithURL(data.data.data[0].url, "testimage.png");
+          
+          list.imageKey = imageKey;
+
+
+          
+          const tempUrl = getUrlFromAwsWithKey(imageKey);
+          
           list.save();
+          
+          
+          list.tempUrl = tempUrl;
+
+          
           return res.json(list);
         });
     }

@@ -27,6 +27,9 @@ const listSchema = new Schema(
       type: String,
       required: true,
     },
+    imageKey:{
+      type:String
+    },
     imageUrl:{
       type:String
     }
