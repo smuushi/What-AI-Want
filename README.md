@@ -1,8 +1,8 @@
 # What-AI-Want
 What-Ai-Want is a web application that allows users to create their own avatar based on a selection of options. The application uses the OpenAI API to generate the avatar images and AWS S3 to store user-uploaded images.
 
-# [Diagram](What-AI-Want/Assets/diagram.png)
-# [Wireframe](What-AI-Want/Assets/what_AI_want__2.pdf)
+ # ![Diagram](Assets/diagram.png )
+ # [Wireframe](Assets/what_AI_want__2.pdf)
 
 # Background and Overview
 In a world where personal expression is highly valued, people are always looking for new ways to stand out and showcase their unique style. However, not everyone has the artistic talent or resources to create their own custom avatar. This is where What-Ai-Want comes in.
