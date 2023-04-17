@@ -92,6 +92,8 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
+
+
 module.exports = router;
 //was just trying out things :)
 // router.get("/:id", function (req, res, next) {

@@ -15,6 +15,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    list:{
+      type:Array
+    },
+    imageUrl:{
+      type:Array
+    }
   },
   {
     timestamps: true,
