@@ -1,12 +1,12 @@
 .mySwiperRight {
-    width: 50vw;
+    width: 70vw;
     height: 25vh;
   }
   
   
   .slide-background-right {
     position: relative;
-    width: 50vw;
+    width: 70vw;
     height: 25vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,15 +16,15 @@
   .corner-image-right {
     position: absolute;
     right: 0;
-    width: 14vw;
-    border: solid 2px black;
+    width: 14.25vw;
+    /* border: solid 1px rgb(175, 177, 178); */
   }
   
   .slide-text-right {
     position: relative;
-    left: 20vw;
-    top: 7vh;
-    color: #000000;
+    left: 31.5vw;
+    top: 8.5vh;
+    color: white;
     font-weight: bold;
     font-size: 90px;
   }
