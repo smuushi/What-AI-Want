@@ -16,7 +16,10 @@ const userSchema = new Schema(
       required: true,
     },
     list:{
-      //object id of list
+      type:Array
+    },
+    imageUrl:{
+      type:Array
     }
   },
   {

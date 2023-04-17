@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const List = require("../../models/List");
+const User = require("../../models/User")
 const passport = require("passport");
 
 const { restoreUser } = require("../../config/passport");
@@ -30,11 +31,12 @@ router.post("/", restoreUser, async (req, res, next) => {
 
   const list = await newList.save();
 
+
   return res.json(list);
 });
 
 router.get("/image/:id", restoreUser, async (req, res, next) => {
-     if (!req.user) return res.json(null);
+  if (!req.user) return res.json(null);
   try {
     const list = await List.findOne({ _id: req.params.id });
     let prompt;
