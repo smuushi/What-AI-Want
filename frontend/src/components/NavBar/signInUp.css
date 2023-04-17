@@ -1,0 +1,11 @@
+.loggedOutNav{
+    display:flex;
+    justify-content: flex-end;
+    align-items:center;
+    padding:1vw;
+}
+
+#signup{
+    margin-left:auto;
+    margin-right:auto;
+}

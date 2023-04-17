@@ -27,7 +27,7 @@ function App() {
   if (loggedIn){
     
     splash = <LoggedInSplashPage/>
-  
+    redirect = <Redirect to = '/'/>
     
   }else if (!loggedIn){
     splash = <>
@@ -55,6 +55,7 @@ function App() {
         </Route>
       <Route exact path = '/welcome'>
         <LoggedOutSplashPage/>
+        {redirect}
       </Route>
       <Route path = '/'>
         <Redirect to = '/'/>
