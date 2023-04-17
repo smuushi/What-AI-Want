@@ -1,11 +1,86 @@
 .loggedOutNav{
     display:flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items:center;
     padding:1vw;
+    width:60vw;
 }
 
 #signup{
-    margin-left:auto;
-    margin-right:auto;
+    /* margin-right:50vw;x */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.signup-form{
+    width:250px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-right:80px; */
+    /* box-shadow: 0px 0px 10px 3px red; */
+}
+
+.errors{
+    height:25px;
+    display:flex;
+    align-items:center;
+    color:red;
+    column-gap:10px;
+    font-size:14px;
+}
+
+.signup-form input{
+    padding-left:4px;
+    width: 180px;
+    font-size:20px;
+}
+
+.signup-form input:focus{
+    outline:none;
+}
+
+#submitSignUp{
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+#submitSignUp:hover{
+    cursor:pointer;
+}
+
+
+.signup-form h2{
+    font-size:35px;
+    font-weight:bolder;
+}
+
+.login-form{
+    width:250px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form input:focus{
+    outline:none;
+}
+
+.login-form input{
+    padding-left:4px;
+    width: 180px;
+    font-size:20px;
+}
+
+#submitLogin{
+    margin-top:25px;
+    margin-bottom:25px;
+}
+
+.login-form h2{
+    font-size:35px;
+    font-weight:bolder;
 }

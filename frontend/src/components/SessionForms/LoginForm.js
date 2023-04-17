@@ -32,11 +32,10 @@ function LoginForm() {
   if (sessionUser) return <Redirect to = '/'/>
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <h2>Log In</h2>
       <div className="errors">{errors?.email}</div>
       <label>
-        <span>Email</span>
         <input
           type="text"
           value={email}
@@ -46,7 +45,6 @@ function LoginForm() {
       </label>
       <div className="errors">{errors?.password}</div>
       <label>
-        <span>Password</span>
         <input
           type="password"
           value={password}
@@ -54,7 +52,7 @@ function LoginForm() {
           placeholder="Password"
         />
       </label>
-      <input type="submit" value="Log In" disabled={!email || !password} />
+      <input id = 'submitLogin' type="submit" value="Go!" disabled={!email || !password} />
     </form>
   );
 }

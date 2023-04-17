@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
 
+
 function App() {
   const loggedIn = useSelector(state=>!!state.session.user)
   const dispatch = useDispatch()
