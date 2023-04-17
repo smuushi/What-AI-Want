@@ -1,11 +1,11 @@
 .mySwiper {
-    width: 50vw;
+    width: 70vw;
     height: 25vh;
   }
   
   .slide-background {
     position: relative;
-    width: 50vw;
+    width: 70vw;
     height: 25vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,16 +13,16 @@
   }
   
   .corner-image {
-    border: solid 2px black;
-    width: 14vw;
+    /* border: solid 1px rgb(175, 177, 178); */
+    width: 14.25vw;
     height: auto;
   }
   
   .slide-text {
     position: relative;
     bottom: 18vh;
-    left: 22.5vw;
-    color: #000000;
+    left: 28.5vw;
+    color: white;
     font-weight: bold;
     font-size: 90px;
   }
