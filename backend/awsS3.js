@@ -1,7 +1,7 @@
 const secretKey = process.env.AWS_SECRET_ACCESS_KEY;
 const accessKey = process.env.AWS_ACCESS_KEY_ID;
-console.log(accessKey);
-console.log(secretKey);
+// console.log(accessKey);
+// console.log(secretKey);
 const AWS = require("aws-sdk");
 // const multer = require("multer"); // might not use since our files are just 3mb at a time.. 
 const s3 = new AWS.S3({ apiVersion: "2006-03-01", accessKeyId: accessKey, secretAccessKey: secretKey});
@@ -97,10 +97,30 @@ const uploadToAWSWithURL = async (url, title) => {
 
 // uploadToAWSWithURL("https://cdn.discordapp.com/attachments/1096463008143781951/1097524638646542446/img-LtMfF5kyXN3ha0Jeo8sxhvee.png", "testupload.png")
 
+
+
+// var params = {Bucket: 'bucket', Key: 'key', Expires: 60};
+// var url = s3.getSignedUrl('getObject', params);
+// console.log('The URL is', url);
+
+const getUrlFromAwsWithKey = async (key) => {
+    const url = s3.getSignedUrl("getObject",{
+        Bucket: NAME_OF_BUCKET, 
+        Key: key,
+        Expires: 1200
+    })
+
+    console.log(url)
+    return url
+}
+
+// getUrlFromAwsWithKey("1681761471543testupload.png")
+
 module.exports = {
   s3,
   singleFileUpload,
   multipleFilesUpload,
   retrievePrivateFile,
-  uploadToAWSWithURL
+  uploadToAWSWithURL,
+  getUrlFromAwsWithKey
 };
