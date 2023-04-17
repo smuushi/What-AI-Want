@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 // import "./SessionForm.css";
 
 import { login, clearSessionErrors } from "../../store/session";
@@ -8,7 +9,9 @@ function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const errors = useSelector((state) => state.errors.session);
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     return () => {
@@ -25,6 +28,8 @@ function LoginForm() {
     e.preventDefault();
     dispatch(login({ email, password }));
   };
+
+  if (sessionUser) return <Redirect to = '/'/>
 
   return (
     <form className="session-form" onSubmit={handleSubmit}>

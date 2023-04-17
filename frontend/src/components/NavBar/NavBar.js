@@ -17,7 +17,7 @@ function NavBar() {
       return (
         <div className="links-nav">
 
-          <Link to={"/profile"}>Profile</Link>
+          {/* <Link to={"/profile"}>Profile</Link> */}
 
           <button onClick={logoutUser}>Logout</button>
         </div>
@@ -25,8 +25,8 @@ function NavBar() {
     } else {
       return (
         <div className="links-auth">
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+          {/* <Link to={"/signup"}>Signup</Link>
+          <Link to={"/login"}>Login</Link> */}
         </div>
       );
     }
