@@ -1,5 +1,15 @@
 
 .fullNavBox{
     display:flex;
-    justify-content: space-between;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    /* margin-top:15px; */
+    margin-bottom:15px;
 }
+
+#navbar-container{
+    height:10vw;
+}
+
+

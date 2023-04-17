@@ -5,7 +5,8 @@
     /* background-color: black; */
     gap: 10vw;
     /* margin-left: 20vw; */
-    padding-bottom: 5vh;
+    /* padding-bottom: 5vh; */
+    align-items: center;
 }
 
 .links-nav{
@@ -41,23 +42,12 @@
     cursor: pointer;
   }
   
-  .hamburger-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 16px;
-  }
   
-  .hamburger-bar {
-    width: 1.5vw;
-    height: 0.3vh;
-    background-color: black;
-  }
   
   .dropdown-menu {
     position: relative;
     /* right: 43.2vw; */
-    z-index: 1;
+    z-index: 2;
   }
   
   .profileButtonDropdown {

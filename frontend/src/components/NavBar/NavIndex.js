@@ -12,10 +12,15 @@ const NavIndex = ()=>{
         navComponent = <LoggedOutNav/>
     }
     return (
-        <div className="fullNavBox">
-         <p>WHATAIWANT</p>
-        {navComponent}
+        <>
+        <div id ='navbar-container'>
+            <p>WHATAIWANT</p>
+            <div className="fullNavBox">
+            {navComponent}
+            </div>
         </div>
+        </>
+        
         
     )
 }

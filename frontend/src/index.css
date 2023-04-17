@@ -61,3 +61,7 @@ table {
 *{
     font-family: 'Dongle', sans-serif;
 }
+
+::placeholder{
+    color:rgb(213, 213, 213)
+}

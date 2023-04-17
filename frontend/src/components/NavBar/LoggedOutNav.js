@@ -8,9 +8,11 @@ const LoggedOutNav = ()=>{
         <><div className="loggedOutNav">
             <div id = 'signup'>
                 <p>Make your character Today!</p>
+                <div id = 'userAuthButtons'>
                 <SignInUpModal type = {signUp}/>
-            </div>
                 <SignInUpModal id = 'login' type = {login}/>
+                </div>
+            </div>
         </div>
         </>
     )

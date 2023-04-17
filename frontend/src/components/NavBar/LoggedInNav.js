@@ -27,11 +27,7 @@ function LoggedInNav() {
 
       <div className="dropdown">
         <button className="dropdown-toggle" onClick={toggleDropdown}>
-          <div className="hamburger-icon">
-            <div className="hamburger-bar"></div>
-            <div className="hamburger-bar"></div>
-            <div className="hamburger-bar"></div>
-          </div>
+          <i className="fa-solid fa-bars"></i>
         </button>
 
         {dropdownVisible && (
@@ -50,7 +46,7 @@ function LoggedInNav() {
           </div>
         )}
       </div>
-    </div>
+    </div> 
   );
 }
 
