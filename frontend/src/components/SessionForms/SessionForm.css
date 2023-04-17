@@ -1,0 +1,25 @@
+.session-form>label {
+    width: 100%;
+    padding: 4px 0;
+    text-align: right;
+}
+
+.session-form>label>span {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.session-form>input {
+    width: 200px;
+}
+
+.session-form>input[type="submit"] {
+    width: 100%;
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+}
