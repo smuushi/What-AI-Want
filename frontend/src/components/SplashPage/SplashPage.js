@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 
-function LoggedInSplashPage() {
+function SplashPage() {
   const dispatch = useDispatch()
   const logoutUser = (e) => {
     e.preventDefault();
@@ -10,7 +10,7 @@ function LoggedInSplashPage() {
 
   return (
     <>
-       <button onClick={logoutUser}>Logout</button>
+       {/* <button onClick={logoutUser}>Logout</button> */}
       <h1>LoggedIn</h1>
       <p>What-AI-Want</p>
       <footer>Copyright &copy; 2022 What-AI-Want</footer>
@@ -18,4 +18,4 @@ function LoggedInSplashPage() {
   );
 }
 
-export default LoggedInSplashPage;
+export default SplashPage
