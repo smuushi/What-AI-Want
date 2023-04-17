@@ -34,7 +34,7 @@ router.post("/", restoreUser, async (req, res, next) => {
 });
 
 router.get("/image/:id", restoreUser, async (req, res, next) => {
-  //   if (!req.user) return res.json(null);
+     if (!req.user) return res.json(null);
   try {
     const list = await List.findOne({ _id: req.params.id });
     let prompt;
