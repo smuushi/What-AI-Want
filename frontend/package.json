@@ -12,7 +12,8 @@
     "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "swiper": "^9.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -37,5 +38,6 @@
   },
   "devDependencies": {
     "redux-logger": "^3.0.6"
-  },"proxy": "http://localhost:5050"
+  },
+  "proxy": "http://localhost:5050"
 }

@@ -1,0 +1,96 @@
+/* -------------------------------NavLinks */
+
+.loggedin-nav-box{
+    display: flex;
+    /* background-color: black; */
+    gap: 10vw;
+    /* margin-left: 20vw; */
+    padding-bottom: 20vh;
+}
+
+.links-nav{
+    display: flex;
+    gap: 14vw;
+    /* background-color: #ffffffd1; */
+    background-color: rgb(104, 213, 249); /*temp color */
+    padding: 1vh;
+    border-radius: 50px;
+    /* border: 3px solid #fff; */ 
+    border: 3px solid #120b0b; /*temp color */
+}
+
+.links-nav a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    color: black;
+    letter-spacing: 0.08vw;
+}
+
+.links-nav a:hover{
+    color: rgba(128, 128, 128, 0.81);
+}
+
+/* ----------------------------------- DROPDOWN */
+
+.dropdown-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 16px;
+  }
+  
+  .hamburger-bar {
+    width: 1.5vw;
+    height: 0.3vh;
+    background-color: black;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    right: 43.2vw;
+    z-index: 1;
+  }
+  
+  .profileButtonDropdown {
+    position: absolute;
+    right: 0;
+    top: 0.2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ade7ff;
+    width: 9vw;
+    height: 15vh;
+    box-shadow: 0 0 5px #7ad3ff;
+    overflow: hidden;
+  }
+  
+  .profileButtonDropdown * {
+    background: none;
+    border: none;
+    color: white;
+    align-items: center;
+    /* text-decoration: none; */
+    text-decoration: underline;
+    font-size: 24.5px;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+  }
+  
+  .profileButtonDropdown *:hover {
+    color: rgb(40, 145, 251);
+    text-shadow: 0px 0px 1px #57cbde;
+    cursor: pointer;
+  }
+  
+  
+
