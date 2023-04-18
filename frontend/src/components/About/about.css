@@ -12,17 +12,17 @@
 div.about_wrapper {
   height: calc(100vh - 6.7vw);
   /* background: linear-gradient(92.68deg, #E96504 -10.88%, #8900D7 141.61%) */
-  background: var(--highlight-3);
+  /* background: var(--highlight-3); */
   display: flex;
   flex-wrap: nowrap;
-
 }
 
+
 div.about_image_bg_div {
-  background-image: url("https://cdn.discordapp.com/attachments/1096880087372157048/1097975404804984882/2_.png");
+  /* background-image: url("https://cdn.discordapp.com/attachments/1096880087372157048/1097975404804984882/2_.png"); */
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
+ background-size: cover;
   height: 100%;
   width: 100%;
 
