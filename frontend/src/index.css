@@ -68,7 +68,10 @@ table {
 }
 
 .ai-spans{
-    color:#27c7ff
+    color:#fcb480
+}
+.ai-spans:hover{
+    color:#ff6900
 }
 
 *{

@@ -1,11 +1,15 @@
 .mySwiper1 {
   width: 70vw;
   height: 25vh;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .mySwiper2 {
   width: 70vw;
   height: 25vh;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .slide-background {
@@ -34,7 +38,7 @@
 }
 
 .slide-background:hover .slide-text {
-  color: white;
+  color: #11aee2;
 }
 
 .corner-image {
@@ -50,15 +54,15 @@
 
 
 .slide-text.active {
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 2.5s ease-in-out;
 }
 
 .slide-background.active {
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 2.5s ease-in-out;
 }
 
 .corner-image.active {
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 2.5s ease-in-out;
 }
 
 @keyframes slideIn {
@@ -75,7 +79,7 @@
 .slide-text {
   position: relative;
   bottom: 18vh;
-  left: 28.5vw;
+  left: 23vw;
   color: #25c7ff;
   font-weight: bold;
   font-size: 90px;

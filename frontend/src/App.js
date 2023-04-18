@@ -1,15 +1,14 @@
 
 import { Redirect, Switch } from "react-router-dom";
-// import NavBar from "./components/NavBar/NavBar";
 import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
-// import { Redirect } from "react-router-dom";
 import SplashPage from "./components/SplashPage/SplashPage";
 import { getCurrentUser } from "./store/session";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
+import MaikeForm from "./components/Maike/MaikeForm";
 
 
 function App() {
@@ -41,7 +40,7 @@ if (!loggedIn){
           {redirect}
         </Route>
         <Route exact path = '/maike'>
-          <p> MAIKE TESTING</p>
+          <MaikeForm/>
           {redirect}
         </Route>
       <Route path = '/'>

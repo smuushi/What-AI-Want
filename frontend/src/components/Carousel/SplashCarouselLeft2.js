@@ -42,7 +42,7 @@ export default function SplashCarouselLeft2() {
           <SwiperSlide key={index}>
             <div className={`slide-background slide-background-${index + 1}`}>
               <img className="corner-image" src={slide.cornerImage} />
-              <div className="slide-text">Want</div>
+              <div className="slide-text">Save Your Avatar!</div>
             </div>
           </SwiperSlide>
         ))}
