@@ -63,6 +63,34 @@ export const getCurrentUser = () => async (dispatch) => {
   return dispatch(receiveCurrentUser(user));
 };
 
+export const updateCurrentUser = currentUser => async(dispatch) => {
+  const {username,email,lists,images} = user
+  const res = await jwtFetch(`/api/users/${currentUser.id}`,{
+    method: 'PATCH',
+    body: JSON.stringify({
+      user:{
+        username,
+        email,
+        lists,
+        images
+      }
+    })
+  });
+  let user = await res.json()
+  return dispatch(receiveCurrentUser(user))
+}
+
+export const saveImage = (imageId)=> async(dispatch) => {
+  const response = await jwtFetch(`/api/images/save/${imageId}`,{
+      method: 'POST'
+  })
+
+  if (response.ok){
+      const user = await response.json()
+      dispatch(receiveCurrentUser(user))
+  }
+}
+
 
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
