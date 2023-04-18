@@ -36,8 +36,11 @@ router.post("/", restoreUser, async (req, res, next) => {
   return res.json(list);
 });
 
+
+router.patch
+
 router.get("/image/:id", restoreUser, async (req, res, next) => {
-  if (!req.user) return res.json(null);
+    if (!req.user) return res.json(null);
   try {
     let list = await List.findOne({ _id: req.params.id });
     let prompt;
@@ -66,18 +69,6 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
             })
           );
 
-          // data.data.data.forEach(async (image, idx) => {
-          //   const imageKeyPromise = uploadToAWSWithURL(image.url, `testimage${idx}.png`);
-          //   const imageKey = await imageKeyPromise;
-          //   imageKeys.push(imageKey);
-          // })
-
-          // list.imageUrl = data.data.data[0].url;
-
-          // const imageKeyPromise = uploadToAWSWithURL(data.data.data[0].url, "testimage.png")
-
-          // list.imageKey = await imageKeyPromise;
-
           list.imageKeys = imageKeys;
 
           let tempUrls = [];
@@ -88,13 +79,6 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
               return tempUrl;
             })
           );
-
-          // imageKeys.forEach(async (key) => {
-          //   const tempUrl = await getUrlFromAwsWithKey(key);
-          //   tempUrls.push(tempUrl);
-          // })
-
-          // const tempUrl = await getUrlFromAwsWithKey(list.imageKey);
 
           list.save();
 
@@ -113,6 +97,8 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
 router.get("/all", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
   try {
+    const lists = await List.find();
+    res.status(200).json(lists);
   } catch (err) {
     return res.json(err);
   }
@@ -123,9 +109,9 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
 
   try {
-    const user = await User.findOne({_id:req.params.userId})
-    if(user){
-      return res.json(user)
+    const user = await User.findOne({ _id: req.params.userId });
+    if (user) {
+      return res.json(user);
     }
   } catch (err) {
     return res.json(err);
