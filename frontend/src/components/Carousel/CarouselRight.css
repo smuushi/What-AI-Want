@@ -1,32 +1,82 @@
 .mySwiperRight {
-    width: 70vw;
-    height: 25vh;
+  width: 70vw;
+  height: 25vh;
+ 
+}
+
+.slide-background-right {
+  position: relative;
+  width: 70vw;
+  height: 25vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slide-background-right-1 {
+  background: linear-gradient(308deg, rgba(206, 226, 235, 0.8) 0%, rgb(253, 255, 255) 100%);
+}
+
+.slide-background-right-2 {
+  background: linear-gradient(308deg, rgba(206, 226, 235, 0.8) 0%, rgb(253, 255, 255) 100%);
+}
+
+.slide-background-right-3 {
+  background: linear-gradient(308deg, rgba(206, 226, 235, 0.8) 0%, rgb(253, 255, 255) 100%);
+}
+
+.slide-background-right:hover{
+  background: #46d1ff81;
+ 
+}
+
+.slide-background-right:hover .slide-text-right {
+  color: white;
+}
+
+.corner-image-right {
+  position: absolute;
+  right: 0;
+  width: 14.25vw;
+  /* border: solid 1px rgb(175, 177, 178); */
+  transition: transform 0.5s ease-in-out; 
+}
+
+.slide-background-right:hover .corner-image-right {
+  transform: scale(1.1); 
+}
+
+.slide-text-right.active {
+  animation: slideIn 1s ease-in-out;
+}
+
+.slide-background-right.active {
+  animation: slideIn 1s ease-in-out;
+}
+
+.corner-image-right.active {
+  animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  
-  
-  .slide-background-right {
-    position: relative;
-    width: 70vw;
-    height: 25vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
-  
-  .corner-image-right {
-    position: absolute;
-    right: 0;
-    width: 14.25vw;
-    /* border: solid 1px rgb(175, 177, 178); */
-  }
-  
-  .slide-text-right {
-    position: relative;
-    left: 31.5vw;
-    top: 8.5vh;
-    color: white;
-    font-weight: bold;
-    font-size: 90px;
-  }
-  
-  
+}
+
+
+.slide-text-right {
+  position: relative;
+  left: 31.5vw;
+  top: 8.5vh;
+  color: #25c7ff;
+  font-weight: bold;
+  font-size: 90px;
+  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, 
+               -2px -2px 0 #25c7ff, 2px -2px 0 #25c7ff, -2px 2px 0 #25c7ff, 2px 2px 0 #25c7ff; 
+}

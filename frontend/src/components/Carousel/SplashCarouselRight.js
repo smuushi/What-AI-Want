@@ -10,22 +10,50 @@ import dalleTemp from "./dalletemp.jpg";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
+// import { useSwiperEffect } from "./CarouselUtils";
 
 export default function SplashCarouselRight() {
+  const handleSlideChange = (swiper) => {
+    const activeIndex = swiper.activeIndex;
+    const slideTexts = document.querySelectorAll(".slide-text-right");
+    const cornerImages = document.querySelectorAll(".corner-image-right");
+    const slideBackgrounds = document.querySelectorAll(
+      ".slide-background-right"
+    );
+
+    slideTexts.forEach((slideText, index) => {
+      if (index === activeIndex) {
+        slideText.classList.add("active");
+      } else {
+        slideText.classList.remove("active");
+      }
+    });
+
+    cornerImages.forEach((cornerImage, index) => {
+      if (index === activeIndex) {
+        cornerImage.classList.add("active");
+      } else {
+        cornerImage.classList.remove("active");
+      }
+    });
+
+    slideBackgrounds.forEach((slideBackground, index) => {
+      if (index === activeIndex) {
+        slideBackground.classList.add("active");
+      } else {
+        slideBackground.classList.remove("active");
+      }
+    });
+  };
+
   const slides = [
     {
-      background:
-        "linear-gradient(308deg, rgba(0,212,255,0.8) 0%,rgba(6,147,227,0.8) 100%)",
       cornerImage: dalleTemp,
     },
     {
-      background:
-        "linear-gradient(308deg, rgba(0,212,255,0.8) 0%, rgba(6,147,227,0.8) 100%)",
       cornerImage: dalleTemp,
     },
     {
-      background:
-        "linear-gradient(308deg, rgba(0,212,255,0.8) 0%, rgba(6,147,227,0.8) 100%)",
       cornerImage: dalleTemp,
     },
   ];
@@ -36,7 +64,7 @@ export default function SplashCarouselRight() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 4000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Navigation]}
@@ -45,8 +73,9 @@ export default function SplashCarouselRight() {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className="slide-background-right"
-              style={{ background: slide.background }}
+              className={`slide-background-right slide-background-right-${
+                index + 1
+              }`}
             >
               <img className="corner-image-right" src={slide.cornerImage} />
               <div className="slide-text-right">AI</div>
