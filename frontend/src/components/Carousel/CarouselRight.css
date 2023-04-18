@@ -31,7 +31,7 @@
 }
 
 .slide-background-right:hover .slide-text-right {
-  color: white;
+  color: #ff6900;
 }
 
 .corner-image-right {
@@ -47,15 +47,15 @@
 }
 
 .slide-text-right.active {
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 2s ease-in-out;
 }
 
 .slide-background-right.active {
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 2s ease-in-out;
 }
 
 .corner-image-right.active {
-  animation: slideIn 1s ease-in-out;
+  animation: slideIn 2s ease-in-out;
 }
 
 @keyframes slideIn {
@@ -74,9 +74,9 @@
   position: relative;
   left: 31.5vw;
   top: 8.5vh;
-  color: #25c7ff;
+  color: #fcb480;
   font-weight: bold;
   font-size: 90px;
   text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, 
-               -2px -2px 0 #25c7ff, 2px -2px 0 #25c7ff, -2px 2px 0 #25c7ff, 2px 2px 0 #25c7ff; 
+               -2px -2px 0 #fcb480, 2px -2px 0 #fcb480, -2px 2px 0 #fcb480, 2px 2px 0 #fcb480; 
 }
