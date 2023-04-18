@@ -1,20 +1,31 @@
-import React from "react";
-// Import Swiper React components
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "./CarouselRight.css";
 import dalleTemp from "./dalletemp.jpg";
-
-// import required modules
 import { Autoplay, Navigation } from "swiper";
-// import { useSwiperEffect } from "./CarouselUtils";
 
 export default function SplashCarouselRight() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const slides = [
+    {
+      cornerImage: dalleTemp,
+    },
+    {
+      cornerImage: dalleTemp,
+    },
+    {
+      cornerImage: dalleTemp,
+    },
+  ];
+
   const handleSlideChange = (swiper) => {
-    const activeIndex = swiper.activeIndex;
+    setActiveIndex(swiper.activeIndex);
+  };
+
+  useEffect(() => {
     const slideTexts = document.querySelectorAll(".slide-text-right");
     const cornerImages = document.querySelectorAll(".corner-image-right");
     const slideBackgrounds = document.querySelectorAll(
@@ -44,45 +55,32 @@ export default function SplashCarouselRight() {
         slideBackground.classList.remove("active");
       }
     });
-  };
-
-  const slides = [
-    {
-      cornerImage: dalleTemp,
-    },
-    {
-      cornerImage: dalleTemp,
-    },
-    {
-      cornerImage: dalleTemp,
-    },
-  ];
+  }, [activeIndex]);
 
   return (
-    <>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 6000,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay, Navigation]}
-        className="mySwiperRight"
-      >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className={`slide-background-right slide-background-right-${
-                index + 1
-              }`}
-            >
-              <img className="corner-image-right" src={slide.cornerImage} />
-              <div className="slide-text-right">AI</div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </>
+    <Swiper
+      spaceBetween={30}
+      centeredSlides={true}
+      autoplay={{
+        delay: 6500,
+        disableOnInteraction: false,
+      }}
+      modules={[Autoplay, Navigation]}
+      className="mySwiperRight"
+      onSlideChange={(swiper) => handleSlideChange(swiper)}
+    >
+      {slides.map((slide, index) => (
+        <SwiperSlide key={index}>
+          <div
+            className={`slide-background-right slide-background-right-${
+              index + 1
+            }`}
+          >
+            <img className="corner-image-right" src={slide.cornerImage} />
+            <div className="slide-text-right">AI</div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
