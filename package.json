@@ -1,0 +1,29 @@
+{
+  "name": "mernproj",
+  "version": "1.0.0",
+  "description": "What-Ai-Want is a web application that allows users to create their own avatar based on a selection of options. The application uses the OpenAI API to generate the avatar images and AWS S3 to store user-uploaded images.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend-install": "npm install --prefix backend",
+    "backend": "npm run dev --prefix backend",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "frontend-build": "npm run build --prefix frontend",
+    "build": "npm run backend-install && npm run frontend-install && npm run frontend-build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smuushi/What-AI-Want.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smuushi/What-AI-Want/issues"
+  },
+  "homepage": "https://github.com/smuushi/What-AI-Want#readme",
+  "engines": {
+    "node": "16.x"
+  }
+}
