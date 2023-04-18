@@ -1,4 +1,4 @@
-@keyframes slideIn {
+@keyframes slide-down {
     0% {
       transform: translateY(-400px);
       animation-timing-function: ease-out;
@@ -36,7 +36,7 @@
     justify-content: center;
     align-items: center;
     z-index:10;
-    animation: fadeIn 0.8s, slideIn .75s linear;
+    animation: fadeIn 0.8s, slide-down .75s linear;
   }
   
   #modal-background {
