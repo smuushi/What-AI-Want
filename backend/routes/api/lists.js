@@ -24,7 +24,7 @@ const openai = new OpenAIApi(config);
 //checked good
 //posting list
 router.post("/", restoreUser, async (req, res, next) => {
-    if (!req.user) return res.json(null);
+  if (!req.user) return res.json(null);
   const newList = new List({
     hairColor: req.body.hairColor,
     clothingAccessory: req.body.clothingAccessory,
@@ -63,14 +63,21 @@ router.patch("/:id", restoreUser, async (req, res, next) => {
   }
 });
 
-
-
-
-
+//delete
+router.delete("/:id", restoreUser, async (req, res, next) => {
+     if (!req.user) return res.json(null);
+  try {
+    const deletedList = await List.findOneAndDelete({ _id: req.params.id });
+    return res.json(deletedList);
+  } catch (err) {
+    console.error(err);
+    return next(err);
+  }
+});
 
 //checked //Mike
 router.get("/image/:id", restoreUser, async (req, res, next) => {
-    if (!req.user) return res.json(null);
+  if (!req.user) return res.json(null);
   try {
     let list = await List.findOne({ _id: req.params.id });
     let prompt;
@@ -126,7 +133,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
 //index
 // to send back the lists in database for the front to load when they initialize the app.
 router.get("/all", restoreUser, async (req, res, next) => {
-   if (!req.user) return res.json(null);
+  if (!req.user) return res.json(null);
   try {
     const lists = await List.find();
     res.status(200).json(lists);
@@ -138,12 +145,12 @@ router.get("/all", restoreUser, async (req, res, next) => {
 // route to return all the lists for a given userId
 //checked good
 router.get("/all/:userId", restoreUser, async (req, res, next) => {
-    if (!req.user) return res.json(null);
+  if (!req.user) return res.json(null);
 
   try {
     const user = await User.findOne({ _id: req.params.userId });
     if (user) {
-      return res.json({list:user.list});
+      return res.json({ list: user.list });
     }
   } catch (err) {
     return res.json(err);
@@ -152,12 +159,13 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
 //checked good
 //list show
 router.get("/:id", restoreUser, async (req, res, next) => {
-    // if (!req.user) return res.json(null);
+   if (!req.user) return res.json(null);
   try {
     const list = await List.findOne({ _id: req.params.id });
     if (list) {
       return res.json(list);
     }
+    git;
   } catch (err) {
     return res.json(err);
   }
