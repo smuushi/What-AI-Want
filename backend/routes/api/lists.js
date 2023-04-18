@@ -112,7 +112,6 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
 // to send back the lists in database for the front to load when they initialize the app.
 router.get("/all", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
-
   try {
   } catch (err) {
     return res.json(err);
