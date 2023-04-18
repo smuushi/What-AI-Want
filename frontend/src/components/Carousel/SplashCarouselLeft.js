@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,22 +10,19 @@ import dalleTemp from "./dalletemp.jpg";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
+import { useSwiperEffect } from "./CarouselUtils";
 
 export default function SplashCarouselLeft() {
+  useSwiperEffect("mySwiper1");
+
   const slides = [
     {
-      background:
-        "linear-gradient(308deg, rgba(6,147,227,0.8) 0%, rgba(0,212,255,0.8) 100%)",
       cornerImage: dalleTemp,
     },
     {
-      background:
-        "linear-gradient(308deg, rgba(6,147,227,0.8) 0%, rgba(0,212,255,0.8) 100%)",
       cornerImage: dalleTemp,
     },
     {
-      background:
-        "linear-gradient(308deg, rgba(6,147,227,0.8) 0%, rgba(0,212,255,0.8) 100%)",
       cornerImage: dalleTemp,
     },
   ];
@@ -36,18 +33,15 @@ export default function SplashCarouselLeft() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Navigation]}
-        className="mySwiper"
+        className="mySwiper1"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div
-              className="slide-background"
-              style={{ background: slide.background }}
-            >
+            <div className={`slide-background slide-background-${index + 1}`}>
               <img className="corner-image" src={slide.cornerImage} />
               <div className="slide-text">What</div>
             </div>

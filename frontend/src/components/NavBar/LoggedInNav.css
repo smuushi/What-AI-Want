@@ -10,28 +10,28 @@
 }
 
 .links-nav{
+    position: relative;
+    left: 4.85vw;
     display: flex;
     gap: 14vw;
-    /* background-color: #ffffffd1; */
-    background-color: rgb(104, 213, 249); /*temp color */
+    background-color: #ffffffd1;
     padding: 1vh;
     border-radius: 50px;
-    /* border: 3px solid #fff; */ 
-    border: 3px solid #120b0b; /*temp color */
+    border: 3px solid #25c7ff; 
 }
 
 .links-nav a{
     text-decoration: none;
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 2vw;
     margin-left: 1vw;
     margin-right: 1vw;
-    color: black;
+    color: #25c7ff;
     letter-spacing: 0.08vw;
 }
 
 .links-nav a:hover{
-    color: rgba(128, 128, 128, 0.81);
+    color: rgba(159, 158, 158, 0.334);
 }
 
 /* ----------------------------------- DROPDOWN */
@@ -42,8 +42,12 @@
     cursor: pointer;
   }
   
-  
-  
+  .dropdown-toggle i {
+    position: relative;
+    left: 19vw;
+    bottom: 0.5vh;
+  }
+
   .dropdown-menu {
     position: relative;
     /* right: 43.2vw; */
@@ -52,8 +56,8 @@
   
   .profileButtonDropdown {
     position: absolute;
-    right: 0;
-    top: 0.2vh;
+    left: 11.3vw;
+    top: -0.9vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
