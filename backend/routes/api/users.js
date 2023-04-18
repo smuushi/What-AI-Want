@@ -30,6 +30,8 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
+    lists: req.user.lists,
+    images: req.user.images
   });
 });
 
@@ -92,6 +94,11 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
+
+
+// router.get("/:id", async (req, res, next) => {
+//   const user = 
+// })
 
 
 module.exports = router;
