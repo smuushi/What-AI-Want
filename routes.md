@@ -40,7 +40,7 @@ const listSchema = new Schema(
 ```
 
 ### GET api/lists/all
-
+- getting the collection of List
 ```jSON
 [
     {
@@ -111,7 +111,8 @@ const listSchema = new Schema(
 ### POST api/lists/
 
 - create list info (dropbox selection)
-  - body
+  - request body
+
 
 ```Json
 {
@@ -175,3 +176,52 @@ const listSchema = new Schema(
   }]
   }
   ```
+### GET api/lists/all/:userId
+
+```Json
+{
+
+    "list": [{
+          "_id": "643e9c2e5339b7e54613c8f9",
+          "hairColor": "green",
+          "clothingAccessory": "hat",
+          "gender": "male",
+          "background": "office",
+          "artStyle": "illustration",
+          "websiteStyle": "pixiv",
+          "createdAt": "2023-04-18T13:33:34.434Z",
+          "updatedAt": "2023-04-18T13:33:34.434Z",
+          "__v": 0
+      },{
+          "_id": "643e9c2e5339b7e54613c8f9",
+          "hairColor": "green",
+          "clothingAccessory": "hat",
+          "gender": "male",
+          "background": "office",
+          "artStyle": "illustration",
+          "websiteStyle": "pixiv",
+          "createdAt": "2023-04-18T13:33:34.434Z",
+          "updatedAt": "2023-04-18T13:33:34.434Z",
+          "__v": 0
+      }]
+
+}
+```
+
+### GET api/lists/:id
+
+```Json
+{
+    "_id": "643e9c2e5339b7e54613c8f9",
+    "hairColor": "green",
+    "clothingAccessory": "hat",
+    "gender": "male",
+    "background": "office",
+    "artStyle": "illustration",
+    "websiteStyle": "pixiv",
+
+    "createdAt": "2023-04-18T13:33:34.434Z",
+    "updatedAt": "2023-04-18T13:38:07.801Z",
+    "__v": 1
+}
+```
