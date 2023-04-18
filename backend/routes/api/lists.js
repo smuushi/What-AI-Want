@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const List = require("../../models/List");
 const User = require("../../models/User");
+const Image = require("../../models/Image")
 const passport = require("passport");
 
 const { uploadToAWSWithURL, getUrlFromAwsWithKey } = require("../../awsS3");
@@ -33,11 +34,18 @@ router.post("/", restoreUser, async (req, res, next) => {
 
   const list = await newList.save();
 
+  const mongooseUser = await User.findOne({_id: req.user._id})
+  
+
+  mongooseUser["list"].push(list._id)
+
+  await mongooseUser.save();
+
   return res.json(list);
 });
 
 
-router.patch
+
 
 router.get("/image/:id", restoreUser, async (req, res, next) => {
     if (!req.user) return res.json(null);
@@ -69,7 +77,15 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
             })
           );
 
-          list.imageKeys = imageKeys;
+          let imageObjects = await Promise.all(imageKeys.map(async (key) => {
+            let newImage = new Image({
+              prompts: list, 
+              AWSKey: key
+            })
+
+            const image = await newImage.save();
+            return image;
+          }))
 
           let tempUrls = [];
 
@@ -80,11 +96,20 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
             })
           );
 
-          list.save();
+          const returns = imageObjects.map((imageObj, idx) => {
+            // console.log(imageObj)
+            const resObj = {...imageObj.toObject(),
+              tempUrl: tempUrls[idx]
+            };
+            
+            return resObj
+          })
+
+          // list.save();
 
           return res.json({
             list: list,
-            tempUrls: tempUrls,
+            images: returns,
           });
         });
     }
