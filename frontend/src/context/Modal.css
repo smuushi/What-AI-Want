@@ -1,3 +1,31 @@
+@keyframes slideIn {
+    0% {
+      transform: translateY(-400px);
+      animation-timing-function: ease-out;
+    }
+    60% {
+      transform: translateY(20px);
+      animation-timing-function: ease-in;
+    }
+    80% {
+      transform: translateY(-20px);
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform: translateY(0px);
+      animation-timing-function: ease-in;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
 #modal {
     position: fixed;
     top: 0;
@@ -8,6 +36,7 @@
     justify-content: center;
     align-items: center;
     z-index:10;
+    animation: fadeIn 0.8s, slideIn .75s linear;
   }
   
   #modal-background {
@@ -35,7 +64,7 @@
     border:none;
     /* margin-left:400px; */
     position:relative;
-    left:93%;
+    left:90%;
     /* right:10px; */
     top:10px;
     color:grey;
@@ -44,4 +73,5 @@
 
   .fa-xmark:hover{
     cursor:pointer;
+    color:red;
   }

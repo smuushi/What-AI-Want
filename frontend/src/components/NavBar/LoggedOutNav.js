@@ -7,7 +7,7 @@ const LoggedOutNav = ()=>{
     return(
         <><div className="loggedOutNav">
             <div id = 'signup'>
-                <p>Make your character Today!</p>
+                <p>Make your <span className="ai-spans">Ai</span>vatar Today!</p>
                 <div id = 'userAuthButtons'>
                 <SignInUpModal type = {signUp}/>
                 <SignInUpModal id = 'login' type = {login}/>

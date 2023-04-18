@@ -1,9 +1,8 @@
+
+
 .loggedOutNav{
     display:flex;
-    /* justify-content: space-between; */
     align-items:center;
-    /* padding:1vw; */
-    /* width:100vw; */
 }
 
 #signup{
@@ -42,6 +41,9 @@
     padding-left:4px;
     width: 180px;
     font-size:20px;
+    border-radius:20px;
+    border: 1px solid #27c7ff;
+    padding-left:10px;
 }
 
 .signup-form input:focus{
@@ -86,6 +88,26 @@
     padding-left:4px;
     width: 180px;
     font-size:20px;
+    border: 1px solid #27c7ff;
+    border-radius:20px;
+    padding-left:10px;
+}
+
+.login-form button{
+    width:180px;
+    font-size:20px;
+    border: 1px solid #27c7ff;
+    background-color: #27c7ff;
+    color:white;
+    margin-bottom:25px;
+    border-radius:20px;
+}
+
+.login-form button:hover{
+    background-color: white;
+    color:#27c7ff;
+    cursor:pointer;
+    
 }
 
 #submitLogin{

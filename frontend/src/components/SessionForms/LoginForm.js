@@ -29,6 +29,11 @@ function LoginForm() {
     dispatch(login({ email, password }));
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(login({email:"admin@gmail.com",password:"password"}));
+  }
+
   if (sessionUser) return <Redirect to = '/'/>
 
   return (
@@ -53,6 +58,7 @@ function LoginForm() {
         />
       </label>
       <input id = 'submitLogin' type="submit" value="Go!" disabled={!email || !password} />
+      <button onClick={handleClick}>Demo Login</button>
     </form>
   );
 }

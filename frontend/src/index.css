@@ -63,5 +63,15 @@ table {
 }
 
 ::placeholder{
-    color:rgb(213, 213, 213)
+    color:rgb(213, 213, 213);
+
+}
+
+.ai-spans{
+    color:#27c7ff
+}
+
+*{
+	
+	transition:ease-out 0.15s
 }
