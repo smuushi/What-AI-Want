@@ -77,7 +77,7 @@ export default function SplashCarouselRight() {
             }`}
           >
             <img className="corner-image-right" src={slide.cornerImage} />
-            <div className="slide-text-right">AI</div>
+            <div className="slide-text-right">Pick Your Image!</div>
           </div>
         </SwiperSlide>
       ))}
