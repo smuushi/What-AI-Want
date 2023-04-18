@@ -1,0 +1,8 @@
+.SplashPageBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.SplashPageBox .swiper{
+    border: solid 1px rgb(175, 177, 178);
+}

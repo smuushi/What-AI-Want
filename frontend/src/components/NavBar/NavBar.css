@@ -1,21 +1,15 @@
-.NavBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+.fullNavBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    /* margin-top:15px; */
+    margin-bottom:15px;
 }
 
-.NavBar button {
-    height: 20px;
+#navbar-container{
+    height:10vw;
 }
 
-.links-nav {
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
-}
 
-.links-auth {
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-}

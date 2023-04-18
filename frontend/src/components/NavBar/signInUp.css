@@ -1,0 +1,157 @@
+
+
+.loggedOutNav{
+    display:flex;
+    align-items:center;
+}
+
+#signup{
+    /* margin-right:34.5vw; */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    /* margin-left:auto; */
+}
+
+#signup p{
+    font-size:5vw;
+    font-weight:bolder;
+}
+
+.signup-form{
+    width:250px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-right:80px; */
+    /* box-shadow: 0px 0px 10px 3px red; */
+}
+
+.errors{
+    height:25px;
+    display:flex;
+    align-items:center;
+    color:red;
+    column-gap:10px;
+    font-size:14px;
+}
+
+.signup-form input{
+    padding-left:4px;
+    width: 180px;
+    font-size:20px;
+    border-radius:20px;
+    border: 1px solid #27c7ff;
+    padding-left:10px;
+}
+
+.signup-form input:focus{
+    outline:none;
+}
+
+#submitSignUp{
+    margin-top:25px;
+    margin-bottom:25px;
+    border: 1px solid #27c7ff;
+    background-color: #27c7ff;
+    color:white;
+}
+
+#submitSignUp:hover{
+    cursor:pointer;
+    background-color: white;
+    color:#27c7ff;
+
+}
+
+
+
+.signup-form h2{
+    font-size:35px;
+    font-weight:bolder;
+}
+
+.login-form{
+    width:250px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form input:focus{
+    outline:none;
+}
+
+.login-form input{
+    padding-left:4px;
+    width: 180px;
+    font-size:20px;
+    border: 1px solid #27c7ff;
+    border-radius:20px;
+    padding-left:10px;
+}
+
+.login-form button{
+    width:180px;
+    font-size:20px;
+    border: 1px solid #27c7ff;
+    background-color: #27c7ff;
+    color:white;
+    margin-bottom:25px;
+    border-radius:20px;
+}
+
+.login-form button:hover{
+    background-color: white;
+    color:#27c7ff;
+    cursor:pointer;
+    
+}
+
+#submitLogin{
+    margin-top:25px;
+    margin-bottom:25px;
+    border: 1px solid #27c7ff;
+    background-color: #27c7ff;
+    color:white;
+}
+
+#submitLogin:hover{
+    background-color: white;
+    color:#27c7ff;
+    cursor:pointer;
+}
+
+.login-form h2{
+    font-size:35px;
+    font-weight:bolder;
+}
+
+#userAuthButtons{
+    display:flex;
+    align-items:center;
+    column-gap:20px;
+}
+
+#userAuthButtons button{
+    min-width:150px;
+    background-color: #27c7ff;
+    border:none;
+    color:white;
+    font-size:20px;
+    border-radius:20px;
+    border: 1px solid #27c7ff;
+}
+
+#userAuthButtons button:hover{
+    cursor:pointer;
+    background-color: white;
+    color:#27c7ff;
+    border: 1px solid #27c7ff;
+}
+
+#emptyNav{
+    width:5.5vw;
+}
