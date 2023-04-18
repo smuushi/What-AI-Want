@@ -7,6 +7,7 @@ const User = require("../../models/User");
 const Image = require("../../models/Image")
 const passport = require("passport");
 const { restoreUser } = require("../../config/passport");
+const {getUrlFromAwsWithKey} = require("../../awsS3")
 
 
 router.get("/all/:userId", restoreUser, async (req, res, next) => {
@@ -44,7 +45,7 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
 
 
   res.json({
-    returns
+    images: returns
   })
 
 })
@@ -60,7 +61,7 @@ router.post("/save/:imageId", restoreUser, async (req, res, next) => {
 
     mongooseUser.save();
 
-    return json(mongooseUser);
+    return res.json(mongooseUser);
 })
 
 
