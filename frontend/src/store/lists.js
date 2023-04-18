@@ -41,6 +41,7 @@ export const fetchUserLists = (userId) => async(dispatch)=>{
         const lists = await response.json()
         dispatch(receiveLists(lists))
     }
+
 }
 
 export const fetchList = (listId) => async(dispatch)=>{
@@ -53,10 +54,10 @@ export const fetchList = (listId) => async(dispatch)=>{
 
 export const createList = list =>async(dispatch)=>{
     const {hairColor,clothingAccessory,gender,background,artStyle,websiteStyle} = list
-    const response = await jwtFetch(`/api/lists`,{
+    const response = await jwtFetch(`/api/lists/`,{
         method: 'POST',
-        body: JSON.stringify({
-            list:{
+        body: JSON.stringify(
+            {
                 hairColor,
                 clothingAccessory,
                 gender,
@@ -64,7 +65,7 @@ export const createList = list =>async(dispatch)=>{
                 artStyle,
                 websiteStyle
             }
-        })
+        )
     })
     if (response.ok){
         const list = await response.json()
@@ -76,8 +77,8 @@ export const updateList = list =>async(dispatch)=>{
     const {hairColor,clothingAccessory,gender,background,artStyle,websiteStyle} = list
     const response = await jwtFetch(`/api/lists/${list.id}`,{
         method: 'PATCH',
-        body: JSON.stringify({
-            body:{
+        body: JSON.stringify(
+            {
                 hairColor,
                 clothingAccessory,
                 gender,
@@ -85,7 +86,7 @@ export const updateList = list =>async(dispatch)=>{
                 artStyle,
                 websiteStyle
             }
-        })
+        )
     })
     if (response.ok){
         const list = await response.json()
@@ -107,13 +108,13 @@ const listsReducer = (state={},action)=>{
     switch(action.type){
         case RECEIVE_LISTS:
             // return{...action.lists}
-            action.lists.forEach((list)=>{
+            action.lists.lists.forEach((list)=>{
                 nextState[list._id] = list 
             })
             return nextState 
 
         case RECEIVE_LIST:
-            return{...state,[action.list.id]:action.list}
+            return{...state,[action.list._id]:action.list}
         case REMOVE_LIST: 
             delete nextState[action.listId]
             return nextState 
