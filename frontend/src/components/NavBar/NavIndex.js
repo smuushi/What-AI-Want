@@ -14,15 +14,14 @@ const NavIndex = ()=>{
     return (
         <>
         <div id ='navbar-container'>
-            <p>WHATAIWANT</p>
             <div className="fullNavBox">
             {navComponent}
             </div>
         </div>
         </>
-        
-        
+
+
     )
 }
 
-export default NavIndex 
+export default NavIndex
