@@ -50,9 +50,12 @@ app.use(
 
 const usersRouter = require("./routes/api/users");
 const csrfRouter = require("./routes/api/csrf");
+const listRouter = require("./routes/api/lists")
+
 
 app.use("/api/users", usersRouter);
 app.use("/api/csrf", csrfRouter);
+app.use("/api/lists",listRouter)
 
 // Serve static React build files statically in production
 if (isProduction) {
@@ -94,6 +97,9 @@ app.use((err, req, res, next) => {
     errors: err.errors,
   });
 });
+
+
+
 
 
 module.exports = app;
