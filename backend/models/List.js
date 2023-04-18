@@ -33,7 +33,7 @@ const listSchema = new Schema(
     imageKeys:{
       type:Array
     },
-    imageUrl:{
+    imageUrls:{
       type:String
     }
 

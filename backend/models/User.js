@@ -18,7 +18,7 @@ const userSchema = new Schema(
     list:{
       type:Array
     },
-    imageUrl:{
+    imageUrls:{
       type:Array
     }
   },
