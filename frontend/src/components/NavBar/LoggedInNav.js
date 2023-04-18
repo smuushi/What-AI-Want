@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { useLocation } from "react-router-dom";
 import "./LoggedInNav.css";
 
 function LoggedInNav() {
   const dispatch = useDispatch();
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -20,9 +23,11 @@ function LoggedInNav() {
   return (
     <div className="loggedin-nav-box">
       <div className="links-nav">
-        <Link to="/profile">Profile</Link>
-        <Link to="/home">Home</Link>
-        <Link to="/maike">MAIke</Link>
+      <NavLink to="/" isActive={() => location.pathname === '/'}>
+        Home
+      </NavLink>
+        <NavLink to="/maike">M<span className="ai-spans">AI</span>ke</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
       </div>
 
       <div className="dropdown">

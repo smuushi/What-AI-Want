@@ -11,13 +11,18 @@
 
 .links-nav{
     position: relative;
-    left: 4.85vw;
+    left: 8vw;
+   
     display: flex;
+    justify-content: space-around;
+    width:70vw;
     gap: 14vw;
-    background-color: #ffffffd1;
-    padding: 1vh;
+    background-color: #25c7ff;
+    padding: 1vw;
     border-radius: 50px;
     border: 3px solid #25c7ff; 
+    align-items:center;
+    /* margin-top:1.8vw; */
 }
 
 .links-nav a{
@@ -26,12 +31,19 @@
     font-size: 2vw;
     margin-left: 1vw;
     margin-right: 1vw;
-    color: #25c7ff;
+    color: white;
     letter-spacing: 0.08vw;
+    font-size: 3vw;
+}
+
+.links-nav a.active{
+  font-weight:bolder;
+  color:#ff6900;
+  text-decoration: underline;
 }
 
 .links-nav a:hover{
-    color: rgba(159, 158, 158, 0.334);
+  color:#fcb480
 }
 
 /* ----------------------------------- DROPDOWN */
@@ -44,8 +56,19 @@
   
   .dropdown-toggle i {
     position: relative;
-    left: 19vw;
-    bottom: 0.5vh;
+    /* left: 19vw; */
+    /* bottom: 0.5vh; */
+    border:1px solid #25c7ff;
+    padding:1.7vw;
+    border-radius:100%;
+    color:white;
+    background-color: #25c7ff;
+    font-size:2vw;
+  }
+
+  .dropdown-toggle i:hover{
+    color:#25c7ff;
+    background-color: white;
   }
 
   .dropdown-menu {
@@ -56,16 +79,16 @@
   
   .profileButtonDropdown {
     position: absolute;
-    left: 11.3vw;
-    top: -0.9vh;
+    left:-1.4vw;
+    top: 2vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background: #ade7ff;
     width: 9vw;
     height: 15vh;
-    box-shadow: 0 0 5px #7ad3ff;
-    overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  /* overflow: hidden; */
+    border-radius:1vw;
   }
   
   .profileButtonDropdown * {
