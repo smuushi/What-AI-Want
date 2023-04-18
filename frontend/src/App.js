@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
 import MaikeForm from "./components/Maike/MaikeForm";
+import About from "./components/About/About";
 
 
 function App() {
@@ -25,14 +26,14 @@ function App() {
 if (!loggedIn){
   redirect = <Redirect to = '/'/>
 }
-      
-      
-  
 
-  
+
+
+
+
   return loaded && (
     <>
-     
+
        <NavIndex/>
       <Switch>
         <Route exact path = '/profile'>
@@ -42,6 +43,9 @@ if (!loggedIn){
         <Route exact path = '/maike'>
           <MaikeForm/>
           {redirect}
+        </Route>
+        <Route exact path = "/about">
+          <About/>
         </Route>
       <Route path = '/'>
         <Redirect to = '/'/>

@@ -1,0 +1,53 @@
+:root {
+  --primary-1: #0693e3;
+  --primary-2: #27c7ff;
+  --primary-3: #8ed1fc;
+  --primary-G-1: linear-gradient(283.55deg, #0693e3 12.02%, #8ed1fc 97.07%);
+  --primary-G-2: linear-gradient(106.62deg, #9b51e0 2.17%, #27c7ff 121.04%);
+  --highlight-1: #ff6900;
+  --highlight-2: #00d084;
+  --highlight-3: #9b51e0;
+}
+
+div.about_wrapper {
+  height: calc(100vh - 6.7vw);
+  /* background: linear-gradient(92.68deg, #E96504 -10.88%, #8900D7 141.61%) */
+  background: var(--highlight-3);
+  display: flex;
+  flex-wrap: nowrap;
+
+}
+
+div.about_image_bg_div {
+  background-image: url("https://cdn.discordapp.com/attachments/1096880087372157048/1097975404804984882/2_.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+}
+
+
+div.about_text_div {
+    display:flex;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.6) 0px 18px 36px -18px inset;
+}
+div.about_text {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+}
+div.about_text h1 {
+  color: white;
+  font-size: 6rem;
+  font-weight: 400;
+}
+div.about_text p{
+    color:white;
+    font-size: 2rem;
+    font-weight: 300;
+}
