@@ -1,6 +1,56 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createList } from "../../store/lists";
 import "./Maike.css";
+import jwtFetch from "../../store/jwt";
 
 const MaikeForm = () => {
+  const [clothingValue, setClothingValue] = useState("");
+  const [hairColorValue, setHairColorValue] = useState("");
+  const [genderValue, setGenderValue] = useState("");
+  const [backgroundValue, setBackgroundValue] = useState("");
+  const [artStyleValue, setArtStyleValue] = useState("");
+  const [webStyleValue, setWebStyleValue] = useState("");
+  const dispatch = useDispatch();
+  const [createdListId, setCreatedListId] = useState("");
+  console.log(createdListId);
+  const [loading,setLoading] = useState(false)
+  const [imageData,setImageData] = useState('')
+  console.log(loading)
+  const handleChange = (setter) => (event) => {
+    setter(event.target.value);
+  };
+
+
+
+  const handleMaikeClick = async (e)=>{
+    e.preventDefault()
+    if (!createdListId) return 
+    setLoading(()=>true)
+    const res = await jwtFetch(`/api/lists/image/${createdListId}`)
+
+    if (res.ok){
+      const data = await res.json()
+      setImageData(()=>data.images)
+      console.log(imageData)
+      setLoading(()=>false)
+    }
+  }
+
+  const handleSaveList = () => {
+    const listData = {
+      clothingAccessory: clothingValue,
+      hairColor: hairColorValue,
+      gender: genderValue,
+      background: backgroundValue,
+      artStyle: artStyleValue,
+      websiteStyle: webStyleValue,
+    };
+    dispatch(createList(listData)).then((list) => {
+      setCreatedListId(() => list._id);
+    });
+  };
+
   const HairColor = {
     Red: "red",
     White: "white",
@@ -57,7 +107,10 @@ const MaikeForm = () => {
         <div className="maike-form-content">
           <h1 id="maike-appearance">APPEARANCE</h1>
           <div className="select-container">
-            <select>
+            <select
+              value={clothingValue}
+              onChange={handleChange(setClothingValue)}
+            >
               <option value="" disabled selected>
                 Clothing/Acessory ▽
               </option>
@@ -69,7 +122,10 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
+            <select
+              value={hairColorValue}
+              onChange={handleChange(setHairColorValue)}
+            >
               <option value="" disabled selected>
                 Hair-Color ▽
               </option>
@@ -81,7 +137,7 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
+            <select value={genderValue} onChange={handleChange(setGenderValue)}>
               <option value="" disabled selected>
                 Gender ▽
               </option>
@@ -99,7 +155,10 @@ const MaikeForm = () => {
         <div className="maike-form-content">
           <h1 id="maike-style">STYLE</h1>
           <div className="select-container">
-            <select>
+            <select
+              value={backgroundValue}
+              onChange={handleChange(setBackgroundValue)}
+            >
               <option value="" disabled selected>
                 Background ▽
               </option>
@@ -111,7 +170,10 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
+            <select
+              value={artStyleValue}
+              onChange={handleChange(setArtStyleValue)}
+            >
               <option value="" disabled selected>
                 ArtStyle ▽
               </option>
@@ -123,7 +185,10 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
+            <select
+              value={webStyleValue}
+              onChange={handleChange(setWebStyleValue)}
+            >
               <option value="" disabled selected>
                 WebStyle ▽
               </option>
@@ -137,7 +202,12 @@ const MaikeForm = () => {
         </div>
       </div>
 
-      <button className="maike-avatar">Maike</button>
+      <div className="list-maike-buttons">
+        <button className="maike-avatar" onClick={handleSaveList}>
+          SaveList
+        </button>
+        <button onClick={handleMaikeClick} className="maike-avatar">Maike</button>
+      </div>
     </div>
   );
 };

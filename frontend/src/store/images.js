@@ -56,7 +56,7 @@ export const deleteImage = imageId => async(dispatch)=>{
         method: 'DELETE'
     })
     if(response.ok){
-        dispatch(receiveImage(imageId))
+        dispatch(removeImage(imageId))
     }
 }   
 
@@ -64,7 +64,8 @@ const imagesReducer = (state = {},action)=>{
     let nextState = {...state}
     switch(action.type){
         case RECEIVE_IMAGES:
-            action.images.forEach((image)=>{
+            debugger
+            action.images.images.forEach((image)=>{
                 nextState[image._id] = image 
             })
             return nextState     

@@ -63,9 +63,9 @@ export const getCurrentUser = () => async (dispatch) => {
   return dispatch(receiveCurrentUser(user));
 };
 
-export const updateCurrentUser = currentUser => async(dispatch) => {
-  const {username,email,lists,images} = user
-  const res = await jwtFetch(`/api/users/${currentUser.id}`,{
+export const updateCurrentUser = user => async(dispatch) => {
+  const {username,email,lists,images} = user;
+  const res = await jwtFetch(`/api/users/${user.id}`,{
     method: 'PATCH',
     body: JSON.stringify({
       user:{
@@ -76,8 +76,8 @@ export const updateCurrentUser = currentUser => async(dispatch) => {
       }
     })
   });
-  let user = await res.json()
-  return dispatch(receiveCurrentUser(user))
+  let userData = await res.json()
+  return dispatch(receiveCurrentUser(userData))
 }
 
 export const saveImage = (imageId)=> async(dispatch) => {
