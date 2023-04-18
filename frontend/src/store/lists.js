@@ -75,7 +75,7 @@ export const createList = list =>async(dispatch)=>{
 
 export const updateList = list =>async(dispatch)=>{
     const {hairColor,clothingAccessory,gender,background,artStyle,websiteStyle} = list
-    const response = await jwtFetch(`/api/lists/${list.id}`,{
+    const response = await jwtFetch(`/api/lists/${list._id}`,{
         method: 'PATCH',
         body: JSON.stringify(
             {
