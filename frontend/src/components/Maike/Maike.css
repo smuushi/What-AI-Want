@@ -105,6 +105,9 @@
     font-weight: bold;
   }
   
-
+  .list-maike-buttons{
+    display: flex;
+    gap: 0.4vw;
+  }
   
   
