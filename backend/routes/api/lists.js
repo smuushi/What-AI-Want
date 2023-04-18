@@ -12,6 +12,7 @@ const { restoreUser } = require("../../config/passport");
 
 const { Configuration, OpenAIApi } = require("openai");
 const { OPENAI_API_KEY } = require("../../config/keys");
+const { Route53RecoveryCluster } = require("aws-sdk");
 const config = new Configuration({
   apiKey: OPENAI_API_KEY,
 });
@@ -23,7 +24,7 @@ const openai = new OpenAIApi(config);
 //checked good
 //posting list
 router.post("/", restoreUser, async (req, res, next) => {
-  //  if (!req.user) return res.json(null);
+    if (!req.user) return res.json(null);
   const newList = new List({
     hairColor: req.body.hairColor,
     clothingAccessory: req.body.clothingAccessory,
@@ -39,31 +40,30 @@ router.post("/", restoreUser, async (req, res, next) => {
 });
 //updating list
 router.patch("/:id", restoreUser, async (req, res, next) => {
-  // if (!req.user) return res.json(null);
+  try {
+    const updatedList = await List.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          hairColor: req.body.hairColor,
+          clothingAccessory: req.body.clothingAccessory,
+          gender: req.body.gender,
+          background: req.body.background,
+          artStyle: req.body.artStyle,
+          websiteStyle: req.body.websiteStyle,
+        },
+      },
+      { new: true }
+    );
 
-  const newList = new List({
-    hairColor: req.body.hairColor,
-    clothingAccessory: req.body.clothingAccessory,
-    gender: req.body.gender,
-    background: req.body.background,
-    artStyle: req.body.artStyle,
-    websiteStyle: req.body.websiteStyle,
-  });
-
-  const list = await newList.save();
-
-  return res.json({
-    _id: list._id,
-    hairColor: list.hairColor,
-    clothingAccessory: list.clothingAccessory,
-    gender: list.gender,
-    background: list.background,
-    artStyle: list.artStyle,
-    websiteStyle: list.websiteStyle,
-    createdAt: list.createdAt,
-    updatedAt: list.updatedAt,
-  });
+    return res.json(updatedList);
+  } catch (err) {
+    console.error(err);
+    return next(err);
+  }
 });
+
+
 
 
 
@@ -152,7 +152,7 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
 //checked good
 //list show
 router.get("/:id", restoreUser, async (req, res, next) => {
-   if (!req.user) return res.json(null);
+    // if (!req.user) return res.json(null);
   try {
     const list = await List.findOne({ _id: req.params.id });
     if (list) {
