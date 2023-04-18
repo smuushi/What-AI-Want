@@ -64,6 +64,38 @@ router.post("/save/:imageId", restoreUser, async (req, res, next) => {
     return res.json(mongooseUser);
 })
 
+router.get("/random", async (req, res, next) => {
+    const images = await Image.aggregate([{$sample: {size:10 }}])
+
+    const imageKeys = [];
+
+    images.forEach((image) => {
+        imageKeys.push(image.AWSKey);
+    })
+
+    const urls = await Promise.all(imageKeys.map(async (key)=> {
+        const url = await getUrlFromAwsWithKey(key);
+        return url
+    }))
+
+    const returns = images.map((imageObj, idx) => {
+
+        const resObj = {...imageObj,
+          tempUrl: urls[idx]
+        };
+
+        return resObj;
+    })
+
+
+
+    // console.log(images)
+
+
+    res.json({images: returns})
+
+})
+
 
 
 module.exports = router;
