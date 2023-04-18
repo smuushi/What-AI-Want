@@ -45,7 +45,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
     if (list) {
       prompt = `${list.artStyle} key visual of a ${list.gender} with ${list.hairColor} hair and happy, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
       //console.log(prompt)
-      const numberOfImages = 1;
+      const numberOfImages = 4;
       const imageSize = "1024x1024";
       openai
         .createImage({
@@ -55,29 +55,62 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
         })
         .then(async (data) => {
           
-          list.imageUrl = data.data.data[0].url;
+          let imageKeys = [];
 
-          const imageKey = await uploadToAWSWithURL(data.data.data[0].url, "testimage.png");
+          imageKeys = await Promise.all(data.data.data.map(async (image, idx) => {
+            const imageKeyPromise = uploadToAWSWithURL(image.url, `testimage${idx}.png`);
+            const imageKey = await imageKeyPromise;
+            return imageKey;
+          }))
+
+          // data.data.data.forEach(async (image, idx) => {
+          //   const imageKeyPromise = uploadToAWSWithURL(image.url, `testimage${idx}.png`);
+          //   const imageKey = await imageKeyPromise;
+          //   imageKeys.push(imageKey);
+          // })
+
+
+          // list.imageUrl = data.data.data[0].url;
+
+          // const imageKeyPromise = uploadToAWSWithURL(data.data.data[0].url, "testimage.png")
           
-          list.imageKey = imageKey;
+          // list.imageKey = await imageKeyPromise;
 
+          list.imageKeys = imageKeys
+
+          let tempUrls = []
+
+          tempUrls = await Promise.all(imageKeys.map(async(key) => {
+            const tempUrl = await getUrlFromAwsWithKey(key);
+            return tempUrl;
+          }))
+
+          // imageKeys.forEach(async (key) => {
+          //   const tempUrl = await getUrlFromAwsWithKey(key);
+          //   tempUrls.push(tempUrl);
+          // })
+          
+          // const tempUrl = await getUrlFromAwsWithKey(list.imageKey);
 
           
-          const tempUrl = getUrlFromAwsWithKey(imageKey);
           
           list.save();
-          
-          
-          list.tempUrl = tempUrl;
+                    
+          return res.json({
+            list: list,
+            tempUrls: tempUrls
+          });
 
-          
-          return res.json(list);
         });
     }
   } catch (err) {
     return res.json(err);
   }
 });
+
+
+
+
 
 router.get("/:id", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);

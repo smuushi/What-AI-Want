@@ -40,11 +40,12 @@ const singleFileUpload = async (buffer, title) => {
       Body: buffer,
       ContentType: 'image/jpeg'
     };
-    const result = await s3.upload(uploadParams);
+    const result = await s3.upload(uploadParams).promise();
   
     // Return the link if public. If private, return the name of the file in your
     // S3 bucket as the key in your database for subsequent retrieval.
 
+    // console.log(result)
 
 
     return result.Key;
@@ -92,7 +93,9 @@ const uploadToAWSWithURL = async (url, title) => {
 
     // const buffer = await blob.arrayBuffer();
 
-    return singleFileUpload(buffer, title);
+    const key = singleFileUpload(buffer, title);
+
+    return key
 }
 
 // uploadToAWSWithURL("https://cdn.discordapp.com/attachments/1096463008143781951/1097524638646542446/img-LtMfF5kyXN3ha0Jeo8sxhvee.png", "testupload.png")
@@ -110,7 +113,7 @@ const getUrlFromAwsWithKey = async (key) => {
         Expires: 1200
     })
 
-    console.log(url)
+    // console.log(url)
     return url
 }
 
