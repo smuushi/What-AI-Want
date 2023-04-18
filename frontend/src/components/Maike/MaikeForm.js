@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createList } from "../../store/lists";
 import "./Maike.css";
+import jwtFetch from "../../store/jwt";
 
 const MaikeForm = () => {
   const [clothingValue, setClothingValue] = useState("");
@@ -13,12 +14,28 @@ const MaikeForm = () => {
   const dispatch = useDispatch();
   const [createdListId, setCreatedListId] = useState("");
   console.log(createdListId);
-  console.log(createdListId);
-  console.log(createdListId);
-
+  const [loading,setLoading] = useState(false)
+  const [imageData,setImageData] = useState('')
+  console.log(loading)
   const handleChange = (setter) => (event) => {
     setter(event.target.value);
   };
+
+
+
+  const handleMaikeClick = async (e)=>{
+    e.preventDefault()
+    if (!createdListId) return 
+    setLoading(()=>true)
+    const res = await jwtFetch(`/api/lists/image/${createdListId}`)
+
+    if (res.ok){
+      const data = await res.json()
+      setImageData(()=>data.images)
+      console.log(imageData)
+      setLoading(()=>false)
+    }
+  }
 
   const handleSaveList = () => {
     const listData = {
@@ -189,7 +206,7 @@ const MaikeForm = () => {
         <button className="maike-avatar" onClick={handleSaveList}>
           SaveList
         </button>
-        <button className="maike-avatar">Maike</button>
+        <button onClick={handleMaikeClick} className="maike-avatar">Maike</button>
       </div>
     </div>
   );
