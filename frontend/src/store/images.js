@@ -9,7 +9,7 @@ const receiveImages = (images) => ({
   images,
 });
 
-const receiveImage = (image) => ({
+export const receiveImage = (image) => ({
   type: RECEIVE_IMAGE,
   image,
 });
@@ -73,7 +73,6 @@ const imagesReducer = (state = {}, action) => {
   let nextState = { ...state };
   switch (action.type) {
     case RECEIVE_IMAGES:
-      debugger;
       action.images.images.forEach((image) => {
         nextState[image._id] = image;
       });

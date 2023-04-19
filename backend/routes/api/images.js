@@ -61,7 +61,7 @@ router.post("/save/:imageId", restoreUser, async (req, res, next) => {
 
     await mongooseUser.save();
 
-    return res.json(mongooseUser);
+    return res.json({user:mongooseUser,image:image});
 })
 
 router.get("/random", async (req, res, next) => {

@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { receiveImage } from "./images";
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
@@ -86,8 +87,9 @@ export const saveImage = (imageId)=> async(dispatch) => {
   })
 
   if (response.ok){
-      const user = await response.json()
-      dispatch(receiveCurrentUser(user))
+      const data = await response.json()
+      dispatch(receiveCurrentUser(data.user))
+      dispatch(receiveImage(data.image))
   }
 }
 

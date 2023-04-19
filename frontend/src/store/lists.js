@@ -39,7 +39,6 @@ export const fetchUserLists = (userId) => async (dispatch) => {
   const response = await jwtFetch(`/api/lists/all/${userId}`);
   if (response.ok) {
     const lists = await response.json();
-    debugger;
     dispatch(receiveLists(lists));
   }
 };

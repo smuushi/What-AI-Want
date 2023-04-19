@@ -11,11 +11,13 @@ import "./Profile.css";
 function Profile() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
+  const amountOfImages = Object.values(useSelector((state)=>state.images)).length
+  
   useEffect(() => {
     dispatch(fetchUserLists(currentUser?._id));
     dispatch(getCurrentUser());
     dispatch(fetchUserImages(currentUser?._id));
-  }, []);
+  }, [amountOfImages]);
 
   return (
     <div className="profile-main-box">
