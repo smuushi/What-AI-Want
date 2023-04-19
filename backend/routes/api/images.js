@@ -24,11 +24,12 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
   let keys = [];
 
   images.forEach((image) => {
-    keys.push(image.AWSKey)
+    keys.push(image?.AWSKey)
   })
 
   tempUrls = await Promise.all(
     keys.map(async (key) => {
+      if (!key) return 
       const tempUrl = await getUrlFromAwsWithKey(key);
       return tempUrl;
     })
@@ -74,7 +75,7 @@ router.delete("/:id", restoreUser, async (req, res, next) => {
     const indexToDelete = mongooseUser.images.indexOf(req.params.id)
 
     if (indexToDelete > -1) { // only splice array when item is found
-        array.splice(indexToDelete, 1); // 2nd parameter means remove one item only
+        mongooseUser.images.splice(indexToDelete, 1); // 2nd parameter means remove one item only
     }
 
     mongooseUser.save();

@@ -7,7 +7,7 @@ const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
 // Dispatch receiveCurrentUser when a user logs in.
-const receiveCurrentUser = (currentUser) => ({
+export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser,
 });

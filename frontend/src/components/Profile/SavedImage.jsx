@@ -23,7 +23,7 @@ export const SavedImage = (props) => {
     const handleDeleteClick=(e)=>{
         e.preventDefault();
         e.stopPropagation()
-        // dispatch(deleteImage(imageObj?._id))
+        dispatch(deleteImage(imageObj?._id))
         setShowModal(false)
         setShowConfirm(false)
         
