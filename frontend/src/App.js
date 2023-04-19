@@ -9,7 +9,9 @@ import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
 import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
-import Profile from "./components/Profile/Profile";
+import Profile from "./components/Profile/Profile";import Team from "./components/Team/Team";
+import Upload from "./components/Utils/Upload";
+
 
 function App() {
   const loggedIn = useSelector((state) => !!state.session.user);
@@ -30,21 +32,28 @@ if (!loggedIn){
 
 
 
-  return loaded && (
-    <>
-
-       <NavIndex/>
-      <Switch>
-        <Route exact path = '/profile'>
-          <Profile />
-          {redirect}
-        </Route>
-        <Route exact path = '/maike'>
-          <MaikeForm type = {'Create'}/>
-          {redirect}
-        </Route>
-        <Route exact path = "/about">
-          <About/>
+  return (
+    loaded && (
+      <>
+        <NavIndex />
+        <Switch>
+          <Route exact path="/profile">
+            <Profile />
+            {redirect}
+          </Route>
+          <Route exact path="/maike">
+            <MaikeForm type = {'Create'} />
+            {redirect}
+          </Route>
+          {/* sara */}
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/team">
+            <Team />
+          </Route>
+        <Route exact path="/upload">
+          <Upload/>
         </Route>
       <Route exact path = '/edit/:listId'>
         <MaikeForm type = {'Edit'}/>
@@ -55,7 +64,7 @@ if (!loggedIn){
       </Route>
       </Switch>
     </>
-  )
+  ))
 
 }
 

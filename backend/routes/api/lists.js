@@ -38,7 +38,7 @@ router.post("/", restoreUser, async (req, res, next) => {
   const list = await newList.save();
 
   const mongooseUser = await User.findOne({_id: req.user._id})
-  
+
 
   mongooseUser["list"].push(list._id)
 
@@ -85,10 +85,10 @@ router.delete("/:id", restoreUser, async (req, res, next) => {
 });
 
 //checked //Mike
-// passing in listId for list that already exists in our DB. 
+// passing in listId for list that already exists in our DB.
 router.get("/image/:id", restoreUser, async (req, res, next) => {
   if (!req.user) return res.json(null);
-  
+
   try {
     let list = await List.findOne({ _id: req.params.id });
     let prompt;
@@ -119,7 +119,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
 
           let imageObjects = await Promise.all(imageKeys.map(async (key) => {
             let newImage = new Image({
-              prompts: list, 
+              prompts: list,
               AWSKey: key
             })
 
@@ -141,7 +141,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
             const resObj = {...imageObj.toObject(),
               tempUrl: tempUrls[idx]
             };
-            
+
             return resObj
           })
 

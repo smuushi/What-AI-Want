@@ -64,6 +64,25 @@ router.post("/save/:imageId", restoreUser, async (req, res, next) => {
     return res.json(mongooseUser);
 })
 
+router.delete("/:id", restoreUser, async (req, res, next) => {
+    if (!req.user) return res.json(null);
+
+    await Image.deleteOne({_id: req.params.id})
+
+    const mongooseUser = await User.findOne({_id: req.user._id});
+
+    const indexToDelete = mongooseUser.images.indexOf(req.params.id)
+
+    if (indexToDelete > -1) { // only splice array when item is found
+        array.splice(indexToDelete, 1); // 2nd parameter means remove one item only
+    }
+
+    mongooseUser.save();
+
+    return res.json(mongooseUser)
+
+})
+
 router.get("/random", async (req, res, next) => {
     const images = await Image.aggregate([{$sample: {size:10 }}])
 
