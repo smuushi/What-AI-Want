@@ -81,29 +81,29 @@ const MaikeForm = () => {
   } 
 
   const HairColor = {
-    Red: "red",
+    Red: "Red",
     Silver: 'Silver',
-    White: "white",
-    Pink: "pink",
-    Blue: "blue",
-    Black: "black",
-    Brown: "brown",
-    Green: "green",
-    Blonde: 'blonde',
+    White: "White",
+    Pink: "Pink",
+    Blue: "Blue",
+    Black: "Black",
+    Brown: "Brown",
+    Green: "Green",
+    Blonde: 'Blonde',
     Grey: 'Grey'
   };
   
   const ClothingAcessory = {
-    "T-shirt": "t-shirt",
-    Tuxedo: "tuxedo",
-    Hoodie: "hoodie",
-    'Business-Suit':'Business Suit',
+    "T-shirt": "T-shirt",
+    Tuxedo: "Tuxedo",
+    Hoodie: "Hoodie",
+    'Business-Suit':'Business-Suit',
     Blazer: 'Blazer',
     Beanie: 'Beanie',
     Scarf: 'Scarf',
     Robe: 'Mage Robe',
-    "Maid-Uniform": "maid uniform",
-    "Sailor-Uniform": "sailor uniform",
+    "Maid-Uniform": "Maid-Uniform",
+    "Sailor-Uniform": "Sailor-Uniform",
     
   };
   
@@ -113,16 +113,16 @@ const MaikeForm = () => {
   };
   
   const Background = {
-    Forest: "forest",
+    Forest: "Forest",
     Night: 'Night',
-    City: "city",
-    Arcade: "arcade",
-    Mall: "mall",
-    Park: "park",
-    Mountain: "mountain",
-    Beach: "beach",
-    Ocean: "ocean",
-    Desert: 'desert',
+    City: "City",
+    Arcade: "Arcade",
+    Mall: "Mall",
+    Park: "Park",
+    Mountain: "Mountain",
+    Beach: "Beach",
+    Ocean: "Ocean",
+    Desert: 'Desert',
     Prairie: 'Prairie',
     Lakes: 'Lakes',
     Volcano: 'Volcano'
@@ -139,8 +139,8 @@ const MaikeForm = () => {
   };
 
   const WebStyle = {
-    Pixiv: "pixiv",
-    Twitter: "twitter",
+    Pixiv: "Pixiv",
+    Twitter: "Twitter",
   };
 
   return (
