@@ -1,4 +1,3 @@
-
 import { Redirect, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
@@ -10,11 +9,11 @@ import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
 import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
-
+import Profile from "./components/Profile/Profile";
 
 function App() {
-  const loggedIn = useSelector(state=>!!state.session.user)
-  const dispatch = useDispatch()
+  const loggedIn = useSelector((state) => !!state.session.user);
+  const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
   let redirect;
@@ -57,6 +56,7 @@ if (!loggedIn){
       </Switch>
     </>
   )
+
 }
 
-export default App
+export default App;
