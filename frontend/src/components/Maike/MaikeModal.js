@@ -22,7 +22,9 @@ function MaikeModal(props) {
     const loading = props.loading
     const createdListId = props.createdListId
     const setLoading = props.setLoading
+
     const formType = props.formType
+
     let load; 
 
     const handleDivClick = (e)=>{
@@ -52,6 +54,8 @@ function MaikeModal(props) {
         e.preventDefault()
         dispatch(saveImage(focusedKey))
         setShowModal(false)
+
+
         // props.setCreatedListId('')
         // props.setClothingValue('')
         // props.setHairColorValue('')
@@ -66,6 +70,7 @@ function MaikeModal(props) {
     const handleCloseClick = (e)=>{
         e.preventDefault()
         setShowModal(false)
+
         props.setCreatedListId('')
         props.setClothingValue('')
         props.setHairColorValue('')
@@ -73,6 +78,8 @@ function MaikeModal(props) {
         props.setBackgroundValue('')
         props.setArtStyleValue('')
         props.setWebStyleValue('')
+
+
 
     }
 
@@ -137,6 +144,7 @@ function MaikeModal(props) {
                 </div>
                 <div id = 'buttonMaikeContainer'>
                     <p>Pick an image and click save!</p>
+
                     <button id = "saveButtonMaike" onClick={handleSaveClick}>Save!</button>
                     <button id = 'cancelButtonMaike' onClick={handleCloseClick}>Cancel</button>
                 </div>
@@ -147,15 +155,18 @@ function MaikeModal(props) {
        buttonText="re"
     }
 
+
     return(
         <>
             <div>
                 <button className='maike-avatar' onClick={handleMaikeClick}>
+
                     {buttonText}M<span className="ai-spans">AI</span>ke
                 </button>
                 {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
                 <i className="fa-solid fa-xmark maikemodalClose" onClick={handleCloseClick}></i>
+
                     <div id = 'MaikeModalContainer'>
                         {load}
                     </div>
