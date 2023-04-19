@@ -28,7 +28,7 @@ export default function SavedListCarousel() {
     return <ListItem prop={listObject} />;
   });
 
-  const splitItems = splitArray(listObjectsListItems, 4);
+  const splitItems = splitArray(listObjectsListItems, 1);
 
   return (
     <>
@@ -42,6 +42,7 @@ export default function SavedListCarousel() {
       >
         {splitItems.map((parts) => (
           <SwiperSlide>
+            <h1 className="savedlist-title">Saved List</h1>
             <div className="save-list-content-box">
               <span className="parts">{parts}</span>
             </div>

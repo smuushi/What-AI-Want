@@ -20,4 +20,20 @@
     gap: 3vw;
   }
  
-  
+  #saved-list-pos{
+    position: relative;
+    font-size: 2.5vw;
+    /* color: #ff6a00ee; */
+    left: 11.4vw;
+    top: 24vw;
+  }
+
+  .savedlist-title{
+      position: relative;
+      left: 10.3vw;
+      top: 1vw;
+      font-size: 2.5vw;
+      color: #ff6a00ee;
+      text-decoration: underline;
+      letter-spacing: 0.2vw;
+  }
