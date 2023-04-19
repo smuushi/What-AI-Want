@@ -31,9 +31,11 @@ router.get("/current", restoreUser, (req, res) => {
     username: req.user.username,
     email: req.user.email,
     lists: req.user.list,
-    images: req.user.images,
+    images: req.user.images
   });
 });
+
+
 
 // POST /api/users/register
 router.post("/register", validateRegisterInput, async (req, res, next) => {
@@ -90,6 +92,8 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
       return next(err);
     }
 
+    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+    
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });

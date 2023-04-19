@@ -12,9 +12,9 @@ function ProfileBox() {
       </span>
 
       <span className="profile-info">
-        <p id="username">{currentUser.username}</p>
+        <p id="username">{currentUser?.username}</p>
         <div className="profile-underline"></div>
-        <p>{currentUser.email}</p>
+        <p>{currentUser?.email}</p>
       </span>
     </div>
   );

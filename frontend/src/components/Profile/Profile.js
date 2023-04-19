@@ -4,6 +4,8 @@ import { fetchUserLists } from "../../store/lists";
 import { getCurrentUser } from "../../store/session";
 import ProfileBox from "./ProfileBox";
 import SavedListCarousel from "./SavedListCarousel";
+import { Collection } from "./Collection";
+import { fetchUserImages } from "../../store/images";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -11,13 +13,20 @@ function Profile() {
   useEffect(() => {
     dispatch(fetchUserLists(currentUser?._id));
     dispatch(getCurrentUser());
+    dispatch(fetchUserImages(currentUser?._id));
   }, []);
 
   return (
-    <div>
-      <ProfileBox />
-      <SavedListCarousel />
-    </div>
+    <>
+      <div>
+        <ProfileBox />
+        <SavedListCarousel />
+      </div>
+
+      <div>
+        <Collection />
+      </div>
+    </>
   );
 }
 
