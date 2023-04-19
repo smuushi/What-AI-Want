@@ -1,31 +1,29 @@
-import React, { useEffect } from "react";
-// Import Swiper React components
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "./Carousel.css";
-import dalleTemp from "./dalletemp.jpg";
 
-// import required modules
+import { useDispatch } from "react-redux";
 import { Autoplay, Navigation } from "swiper";
 import { useSwiperEffect } from "./CarouselUtils";
+import { fetchRandomImages } from "../../store/images";
 
 export default function SplashCarouselLeft() {
   useSwiperEffect("mySwiper1");
+  const [sampleImages, setSampleImages] = useState([]);
+  console.log(sampleImages);
+  const dispatch = useDispatch();
 
-  const slides = [
-    {
-      cornerImage: dalleTemp,
-    },
-    {
-      cornerImage: dalleTemp,
-    },
-    {
-      cornerImage: dalleTemp,
-    },
-  ];
+  useEffect(() => {
+    dispatch(fetchRandomImages()).then((data) => {
+      const images = data.images.map((image) => {
+        return image.tempUrl;
+      });
+      setSampleImages(() => images);
+    });
+  }, []);
 
   return (
     <>
@@ -39,10 +37,10 @@ export default function SplashCarouselLeft() {
         modules={[Autoplay, Navigation]}
         className="mySwiper1"
       >
-        {slides.map((slide, index) => (
+        {sampleImages.map((imageUrl, index) => (
           <SwiperSlide key={index}>
             <div className={`slide-background slide-background-${index + 1}`}>
-              <img className="corner-image" src={slide.cornerImage} />
+              <img className="corner-image" src={imageUrl} />
               <div className="slide-text">Pick Your Preferences!</div>
             </div>
           </SwiperSlide>
