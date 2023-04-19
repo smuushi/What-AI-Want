@@ -1,0 +1,28 @@
+ul.imagesContainer {
+    display: grid;
+    width: 500px;
+    grid-template-columns: 1fr 1fr;
+    list-style-type: none;
+    /* border: solid black 30px; */
+    overflow-y: scroll;
+}
+
+ul.imagesContainer li.savedImageItem{
+    width: auto;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding: 5px;
+}
+
+ul.imagesContainer .savedImageItem img{
+    border-radius: 5px;
+    width: 100%;
+}   
+
+ul.imagesContainer .savedImageItem button{
+    position: absolute;
+    margin: 5px;
+
+}
+

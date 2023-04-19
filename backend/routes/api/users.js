@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
-const passport = require('passport')
+const passport = require("passport");
 const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
 
@@ -34,8 +34,6 @@ router.get("/current", restoreUser, (req, res) => {
     images: req.user.images
   });
 });
-
-
 
 
 
@@ -94,16 +92,15 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
       return next(err);
     }
 
+    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
     
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
 
-
 // router.get("/:id", async (req, res, next) => {
-//   const user = 
+//   const user =
 // })
-
 
 module.exports = router;
 //was just trying out things :)

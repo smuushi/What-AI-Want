@@ -179,7 +179,11 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
   try {
     const user = await User.findOne({ _id: req.params.userId });
     if (user) {
-      return res.json({ list: user.list });
+      const lists = await Promise.all(user.list.map(async(listId) => {
+        const mongooseListObj = await List.findById(listId);
+        return mongooseListObj
+      }))
+      return res.json({ lists });
     }
   } catch (err) {
     return res.json(err);
