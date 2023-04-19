@@ -71,7 +71,7 @@ router.delete("/:id", restoreUser, async (req, res, next) => {
 
     const mongooseUser = await User.findOne({_id: req.user._id});
 
-    const indexToDelete = mongooseUser.images.indexOf(req.params.id)
+    const indexToDelete = mongooseUser.images.indexOf(req.params.id);
 
     if (indexToDelete > -1) { // only splice array when item is found
         array.splice(indexToDelete, 1); // 2nd parameter means remove one item only
