@@ -1,51 +1,70 @@
-// import {useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import jwtFetch from "../../store/jwt";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUser } from "../../store/session";
 
-// const Upload = () => {
-//     const uploadButton= useRef()
+const Upload = () => {
+  const uploadButton = useRef();
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.session.user);
 
-//    const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
-//    const handleFile = ({ currentTarget }) => {
-//      const file = currentTarget.files[0];
-//      setProfileImage(file);
-//    };
+  const handleFile = ({ currentTarget }) => {
+    const file = currentTarget.files[0];
+    setProfileImage(file);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setImageUrl(reader.result);
+    };
+  };
 
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
 
-//  const handleSubmit = async (e) => {
-//    e.preventDefault();
-//    const formData = new FormData();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
 
-//    if (profileImage) {
-//      formData.append("user[profileImage]", profileImage);
-//    }
+    formData.append("profileImage", profileImage);
+    formData.append("userId", currentUser._id);
+    console.log("formData", formData);
 
-//    const fileReader = new FileReader();
-//    console.log(fileReader.readAsDataURL(profileImage));
+    const response = await jwtFetch("/api/users/upload", {
+      method: "PATCH",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
-//       // const response = await j(`/api/user${userId}`, {
-//       //   method: "PATCH",
-//       //   body: formData,
-//       // });
+    if (response.ok) {
+      const post = await response.json();
+      setProfileImage(null);
+    }
 
-//       if (response.ok) {
-//         const post = await response.json();
-//         setProfileImage(null);
-//       }
-//  };
+    if (!currentUser) {
+      return null;
+    }
+  };
 
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        ref={uploadButton}
+        name="profileImage"
+        type="file"
+        onChange={handleFile}
+      />
+      {profileImage && <img src={URL.createObjectURL(profileImage)} />}
+      {console.log("profileImage", profileImage)}
+      <button>Upload</button>
+      {console.log(imageUrl)}
+    </form>
+  );
+};
 
-//   return (
-//     <div>
-//       <input
-//         ref={uploadButton}
-//         type="file"
-//         onChange={handleFile}
-//       />
-//       {console.log(profileImage)}
-//       {profileImage && <img src={URL.createObjectURL(profileImage)} />}
-//       <button>Upload</button>
-//     </div>
-//   );
-// };
-
-// export default Upload;
+export default Upload;
