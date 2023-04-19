@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserLists } from "../../store/lists";
 import { getCurrentUser } from "../../store/session";
 import ProfileBox from "./ProfileBox";
+import SavedListCarousel from "./SavedListCarousel";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function Profile() {
   return (
     <div>
       <ProfileBox />
+      <SavedListCarousel />
     </div>
   );
 }
