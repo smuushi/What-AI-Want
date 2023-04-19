@@ -6,7 +6,7 @@ export const Collection = (props) => {
 
     const allImages = useSelector(state => state.images);
 
-    const usersSavedImageIdsArray = useSelector(state => state.session.user.images);
+    const usersSavedImageIdsArray = useSelector(state => state.session.user?.images);
 
     const imagesToRender = usersSavedImageIdsArray?.map((id) => {
         const imageObj = allImages[id]

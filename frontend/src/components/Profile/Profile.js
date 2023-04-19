@@ -3,8 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUserLists } from "../../store/lists";
 import { getCurrentUser } from "../../store/session";
 import ProfileBox from "./ProfileBox";
+import SavedListCarousel from "./SavedListCarousel";
 import { Collection } from "./Collection";
 import { fetchUserImages } from "../../store/images";
+import "./Profile.css";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -12,19 +14,19 @@ function Profile() {
   useEffect(() => {
     dispatch(fetchUserLists(currentUser?._id));
     dispatch(getCurrentUser());
-    dispatch(fetchUserImages(currentUser?._id))
+    dispatch(fetchUserImages(currentUser?._id));
   }, []);
 
   return (
-    <>
-      <div>
+    <div className="profile-main-box">
+      <div className="profile-left-box">
         <ProfileBox />
+        <SavedListCarousel />
       </div>
-
-      <div>
+      <div className="profile-right-box">
         <Collection />
       </div>
-    </>
+    </div>
   );
 }
 

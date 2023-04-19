@@ -1,6 +1,8 @@
 #MaikeModalContainer{
     width:75vw;
-    height:40vw;
+
+    height:42vw;
+
     display:flex;
     justify-content: center;
     align-items: center;
@@ -198,7 +200,9 @@
     text-align:center;
 }
 
-#buttonMaikeContainer button{
+
+#saveButtonMaike{
+
     margin-top:2vw;
     width:10vw;
     font-size:2vw;
@@ -209,8 +213,29 @@
     
 }
 
-#buttonMaikeContainer button:hover{
-    background-color: white;
-    color:#ff6900;
+
+#saveButtonMaike:hover{
+    background-color: #00d084;
+    color:#ffffff;
     cursor:pointer;
+    border: 1px solid #00d084
 }
+
+#cancelButtonMaike{
+  font-size:2vw;
+  margin-top:2vw;
+  color:#ff6900;
+  width:10vw;
+  background-color: white;
+  border:1px solid #ff6900;
+  border-radius:20px;
+  /* display:flex; */
+}
+
+#cancelButtonMaike:hover{
+  color:white;
+  background-color: red;
+  border: 1px solid red;
+  cursor:pointer;
+}
+

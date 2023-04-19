@@ -1,41 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createList } from "../../store/lists";
+import { createList,updateList,getList,fetchList } from "../../store/lists";
 import "./Maike.css";
-// import jwtFetch from "../../store/jwt";
-import MaikeModal from "./MaikeModal";
 
-const MaikeForm = () => {
-  const [clothingValue, setClothingValue] = useState("");
-  const [hairColorValue, setHairColorValue] = useState("");
-  const [genderValue, setGenderValue] = useState("");
-  const [backgroundValue, setBackgroundValue] = useState("");
-  const [artStyleValue, setArtStyleValue] = useState("");
-  const [webStyleValue, setWebStyleValue] = useState("");
+import MaikeModal from "./MaikeModal";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// test list id '644010777927a88f28c4c4d4'
+
+const MaikeForm = (props) => {
+
   const dispatch = useDispatch();
-  const [createdListId, setCreatedListId] = useState("");
-  console.log(createdListId);
-  const [loading,setLoading] = useState(false)
-  const [imageData,setImageData] = useState('')
-  console.log(loading)
-  const handleChange = (setter) => (event) => {
-    setter(event.target.value);
-  };
+  const formType = props.type
+  const {listId} = useParams()
+  const currentList = useSelector(getList(listId))
+
+
+  useEffect(()=>{
+    dispatch(fetchList(listId))
+  },[listId,dispatch])
 
   
-  // const handleMaikeClick = async (e)=>{
-  //   e.preventDefault()
-  //   if (!createdListId) return 
-  //   setLoading(()=>true)
-  //   const res = await jwtFetch(`/api/lists/image/${createdListId}`)
+
+let defaultClothing;
+let defaultHairColor;
+let defaultGender;
+let defaultBackground;
+let defaultArt;
+let defaultWeb;
+let defaultCreatedList;
+
+
+defaultClothing = ""
+defaultHairColor = ""
+defaultGender = ""
+defaultBackground = ""
+defaultArt = ""
+defaultWeb= ""
+defaultCreatedList= ""
+
+const [clothingValue, setClothingValue] = useState(defaultClothing);
+const [hairColorValue, setHairColorValue] = useState(defaultHairColor);
+const [genderValue, setGenderValue] = useState(defaultGender);
+const [backgroundValue, setBackgroundValue] = useState(defaultBackground);
+const [artStyleValue, setArtStyleValue] = useState(defaultArt);
+const [webStyleValue, setWebStyleValue] = useState(defaultWeb);
+const [createdListId, setCreatedListId] = useState(defaultCreatedList);
+const [loading,setLoading] = useState(false)
+const handleChange = (setter) => (event) => {
+  setter(event.target.value);
+};
+
+useEffect(()=>{
+
+  if (formType !== 'Create'){
+    setClothingValue(currentList?.clothingAccessory)
+    setHairColorValue(currentList?.hairColor)
+    setGenderValue(currentList?.gender)
+    setBackgroundValue(currentList?.background)
+    setArtStyleValue(currentList?.artStyle)
+    setWebStyleValue(currentList?.websiteStyle)
     
-  //   if (res.ok){
-  //     const data = await res.json()
-  //     setImageData(()=>data.images)
-  //     console.log(imageData)
-  //     setLoading(()=>false)
-  //   }
-  // }
+  }
+},[currentList,formType])
+
+
   
   const handleSaveList = () => {
     const listData = {
@@ -80,6 +110,59 @@ const MaikeForm = () => {
     saveButton = <div id = 'hideMaikeButton'>Save List</div>
   } 
 
+
+  const handleUpdateList = () =>{
+    const listData = {
+      clothingAccessory: clothingValue,
+      hairColor: hairColorValue,
+      gender: genderValue,
+      background: backgroundValue,
+      artStyle: artStyleValue,
+      websiteStyle: webStyleValue,
+      _id:listId
+    };
+    dispatch(updateList(listData)).then((list) => {
+      setCreatedListId(() => listData._id);
+    });
+  };
+  let buttonText;
+  if (formType === 'Edit'){
+    buttonText = 're'
+  }
+  let saveButton;
+  let maikeButton;
+
+  if (createdListId){
+    saveButton = <div id = 'hideSaveButton'>Saved !</div>
+    maikeButton = <MaikeModal loading = {loading}
+    createdListId = {createdListId}
+    setLoading = {setLoading}
+    setCreatedListId = {setCreatedListId}
+    setClothingValue = {setClothingValue}
+    setHairColorValue = {setHairColorValue}
+    setGenderValue = {setGenderValue}
+    setBackgroundValue = {setBackgroundValue}
+    setArtStyleValue = {setArtStyleValue}
+    setWebStyleValue = {setWebStyleValue}
+    formType = {formType}
+    />
+  }else{
+    if (formType === 'Create'){
+    saveButton = <button className="maike-avatar" onClick={handleSaveList}>
+    Save List
+    </button>
+    }else{
+      saveButton = <button className="maike-avatar" onClick={handleUpdateList}>
+      Update List
+      </button>
+    }
+    maikeButton = <button id = 'hideMaikeButton'>{buttonText}MAIke</button>
+  }
+  if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
+    saveButton = <div id = 'hideMaikeButton'>Save List</div>
+  } 
+
   const HairColor = {
     Red: "Red",
     Silver: 'Silver',
@@ -92,6 +175,7 @@ const MaikeForm = () => {
     Blonde: 'Blonde',
     Grey: 'Grey'
   };
+
   
   const ClothingAcessory = {
     "T-shirt": "T-shirt",
@@ -113,6 +197,8 @@ const MaikeForm = () => {
   };
   
   const Background = {
+
+    None: 'None',
     Forest: "Forest",
     Night: 'Night',
     City: "City",
@@ -133,14 +219,18 @@ const MaikeForm = () => {
     Anime: "Anime Key Visuals",
     Game: "Game Key Visuals",
     Digital: "Digital Art",
-    "Visual Novel": "Visual Novel Key Visuals",
+    "Visual-Novel": "Visual Novel Key Visuals",
     "Kids Drawing": "Kids Drawing",
     Baroque: "Baroque Art",
+    "3D-Render": "3D-Render"
   };
 
   const WebStyle = {
     Pixiv: "Pixiv",
     Twitter: "Twitter",
+
+    Instagram: 'Instagram',
+    deviantart:'Deviantart'
   };
 
   return (
@@ -155,7 +245,8 @@ const MaikeForm = () => {
               value={clothingValue}
               onChange={handleChange(setClothingValue)}
             >
-              <option value="" disabled selected>
+
+              <option value="" disabled >
                 Clothing/Acessory ▼
               </option>
               {Object.entries(ClothingAcessory).map(([cloth, value]) => (
@@ -170,7 +261,9 @@ const MaikeForm = () => {
               value={hairColorValue}
               onChange={handleChange(setHairColorValue)}
             >
-              <option value="" disabled selected>
+
+              <option value="" disabled>
+
                 Hair-Color ▼
               </option>
               {Object.entries(HairColor).map(([color, value]) => (
@@ -182,7 +275,10 @@ const MaikeForm = () => {
           </div>
           <div className="select-container">
             <select value={genderValue} onChange={handleChange(setGenderValue)}>
-              <option value="" disabled selected>
+
+
+              <option value="" disabled>
+
                 Gender ▼
               </option>
               {Object.entries(Gender).map(([gender, value]) => (
@@ -203,7 +299,9 @@ const MaikeForm = () => {
               value={backgroundValue}
               onChange={handleChange(setBackgroundValue)}
             >
-              <option value="" disabled selected>
+
+              <option value="" disabled>
+
                 Background ▼
               </option>
               {Object.entries(Background).map(([background, value]) => (
@@ -218,7 +316,9 @@ const MaikeForm = () => {
               value={artStyleValue}
               onChange={handleChange(setArtStyleValue)}
             >
-              <option value="" disabled selected>
+
+              <option value="" disabled>
+
                 Art-Style ▼
               </option>
               {Object.entries(ArtStyle).map(([artstyle, value]) => (
@@ -233,7 +333,9 @@ const MaikeForm = () => {
               value={webStyleValue}
               onChange={handleChange(setWebStyleValue)}
             >
-              <option value="" disabled selected>
+
+              <option value="" disabled>
+
                 Web-Style ▼
               </option>
               {Object.entries(WebStyle).map(([webstyle, value]) => (
@@ -248,8 +350,8 @@ const MaikeForm = () => {
 
       <div className="list-maike-buttons">
         {saveButton}
-        {/* <button onClick={handleMaikeClick} className="maike-avatar">M
-        <span className="ai-spans">AI</span>ke</button> */}
+
+
         {maikeButton}
       </div>
     </div>
