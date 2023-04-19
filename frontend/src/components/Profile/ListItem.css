@@ -15,12 +15,14 @@
  position: relative;
  left: 1.4vw;
  text-align: center;
+ color: #ffa462;
 }
 
 .list-title-key{
     position: relative;
     left: 1.4vw;
     text-align: center;
+    color: #25c7ff;
 }
 
 .list-item-divider{
