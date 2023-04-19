@@ -1,0 +1,17 @@
+.profile-main-box{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vw;
+}
+
+.profile-left-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10vw;
+    gap: 1vw;
+}
+
+.profile-right-box{
+    margin-right: 15vw;
+}

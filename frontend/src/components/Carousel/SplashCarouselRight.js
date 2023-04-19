@@ -3,23 +3,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./CarouselRight.css";
-import dalleTemp from "./dalletemp.jpg";
+import { useDispatch } from "react-redux";
 import { Autoplay, Navigation } from "swiper";
+import { fetchRandomImages } from "../../store/images";
 
 export default function SplashCarouselRight() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [sampleImages, setSampleImages] = useState([]);
+  console.log(sampleImages);
+  const dispatch = useDispatch();
 
-  const slides = [
-    {
-      cornerImage: dalleTemp,
-    },
-    {
-      cornerImage: dalleTemp,
-    },
-    {
-      cornerImage: dalleTemp,
-    },
-  ];
+  useEffect(() => {
+    dispatch(fetchRandomImages()).then((data) => {
+      const images = data.images.map((image) => {
+        return image.tempUrl;
+      });
+      setSampleImages(() => images);
+    });
+  }, []);
 
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
@@ -69,14 +70,14 @@ export default function SplashCarouselRight() {
       className="mySwiperRight"
       onSlideChange={(swiper) => handleSlideChange(swiper)}
     >
-      {slides.map((slide, index) => (
+      {sampleImages.map((imageUrl, index) => (
         <SwiperSlide key={index}>
           <div
             className={`slide-background-right slide-background-right-${
               index + 1
             }`}
           >
-            <img className="corner-image-right" src={slide.cornerImage} />
+            <img className="corner-image-right" src={imageUrl} />
             <div className="slide-text-right">Pick Your Image!</div>
           </div>
         </SwiperSlide>
