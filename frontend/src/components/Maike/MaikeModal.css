@@ -1,6 +1,8 @@
 #MaikeModalContainer{
     width:75vw;
+
     height:42vw;
+
     display:flex;
     justify-content: center;
     align-items: center;
@@ -198,7 +200,9 @@
     text-align:center;
 }
 
+
 #saveButtonMaike{
+
     margin-top:2vw;
     width:10vw;
     font-size:2vw;
@@ -208,6 +212,7 @@
     color:white;
     
 }
+
 
 #saveButtonMaike:hover{
     background-color: #00d084;
@@ -233,3 +238,4 @@
   border: 1px solid red;
   cursor:pointer;
 }
+

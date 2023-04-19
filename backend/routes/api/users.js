@@ -7,6 +7,11 @@ const passport = require("passport");
 const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
 
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+const { Readable } = require("stream");
+
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
 
@@ -16,6 +21,58 @@ router.get("/", function (req, res, next) {
     message: "GET /api/users",
   });
 });
+
+//patch
+// upload profile image
+router.patch(
+  "/upload",
+     restoreUser,
+  upload.single("profileImage"),
+  async (req, res) => {
+    try {
+      const user = req.user;
+      const buffer = req.file.buffer; // get the binary data of the uploaded file
+      const contentType = req.file.mimetype;
+      const filename = req.file.originalname;
+      const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db); // create a new GridFSBucket
+
+      // create a write stream to save the file to GridFS
+      const uploadStream = bucket.openUploadStream(filename, {
+        metadata: { contentType },
+        chunkSizeBytes: 1024 * 1024, // optional: set the chunk size for better performance
+      });
+
+      // pipe the file data into the write stream
+      const stream = Readable.from(buffer);
+      stream.pipe(uploadStream);
+
+      // wait for the file to finish uploading
+      await new Promise((resolve, reject) => {
+        uploadStream.on("finish", resolve);
+        uploadStream.on("error", reject);
+      });
+
+      // get the ID of the newly uploaded file
+      const fileId = uploadStream.id;
+
+      // update the user's profileImage field with the new file ID
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { profileImage: fileId },
+        { new: true }
+      );
+
+      res.json({
+        message: "Image uploaded successfully",
+        user: updatedUser,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Server error" });
+    }
+  }
+);
+
 
 router.get("/current", restoreUser, (req, res) => {
   if (!isProduction) {
@@ -103,15 +160,3 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
 // })
 
 module.exports = router;
-//was just trying out things :)
-// router.get("/:id", function (req, res, next) {
-//   res.json({
-//     message: `${req.params.id}`
-//   });
-// });
-
-// router.get("/:id/2", function (req, res, next) {
-//   res.json({
-//     message: `${req.params.id}`,
-//   });
-// });

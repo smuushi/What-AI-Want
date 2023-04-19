@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createList,updateList,getList,fetchList } from "../../store/lists";
 import "./Maike.css";
+
 import MaikeModal from "./MaikeModal";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -9,10 +10,12 @@ import { useSelector } from "react-redux";
 // test list id '644010777927a88f28c4c4d4'
 
 const MaikeForm = (props) => {
+
   const dispatch = useDispatch();
   const formType = props.type
   const {listId} = useParams()
   const currentList = useSelector(getList(listId))
+
 
   useEffect(()=>{
     dispatch(fetchList(listId))
@@ -62,6 +65,7 @@ useEffect(()=>{
   }
 },[currentList,formType])
 
+
   
   const handleSaveList = () => {
     const listData = {
@@ -76,6 +80,36 @@ useEffect(()=>{
       setCreatedListId(() => list._id);
     });
   };
+  
+  // let saveButton;
+  
+  // let maikeButton;
+  // if (createdListId){
+  //   saveButton = <div id = 'hideSaveButton'>Saved !</div>
+  //   maikeButton = <MaikeModal loading = {loading}
+  //   imageData = {imageData}
+  //   createdListId = {createdListId}
+  //   setLoading = {setLoading}
+  //   setImageData = {setImageData}
+  //   setCreatedListId = {setCreatedListId}
+  //   setClothingValue = {setClothingValue}
+  //   setHairColorValue = {setHairColorValue}
+  //   setGenderValue = {setGenderValue}
+  //   setBackgroundValue = {setBackgroundValue}
+  //   setArtStyleValue = {setArtStyleValue}
+  //   setWebStyleValue = {setWebStyleValue}
+  //   />
+  // }else{
+  //   saveButton = <button className="maike-avatar" onClick={handleSaveList}>
+  //   Save List
+  // </button>
+  //   maikeButton = <button id = 'hideMaikeButton'> MAIke</button>
+  // }
+  // if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  // || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
+  //   saveButton = <div id = 'hideMaikeButton'>Save List</div>
+  // } 
+
 
   const handleUpdateList = () =>{
     const listData = {
@@ -95,6 +129,7 @@ useEffect(()=>{
   if (formType === 'Edit'){
     buttonText = 're'
   }
+
   let saveButton;
   let maikeButton;
 
@@ -141,6 +176,7 @@ useEffect(()=>{
     Blonde: 'Blonde',
     Grey: 'Grey'
   };
+
   
   const ClothingAcessory = {
     "T-shirt": "T-shirt",
@@ -150,9 +186,6 @@ useEffect(()=>{
     Blazer: 'Blazer',
     Beanie: 'Beanie',
     Scarf: 'Scarf',
-    Headphones: 'Headphones',
-    Cardigan: 'Cardigan',
-    Peacoat: 'Peacoat',
     Robe: 'Mage Robe',
     "Maid-Uniform": "Maid-Uniform",
     "Sailor-Uniform": "Sailor-Uniform",
@@ -165,6 +198,7 @@ useEffect(()=>{
   };
   
   const Background = {
+
     None: 'None',
     Forest: "Forest",
     Night: 'Night',
@@ -195,6 +229,7 @@ useEffect(()=>{
   const WebStyle = {
     Pixiv: "Pixiv",
     Twitter: "Twitter",
+
     Instagram: 'Instagram',
     deviantart:'Deviantart'
   };
@@ -211,6 +246,7 @@ useEffect(()=>{
               value={clothingValue}
               onChange={handleChange(setClothingValue)}
             >
+
               <option value="" disabled >
                 Clothing/Acessory ▼
               </option>
@@ -226,7 +262,9 @@ useEffect(()=>{
               value={hairColorValue}
               onChange={handleChange(setHairColorValue)}
             >
+
               <option value="" disabled>
+
                 Hair-Color ▼
               </option>
               {Object.entries(HairColor).map(([color, value]) => (
@@ -238,7 +276,10 @@ useEffect(()=>{
           </div>
           <div className="select-container">
             <select value={genderValue} onChange={handleChange(setGenderValue)}>
+
+
               <option value="" disabled>
+
                 Gender ▼
               </option>
               {Object.entries(Gender).map(([gender, value]) => (
@@ -259,7 +300,9 @@ useEffect(()=>{
               value={backgroundValue}
               onChange={handleChange(setBackgroundValue)}
             >
+
               <option value="" disabled>
+
                 Background ▼
               </option>
               {Object.entries(Background).map(([background, value]) => (
@@ -274,7 +317,9 @@ useEffect(()=>{
               value={artStyleValue}
               onChange={handleChange(setArtStyleValue)}
             >
+
               <option value="" disabled>
+
                 Art-Style ▼
               </option>
               {Object.entries(ArtStyle).map(([artstyle, value]) => (
@@ -289,7 +334,9 @@ useEffect(()=>{
               value={webStyleValue}
               onChange={handleChange(setWebStyleValue)}
             >
+
               <option value="" disabled>
+
                 Web-Style ▼
               </option>
               {Object.entries(WebStyle).map(([webstyle, value]) => (
@@ -304,6 +351,8 @@ useEffect(()=>{
 
       <div className="list-maike-buttons">
         {saveButton}
+
+
         {maikeButton}
       </div>
     </div>
