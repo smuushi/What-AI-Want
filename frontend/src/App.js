@@ -12,6 +12,7 @@ import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
 import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 
 function App() {
@@ -55,6 +56,10 @@ if (!loggedIn){
           </Route>
         <Route exact path="/upload">
           <Upload/>
+        </Route>
+        {/* you can change the route path  */}
+        <Route exact path="/profile/show">
+          <UserProfile/>
         </Route>
           {/* sara */}
           <Route path="/">
