@@ -6,6 +6,7 @@ import ProfileBox from "./ProfileBox";
 import SavedListCarousel from "./SavedListCarousel";
 import { Collection } from "./Collection";
 import { fetchUserImages } from "../../store/images";
+import "./Profile.css";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -17,16 +18,15 @@ function Profile() {
   }, []);
 
   return (
-    <>
-      <div>
+    <div className="profile-main-box">
+      <div className="profile-left-box">
         <ProfileBox />
         <SavedListCarousel />
       </div>
-
-      <div>
+      <div className="profile-right-box">
         <Collection />
       </div>
-    </>
+    </div>
   );
 }
 

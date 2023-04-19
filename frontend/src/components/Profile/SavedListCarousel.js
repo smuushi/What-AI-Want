@@ -4,8 +4,32 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./SavedListCarousel.css";
 import { Mousewheel, Pagination } from "swiper";
+import ListItem from "./ListItem";
+import { useSelector } from "react-redux";
+
+function splitArray(array, size) {
+  const parts = [];
+  for (let i = 0; i < array.length; i += size) {
+    parts.push(array.slice(i, i + size));
+  }
+  return parts;
+}
 
 export default function SavedListCarousel() {
+  const currentUser = useSelector((state) => state.session.user);
+  const allListObjects = useSelector((state) => state.lists);
+  const userListsIdsArray = currentUser?.lists || [];
+  const listObjectsToRender = userListsIdsArray.map((listId) => {
+    const listObject = allListObjects[listId];
+    return listObject;
+  });
+
+  const listObjectsListItems = listObjectsToRender.map((listObject) => {
+    return <ListItem prop={listObject} />;
+  });
+
+  const splitItems = splitArray(listObjectsListItems, 4);
+
   return (
     <>
       <Swiper
@@ -16,27 +40,13 @@ export default function SavedListCarousel() {
         modules={[Mousewheel, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <div className="save-list-content-box">
-            <span className="underlinedText">Slide 1</span>
-            <span className="underlinedText">Slide 2</span>
-            <span className="underlinedText">Slide 3</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="save-list-content-box">
-            <span className="underlinedText">Slide 4</span>
-            <span className="underlinedText">Slide 5</span>
-            <span className="underlinedText">Slide 6</span>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="save-list-content-box">
-            <span className="underlinedText">Slide 7</span>
-            <span className="underlinedText">Slide 8</span>
-            <span className="underlinedText">Slide 9</span>
-          </div>
-        </SwiperSlide>
+        {splitItems.map((parts) => (
+          <SwiperSlide>
+            <div className="save-list-content-box">
+              <span className="parts">{parts}</span>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );
