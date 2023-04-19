@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createList } from "../../store/lists";
 import "./Maike.css";
-import jwtFetch from "../../store/jwt";
+// import jwtFetch from "../../store/jwt";
+import MaikeModal from "./MaikeModal";
 
 const MaikeForm = () => {
   const [clothingValue, setClothingValue] = useState("");
@@ -21,22 +22,21 @@ const MaikeForm = () => {
     setter(event.target.value);
   };
 
-
-
-  const handleMaikeClick = async (e)=>{
-    e.preventDefault()
-    if (!createdListId) return 
-    setLoading(()=>true)
-    const res = await jwtFetch(`/api/lists/image/${createdListId}`)
-
-    if (res.ok){
-      const data = await res.json()
-      setImageData(()=>data.images)
-      console.log(imageData)
-      setLoading(()=>false)
-    }
-  }
-
+  
+  // const handleMaikeClick = async (e)=>{
+  //   e.preventDefault()
+  //   if (!createdListId) return 
+  //   setLoading(()=>true)
+  //   const res = await jwtFetch(`/api/lists/image/${createdListId}`)
+    
+  //   if (res.ok){
+  //     const data = await res.json()
+  //     setImageData(()=>data.images)
+  //     console.log(imageData)
+  //     setLoading(()=>false)
+  //   }
+  // }
+  
   const handleSaveList = () => {
     const listData = {
       clothingAccessory: clothingValue,
@@ -50,32 +50,71 @@ const MaikeForm = () => {
       setCreatedListId(() => list._id);
     });
   };
+  
+  let saveButton;
+  
+  let maikeButton;
+  if (createdListId){
+    saveButton = <div id = 'hideSaveButton'>Saved !</div>
+    maikeButton = <MaikeModal loading = {loading}
+    imageData = {imageData}
+    createdListId = {createdListId}
+    setLoading = {setLoading}
+    setImageData = {setImageData}
+    setCreatedListId = {setCreatedListId}
+    setClothingValue = {setClothingValue}
+    setHairColorValue = {setHairColorValue}
+    setGenderValue = {setGenderValue}
+    setBackgroundValue = {setBackgroundValue}
+    setArtStyleValue = {setArtStyleValue}
+    setWebStyleValue = {setWebStyleValue}
+    />
+  }else{
+    saveButton = <button className="maike-avatar" onClick={handleSaveList}>
+    Save List
+  </button>
+    maikeButton = <button id = 'hideMaikeButton'> MAIke</button>
+  }
+  if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
+    saveButton = <div id = 'hideMaikeButton'>Save List</div>
+  } 
 
   const HairColor = {
     Red: "red",
+    Silver: 'Silver',
     White: "white",
     Pink: "pink",
     Blue: "blue",
     Black: "black",
     Brown: "brown",
     Green: "green",
+    Blonde: 'blonde',
+    Grey: 'Grey'
   };
-
+  
   const ClothingAcessory = {
-    "Maid Uniform": "maid uniform",
     "T-shirt": "t-shirt",
-    "Sailor Uniform": "sailor uniform",
     Tuxedo: "tuxedo",
     Hoodie: "hoodie",
+    'Business-Suit':'Business Suit',
+    Blazer: 'Blazer',
+    Beanie: 'Beanie',
+    Scarf: 'Scarf',
+    Robe: 'Mage Robe',
+    "Maid-Uniform": "maid uniform",
+    "Sailor-Uniform": "sailor uniform",
+    
   };
-
+  
   const Gender = {
     "Male-Presenting": "boy",
     "Female-Presenting": "girl",
   };
-
+  
   const Background = {
     Forest: "forest",
+    Night: 'Night',
     City: "city",
     Arcade: "arcade",
     Mall: "mall",
@@ -83,6 +122,11 @@ const MaikeForm = () => {
     Mountain: "mountain",
     Beach: "beach",
     Ocean: "ocean",
+    Desert: 'desert',
+    Prairie: 'Prairie',
+    Lakes: 'Lakes',
+    Volcano: 'Volcano'
+
   };
 
   const ArtStyle = {
@@ -112,7 +156,7 @@ const MaikeForm = () => {
               onChange={handleChange(setClothingValue)}
             >
               <option value="" disabled selected>
-                Clothing/Acessory ▽
+                Clothing/Acessory ▼
               </option>
               {Object.entries(ClothingAcessory).map(([cloth, value]) => (
                 <option key={cloth} value={value}>
@@ -127,7 +171,7 @@ const MaikeForm = () => {
               onChange={handleChange(setHairColorValue)}
             >
               <option value="" disabled selected>
-                Hair-Color ▽
+                Hair-Color ▼
               </option>
               {Object.entries(HairColor).map(([color, value]) => (
                 <option key={color} value={value}>
@@ -139,7 +183,7 @@ const MaikeForm = () => {
           <div className="select-container">
             <select value={genderValue} onChange={handleChange(setGenderValue)}>
               <option value="" disabled selected>
-                Gender ▽
+                Gender ▼
               </option>
               {Object.entries(Gender).map(([gender, value]) => (
                 <option key={gender} value={value}>
@@ -160,7 +204,7 @@ const MaikeForm = () => {
               onChange={handleChange(setBackgroundValue)}
             >
               <option value="" disabled selected>
-                Background ▽
+                Background ▼
               </option>
               {Object.entries(Background).map(([background, value]) => (
                 <option key={background} value={value}>
@@ -175,7 +219,7 @@ const MaikeForm = () => {
               onChange={handleChange(setArtStyleValue)}
             >
               <option value="" disabled selected>
-                ArtStyle ▽
+                Art-Style ▼
               </option>
               {Object.entries(ArtStyle).map(([artstyle, value]) => (
                 <option key={artstyle} value={value}>
@@ -190,7 +234,7 @@ const MaikeForm = () => {
               onChange={handleChange(setWebStyleValue)}
             >
               <option value="" disabled selected>
-                WebStyle ▽
+                Web-Style ▼
               </option>
               {Object.entries(WebStyle).map(([webstyle, value]) => (
                 <option key={webstyle} value={value}>
@@ -203,10 +247,10 @@ const MaikeForm = () => {
       </div>
 
       <div className="list-maike-buttons">
-        <button className="maike-avatar" onClick={handleSaveList}>
-          SaveList
-        </button>
-        <button onClick={handleMaikeClick} className="maike-avatar">Maike</button>
+        {saveButton}
+        {/* <button onClick={handleMaikeClick} className="maike-avatar">M
+        <span className="ai-spans">AI</span>ke</button> */}
+        {maikeButton}
       </div>
     </div>
   );
