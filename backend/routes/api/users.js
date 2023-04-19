@@ -91,7 +91,12 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
-    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+
+    const userInfo = await loginUser(user);
+
+    const mongooseUser = await User.findOne({_id: userInfo._id})
+
+    return res.json(mongooseUser); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
 
