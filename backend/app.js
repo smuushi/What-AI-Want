@@ -4,7 +4,7 @@ const logger = require("morgan");
 const debug = require("debug");
 const cors = require("cors");
 const csurf = require("csurf");
-
+const multer = require("multer");
 
 
 /* --- Need to import these to load the models into mongoose --- */
@@ -99,7 +99,13 @@ app.use((err, req, res, next) => {
   });
 });
 
-
+//storing
+const storageEngine = multer.diskStorage({
+  destination: "./images",
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}--${file.originalname}`);
+  },
+});
 
 
 

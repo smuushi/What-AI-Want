@@ -17,6 +17,41 @@ router.get("/", function (req, res, next) {
   });
 });
 
+//upload profile image
+router.post(
+  "/upload/:userId",
+  // restoreUser,
+  upload.single("image"),
+  async (req, res) => {
+    try {
+      const user = req.user;
+
+      // Save the file to MongoDB
+      const file = new File({
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+        name: req.file.originalname,
+      });
+      const savedFile = await file.save();
+
+      // Update the user's profile image field in the database
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: mongoose.Types.ObjectId(user._id) },
+        { profileImage: savedFile._id },
+        { new: true }
+      );
+
+      res.json({
+        message: "Image uploaded successfully",
+        user: updatedUser,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "Server error" });
+    }
+  }
+);
+
 router.get("/current", restoreUser, (req, res) => {
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
@@ -96,21 +131,6 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
 });
 
 
-// router.get("/:id", async (req, res, next) => {
-//   const user = 
-// })
 
 
 module.exports = router;
-//was just trying out things :)
-// router.get("/:id", function (req, res, next) {
-//   res.json({
-//     message: `${req.params.id}`
-//   });
-// });
-
-// router.get("/:id/2", function (req, res, next) {
-//   res.json({
-//     message: `${req.params.id}`,
-//   });
-// });

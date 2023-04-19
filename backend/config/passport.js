@@ -30,11 +30,12 @@ passport.use(
 
 
 exports.loginUser = async function(user){
-    const userInfo={
-        _id:user._id,
-        username:user.username,
-        email:user.email
-    }
+    const userInfo = {
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      profileImage:user.profileImage
+    };
     const token = await jwt.sign(
         userInfo,//payload
         secretOrKey,//sign with secret key

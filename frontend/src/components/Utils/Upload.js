@@ -15,19 +15,22 @@ const Upload = () => {
    e.preventDefault();
    const formData = new FormData();
 
+   if (profileImage) {
+     formData.append("user[profileImage]", profileImage);
+   }
 
- if (profileImage) {
-   formData.append("user[profileImage]", profileImage);
- }
-//    const response = await fetchMethod(`/api/user/profileImage${myReview.id}`, {
-//      method: "PATCH",
-//      body: formData,
-//    });
+   const fileReader = new FileReader();
+   console.log(fileReader.readAsDataURL(profileImage));
 
-//    if (response.ok) {
-//      const post = await response.json();
-//      setProfileImage(null);
-//    }
+      // const response = await j(`/api/user${userId}`, {
+      //   method: "PATCH",
+      //   body: formData,
+      // });
+
+      if (response.ok) {
+        const post = await response.json();
+        setProfileImage(null);
+      }
  };
 
 
@@ -37,7 +40,6 @@ const Upload = () => {
         ref={uploadButton}
         type="file"
         onChange={handleFile}
-        name="review[images][]"
       />
       {console.log(profileImage)}
       {profileImage && <img src={URL.createObjectURL(profileImage)} />}
