@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
-const passport = require('passport')
+const passport = require("passport");
 const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
 
@@ -30,12 +30,10 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
-    lists: req.user.lists,
-    images: req.user.images
+    lists: req.user.list,
+    images: req.user.images,
   });
 });
-
-
 
 // POST /api/users/register
 router.post("/register", validateRegisterInput, async (req, res, next) => {
@@ -92,19 +90,13 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
       return next(err);
     }
 
-    const userInfo = await loginUser(user);
-
-    const mongooseUser = await User.findOne({_id: userInfo._id})
-
-    return res.json(mongooseUser); // <-- THIS IS THE CHANGED LINE
+    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
 
-
 // router.get("/:id", async (req, res, next) => {
-//   const user = 
+//   const user =
 // })
-
 
 module.exports = router;
 //was just trying out things :)
