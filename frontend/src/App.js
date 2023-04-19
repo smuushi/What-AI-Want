@@ -36,7 +36,7 @@ if (!loggedIn){
        <NavIndex/>
       <Switch>
         <Route exact path = '/profile'>
-          <p> PROFILE testing</p>
+          <Profile />
           {redirect}
         </Route>
         <Route exact path = '/maike'>
