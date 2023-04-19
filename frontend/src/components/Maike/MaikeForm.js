@@ -81,34 +81,34 @@ useEffect(()=>{
     });
   };
   
-  let saveButton;
+  // let saveButton;
   
-  let maikeButton;
-  if (createdListId){
-    saveButton = <div id = 'hideSaveButton'>Saved !</div>
-    maikeButton = <MaikeModal loading = {loading}
-    imageData = {imageData}
-    createdListId = {createdListId}
-    setLoading = {setLoading}
-    setImageData = {setImageData}
-    setCreatedListId = {setCreatedListId}
-    setClothingValue = {setClothingValue}
-    setHairColorValue = {setHairColorValue}
-    setGenderValue = {setGenderValue}
-    setBackgroundValue = {setBackgroundValue}
-    setArtStyleValue = {setArtStyleValue}
-    setWebStyleValue = {setWebStyleValue}
-    />
-  }else{
-    saveButton = <button className="maike-avatar" onClick={handleSaveList}>
-    Save List
-  </button>
-    maikeButton = <button id = 'hideMaikeButton'> MAIke</button>
-  }
-  if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
-  || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
-    saveButton = <div id = 'hideMaikeButton'>Save List</div>
-  } 
+  // let maikeButton;
+  // if (createdListId){
+  //   saveButton = <div id = 'hideSaveButton'>Saved !</div>
+  //   maikeButton = <MaikeModal loading = {loading}
+  //   imageData = {imageData}
+  //   createdListId = {createdListId}
+  //   setLoading = {setLoading}
+  //   setImageData = {setImageData}
+  //   setCreatedListId = {setCreatedListId}
+  //   setClothingValue = {setClothingValue}
+  //   setHairColorValue = {setHairColorValue}
+  //   setGenderValue = {setGenderValue}
+  //   setBackgroundValue = {setBackgroundValue}
+  //   setArtStyleValue = {setArtStyleValue}
+  //   setWebStyleValue = {setWebStyleValue}
+  //   />
+  // }else{
+  //   saveButton = <button className="maike-avatar" onClick={handleSaveList}>
+  //   Save List
+  // </button>
+  //   maikeButton = <button id = 'hideMaikeButton'> MAIke</button>
+  // }
+  // if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  // || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
+  //   saveButton = <div id = 'hideMaikeButton'>Save List</div>
+  // } 
 
 
   const handleUpdateList = () =>{
@@ -129,6 +129,7 @@ useEffect(()=>{
   if (formType === 'Edit'){
     buttonText = 're'
   }
+
   let saveButton;
   let maikeButton;
 
