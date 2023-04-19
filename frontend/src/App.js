@@ -41,12 +41,15 @@ if (!loggedIn){
           {redirect}
         </Route>
         <Route exact path = '/maike'>
-          <MaikeForm/>
+          <MaikeForm type = {'Create'}/>
           {redirect}
         </Route>
         <Route exact path = "/about">
           <About/>
         </Route>
+      <Route exact path = '/edit/:listId'>
+        <MaikeForm type = {'Edit'}/>
+      </Route>
       <Route path = '/'>
         <Redirect to = '/'/>
         <SplashPage/>
