@@ -73,7 +73,7 @@ export const SavedImage = (props) => {
                 <div id = "imageShowContainer">
                     <i className="fa-solid fa-xmark modalShowClose" 
                         alt = '' onClick={(e)=>{e.stopPropagation()
-                        ;setShowModal(false)}}>
+                        ;setShowModal(false); setShowConfirm(false);}}>
                     </i>
                         <div id = 'innerImageShowContainer'>
 

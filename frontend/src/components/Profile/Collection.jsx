@@ -21,9 +21,12 @@ export const Collection = (props) => {
 
     return (
         <>
-            <ul className="imagesContainer">
+            <div id = 'collectionImageContainer'>
+                <h1>Saved <span>AI</span>mages</h1>
+                 <ul className="imagesContainer">
                 {imageListItems}
-            </ul>
+                </ul>
+            </div>
         </>
     )
 }

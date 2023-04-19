@@ -1,7 +1,7 @@
 ul.imagesContainer {
     display: grid;
-    width: 30vw;
-    grid-template-columns: 1fr 1fr;
+    width: 38vw;
+    grid-template-columns: 1fr 1fr 1fr;
     list-style-type: none;
     /* border: solid black 30px; */
     overflow-y: scroll;
@@ -106,4 +106,21 @@ ul.imagesContainer .savedImageItem button{
     cursor:pointer;
     background-color: red;
     color:white;
+}
+
+#collectionImageContainer{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+#collectionImageContainer h1{
+    font-size:3vw;
+    color:#ff6900;
+    text-decoration: underline;
+    margin-bottom:0.5vw;
+}
+
+#collectionImageContainer h1 span{
+    color:#25c7ff;
 }
