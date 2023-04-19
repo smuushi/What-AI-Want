@@ -22,6 +22,7 @@ function MaikeModal(props) {
     const loading = props.loading
     const createdListId = props.createdListId
     const setLoading = props.setLoading
+    const formType = props.formType
     let load; 
 
     const handleDivClick = (e)=>{
@@ -51,6 +52,20 @@ function MaikeModal(props) {
         e.preventDefault()
         dispatch(saveImage(focusedKey))
         setShowModal(false)
+        // props.setCreatedListId('')
+        // props.setClothingValue('')
+        // props.setHairColorValue('')
+        // props.setGenderValue('')
+        // props.setBackgroundValue('')
+        // props.setArtStyleValue('')
+        // props.setWebStyleValue('')
+        history.push('/profile')
+
+    }
+
+    const handleCloseClick = (e)=>{
+        e.preventDefault()
+        setShowModal(false)
         props.setCreatedListId('')
         props.setClothingValue('')
         props.setHairColorValue('')
@@ -58,7 +73,6 @@ function MaikeModal(props) {
         props.setBackgroundValue('')
         props.setArtStyleValue('')
         props.setWebStyleValue('')
-        // history.push('/profile')
 
     }
 
@@ -123,20 +137,25 @@ function MaikeModal(props) {
                 </div>
                 <div id = 'buttonMaikeContainer'>
                     <p>Pick an image and click save!</p>
-                    <button onClick={handleSaveClick}>Save!</button>
+                    <button id = "saveButtonMaike" onClick={handleSaveClick}>Save!</button>
+                    <button id = 'cancelButtonMaike' onClick={handleCloseClick}>Cancel</button>
                 </div>
             </div>
+    }
+    let buttonText;
+    if (formType === 'Edit'){
+       buttonText="re"
     }
 
     return(
         <>
             <div>
                 <button className='maike-avatar' onClick={handleMaikeClick}>
-                     M<span className="ai-spans">AI</span>ke
+                    {buttonText}M<span className="ai-spans">AI</span>ke
                 </button>
                 {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
-                <i className="fa-solid fa-xmark maikemodalClose" onClick={()=>setShowModal(false)}></i>
+                <i className="fa-solid fa-xmark maikemodalClose" onClick={handleCloseClick}></i>
                     <div id = 'MaikeModalContainer'>
                         {load}
                     </div>

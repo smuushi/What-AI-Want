@@ -22,34 +22,41 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
-  if (!loggedIn) {
-    redirect = <Redirect to="/" />;
-  }
+if (!loggedIn){
+  redirect = <Redirect to = '/'/>
+}
 
-  return (
-    loaded && (
-      <>
-        <NavIndex />
-        <Switch>
-          <Route exact path="/profile">
-            <Profile />
-            {redirect}
-          </Route>
-          <Route exact path="/maike">
-            <MaikeForm />
-            {redirect}
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-            <Redirect to="/" />
-            <SplashPage />
-          </Route>
-        </Switch>
-      </>
-    )
-  );
+
+
+
+
+  return loaded && (
+    <>
+
+       <NavIndex/>
+      <Switch>
+        <Route exact path = '/profile'>
+          <p> PROFILE testing</p>
+          {redirect}
+        </Route>
+        <Route exact path = '/maike'>
+          <MaikeForm type = {'Create'}/>
+          {redirect}
+        </Route>
+        <Route exact path = "/about">
+          <About/>
+        </Route>
+      <Route exact path = '/edit/:listId'>
+        <MaikeForm type = {'Edit'}/>
+      </Route>
+      <Route path = '/'>
+        <Redirect to = '/'/>
+        <SplashPage/>
+      </Route>
+      </Switch>
+    </>
+  )
+
 }
 
 export default App;
