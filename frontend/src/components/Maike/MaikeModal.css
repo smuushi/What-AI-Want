@@ -1,0 +1,216 @@
+#MaikeModalContainer{
+    width:75vw;
+    height:40vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.maikemodalClose{
+    border:none;
+    /* margin-left:400px; */
+    position:relative;
+    left:95%;
+    /* right:10px; */
+    top:10px;
+    color:grey;
+    font-size:20px;
+}
+
+#loadingContainer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /* margin: 8px; */
+    border: 30px solid #000000;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #ff6900 transparent transparent transparent;
+    box-shadow: 0 0 10px 2px #25c7ff;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .waviy {
+    position: relative;
+  }
+  .waviy span {
+    position: relative;
+    display: inline-block;
+    font-size: 60px;
+    color: #25c7ff;
+    text-transform: uppercase;
+    animation: flip 2s infinite;
+    animation-delay: calc(.2s * var(--i))
+  }
+  @keyframes flip {
+    0%,80% {
+      transform: rotateY(360deg) 
+    }
+  }
+
+  #aiLoad{
+    color:#ff6900
+  }
+  
+#createModalImageContainer{
+    display:flex;
+    /* border:1px solid red; */
+    width:fit-content;
+    height:fit-content;
+    column-gap: 1vw;
+    /* margin-bottom:10vw; */
+}
+
+#fullImageContainer{
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+    width:inherit;
+    height:inherit;
+    margin-bottom:2vw;
+}
+
+#leftCreateModal,#rightCreateModal{
+    /* border:1px solid red; */
+    display:flex;
+    flex-direction:column;
+    /* height:10vw;
+    width:10vw; */
+    row-gap: 1vw;
+}
+
+#upperLeftModal,#bottomLeftModal,#upperRightModal,#bottomRightModal{
+    border:1px solid rgb(255, 255, 255);
+    border-radius:1vw;
+    height:19vw;
+    width:19vw;
+    overflow:hidden;
+
+}
+
+#upperLeftModal:hover,#bottomLeftModal:hover,#upperRightModal:hover,#bottomRightModal:hover{
+    cursor:pointer;
+    border:1px solid #25c7ff;
+    box-shadow: 0 0 10px 5px #25c7ff;
+    transform: translate(0px,-5px);
+}
+
+#upperLeftModal:focus,#bottomLeftModal:focus,#upperRightModal:focus,#bottomRightModal:focus{
+    border:1px solid #ff6900;
+    box-shadow: 0 0 10px 5px #ff6900;
+    transform: translate(0px,-5px);
+    
+}
+
+
+
+#upperLeftModal img, #bottomLeftModal img, #upperRightModal img, #bottomRightModal img {
+    height:19vw;
+    width:19vw;
+}
+/* #upperLeftModal img:hover, #bottomLeftModal img:hover, #upperRightModal img:hover, #bottomRightModal img:hover {
+    border:1px solid #ff6900;
+    box-shadow: 0 0 10px 2px #ff6900;
+    transform: translate(0px,-5px);
+}
+
+#upperLeftModal img:focus, #bottomLeftModal img:focus, #upperRightModal img:focus, #bottomRightModal img:focus {
+    border:1px solid #ff6900;
+    box-shadow: 0 0 10px 2px #ff6900;
+    transform: translate(0px,-5px);
+} */
+
+#parameterContainer,#buttonMaikeContainer{
+    width:10vw;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#parameterContainer{
+    margin-bottom:2vw;
+}
+
+
+
+#buttonMaikeContainer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:4vw;
+}
+
+#parameterContainer h2{
+    margin-bottom:1vw;
+    font-size:1.5vw;
+    color:#ff6900
+}
+
+#parameterContainer p{
+    font-size:2.5vw;
+    color:#25c7ff
+}
+
+#parameterContainer h1{
+    margin-bottom:1vw;
+    font-size:3.5vw;
+    text-decoration: underline;
+    font-weight:bolder;
+    color:#ff6900
+}
+
+#buttonMaikeContainer p{
+   
+    font-size:2vw;
+    color:#ff6900;
+    text-align:center;
+}
+
+#buttonMaikeContainer button{
+    margin-top:2vw;
+    width:10vw;
+    font-size:2vw;
+    border-radius:20px;
+    border: 1px solid #ff6900;
+    background-color: #ff6900;
+    color:white;
+    
+}
+
+#buttonMaikeContainer button:hover{
+    background-color: white;
+    color:#ff6900;
+    cursor:pointer;
+}

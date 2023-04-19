@@ -10,6 +10,7 @@ import jwtFetch from "./store/jwt";
 import * as listActions from './store/lists'
 import * as imageActions from './store/images'
 import * as userActions from './store/session'
+
 let store = configureStore({});
 
 if (process.env.NODE_ENV !== 'production'){

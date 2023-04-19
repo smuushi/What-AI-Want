@@ -59,7 +59,7 @@ router.post("/save/:imageId", restoreUser, async (req, res, next) => {
 
     mongooseUser.images.push(image._id);
 
-    mongooseUser.save();
+    await mongooseUser.save();
 
     return res.json(mongooseUser);
 })
