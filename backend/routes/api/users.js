@@ -7,6 +7,11 @@ const passport = require('passport')
 const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
 
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+const { Readable } = require("stream");
+
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
 
@@ -17,27 +22,43 @@ router.get("/", function (req, res, next) {
   });
 });
 
-//upload profile image
-router.post(
-  "/upload/:userId",
-  // restoreUser,
-  upload.single("image"),
+//patch
+// upload profile image
+router.patch(
+  "/upload",
+     restoreUser,
+  upload.single("profileImage"),
   async (req, res) => {
     try {
       const user = req.user;
+      const buffer = req.file.buffer; // get the binary data of the uploaded file
+      const contentType = req.file.mimetype;
+      const filename = req.file.originalname;
+      const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db); // create a new GridFSBucket
 
-      // Save the file to MongoDB
-      const file = new File({
-        data: req.file.buffer,
-        contentType: req.file.mimetype,
-        name: req.file.originalname,
+      // create a write stream to save the file to GridFS
+      const uploadStream = bucket.openUploadStream(filename, {
+        metadata: { contentType },
+        chunkSizeBytes: 1024 * 1024, // optional: set the chunk size for better performance
       });
-      const savedFile = await file.save();
 
-      // Update the user's profile image field in the database
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: mongoose.Types.ObjectId(user._id) },
-        { profileImage: savedFile._id },
+      // pipe the file data into the write stream
+      const stream = Readable.from(buffer);
+      stream.pipe(uploadStream);
+
+      // wait for the file to finish uploading
+      await new Promise((resolve, reject) => {
+        uploadStream.on("finish", resolve);
+        uploadStream.on("error", reject);
+      });
+
+      // get the ID of the newly uploaded file
+      const fileId = uploadStream.id;
+
+      // update the user's profileImage field with the new file ID
+      const updatedUser = await User.findByIdAndUpdate(
+        user._id,
+        { profileImage: fileId },
         { new: true }
       );
 
@@ -51,6 +72,7 @@ router.post(
     }
   }
 );
+
 
 router.get("/current", restoreUser, (req, res) => {
   if (!isProduction) {
