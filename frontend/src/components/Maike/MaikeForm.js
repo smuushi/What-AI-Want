@@ -244,7 +244,7 @@ useEffect(()=>{
   const WebStyle = {
     Pixiv: "Pixiv",
     Twitter: "Twitter",
-    Artvee: 'Artvee',
+    'Artvee(Classical)': 'Artvee',
     Instagram: 'Instagram',
     deviantart:'Deviantart'
   };
