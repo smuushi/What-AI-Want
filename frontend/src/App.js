@@ -72,11 +72,11 @@ if (!loggedIn){
             <MaikeForm type = {'Edit'}/>
          </Route>
          <Route exact path ="/splash">
-          <SplashExample/>
          </Route>
       <Route path = '/'>
         <Redirect to = '/'/>
-        <SplashPage/>
+          <SplashExample/>
+        {/* <SplashPage/> */}
       </Route>
 
         </Switch>
