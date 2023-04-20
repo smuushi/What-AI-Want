@@ -42,7 +42,10 @@ export default function SavedListCarousel() {
       >
         {splitItems.map((parts) => (
           <SwiperSlide>
-            <h1 className="savedlist-title">Saved List</h1>
+            <div className="savedlist-title-box">
+              <h1 className="savedlist-title">Saved List</h1>
+            </div>
+            <div className="savedlist-divider"></div>
             <div className="save-list-content-box">
               <span className="parts">{parts}</span>
             </div>

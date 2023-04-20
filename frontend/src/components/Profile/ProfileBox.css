@@ -4,6 +4,8 @@
     flex-direction: column;
     align-items: center;
     border: solid 3px #25c7ff;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .profile-box-container img{
@@ -28,12 +30,14 @@
     text-align: center;
     top: 0.5vw;
     font-size: 2vw;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .profile-info p{
     text-align: center;
     font-size: 2vw;
     color: #ff6a00ee;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .profile-underline{

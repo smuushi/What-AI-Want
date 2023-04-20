@@ -1,7 +1,7 @@
 .list-item-content{
     position: relative;
     left: 0.25vw;
-    top: 1.25vw;
+    bottom: 1.2vw;
     display: flex;
     flex-direction: column;
     font-size: 2vw;
@@ -13,49 +13,53 @@
  display: flex;
  flex-direction: column;
  position: relative;
- left: 1.4vw;
  text-align: center;
- color: #ffa462;
+ color: #ff6a00ee;
+ font-size: 1.8vw;
+ bottom: 1.8vw;
+ right: 3.5vw;
 }
 
 .list-title-key{
     position: relative;
-    left: 1.4vw;
     text-align: center;
     color: #25c7ff;
+    font-size: 2.3vw;
+    bottom: 3.5vw;
+    left: 2.8vw;
 }
 
-.list-item-divider{
-    position: relative;
-    left: 15vw;
-    bottom: 15.5vw;
-    height: 22vw;
-    width: 0.2vw;
-    background-color: #25c7ff;
+.list-title-key,
+.list-prop-info {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.list-item-divider-horizontal{
-    position: relative;
-    bottom: 2vw;
-    background-color: #25c7ff;
-    width: 30vw;
-    height: 0.2vw;
+.list-item-split:hover .list-title-key,
+.list-item-split:hover .list-prop-info {
+  color: black;
+  text-shadow: none;
 }
 
-.list-item-divider-horizontal2{
-    position: relative;
-    top: 11.4vw;
-    background-color: #25c7ff;
-    width: 30vw;
-    height: 0.2vw;
+
+.list-item-split:hover .list-title-key,
+.list-item-split:hover .list-prop-info {
+  color: rgb(2, 143, 186);
 }
+
 
   .list-item-grid {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 4px; 
+    gap: 1vw; 
   }
   
   .list-item-split {
     display: contents;
+  }
+
+  .list-item-edit-button{
+    position: relative;
+    bottom: 7vw;
+    left: 16vw;
+    width: 5vw;
   }
