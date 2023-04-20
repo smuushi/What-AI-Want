@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import { useLocation } from "react-router-dom";
+import Logo from "./Logo";
 import "./LoggedInNav.css";
 
 function LoggedInNav() {
@@ -22,11 +23,17 @@ function LoggedInNav() {
 
   return (
     <div className="loggedin-nav-box">
+      <div className="loggedin-logo">
+        <Logo />
+      </div>
+
       <div className="links-nav">
-      <NavLink to="/" isActive={() => location.pathname === '/'}>
-        Home
-      </NavLink>
-        <NavLink to="/maike">M<span className="ai-spans">AI</span>ke</NavLink>
+        <NavLink to="/" isActive={() => location.pathname === "/"}>
+          Home
+        </NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/team">Team</NavLink>
+        <NavLink to="/maike">MAIke</NavLink>
         <NavLink to="/profile">Profile</NavLink>
       </div>
 
@@ -51,7 +58,7 @@ function LoggedInNav() {
           </div>
         )}
       </div>
-    </div> 
+    </div>
   );
 }
 
