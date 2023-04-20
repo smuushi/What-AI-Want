@@ -12,6 +12,7 @@ import About from "./components/About/About";
 import Profile from "./components/Profile/Profile";import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
 import UserProfile from "./components/Utils/UserProfile";
+import SplashExample from "./components/SplashExample";
 
 
 function App() {
@@ -28,10 +29,6 @@ function App() {
 if (!loggedIn){
   redirect = <Redirect to = '/'/>
 }
-
-
-
-
 
   return (
     loaded && (
@@ -62,9 +59,12 @@ if (!loggedIn){
           <UserProfile/>
         </Route>
           {/* sara */}
-      
+
          <Route exact path = '/edit/:listId'>
             <MaikeForm type = {'Edit'}/>
+         </Route>
+         <Route exact path ="/splash">
+          <SplashExample/>
          </Route>
       <Route path = '/'>
         <Redirect to = '/'/>
