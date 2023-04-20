@@ -1,21 +1,18 @@
 .mySwiper1 {
-  width: 70vw;
-  height: 25vh;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  width: 99.7vw;
+  height: 28vh;
+  border: none;
 }
 
 .mySwiper2 {
-  width: 70vw;
-  height: 25vh;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  width: 99.7vw;
+  height: 28vh;
 }
 
 .slide-background {
   position: relative;
-  width: 70vw;
-  height: 25vh;
+  width: 99.7vw;
+  height: 28vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +40,7 @@
 
 .corner-image {
   /* border: solid 1px rgb(175, 177, 178); */
-  width: 14.25vw;
+  width: 16.25vw;
   height: auto;
   transition: transform 0.5s ease-in-out; 
 }
@@ -78,11 +75,11 @@
 
 .slide-text {
   position: relative;
-  bottom: 18vh;
-  left: 20.5vw;
+  bottom: 23vh;
+  left: 30.5vw;
   color: #25c7ff;
   font-weight: bold;
-  font-size: 90px;
+  font-size: 9vw;
   text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, 
                -2px -2px 0 #25c7ff, 2px -2px 0 #25c7ff, -2px 2px 0 #25c7ff, 2px 2px 0 #25c7ff; 
 }

@@ -11,15 +11,14 @@
 }
 
 .links-nav{
-    position: relative;
-    left: 8.5vw;
-   
+    position: sticky;
+    left: 13.3vw;
     display: flex;
     justify-content: space-around;
-    width:70vw;
+    width:72vw;
     gap: 14vw;
-    background-color: #25c7ff;
-    padding: 1vw;
+    background-color: #25c8ffe5;
+    padding: 0.1vw;
     border-radius: 50px;
     border: 3px solid #25c7ff; 
     align-items:center;
@@ -61,7 +60,7 @@
     /* left: 19vw; */
     /* bottom: 0.5vh; */
     border:1px solid #25c7ff;
-    padding:1.7vw;
+    padding:1.1vw;
     border-radius:100%;
     color:white;
     background-color: #25c7ff;
