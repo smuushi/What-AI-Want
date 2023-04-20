@@ -1,0 +1,36 @@
+.whataiwantFooter-wrapper {
+    width: 99vw;
+    height: 24vw;
+    background: linear-gradient(90deg, #8ED1FC 10%, #27C7FF 100%);
+    box-sizing: border-box;
+    padding-top: 3vw;
+    margin-top: 6.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .whataiwantFooter-wrapper h1{
+    font-size: 4.5vw;
+    border-bottom: 1px solid #fefeff;
+    width: 76vw;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .whataiwantFooter-techinfo{
+    margin-top: 3.8vw;
+    display: flex;
+    gap: 16vw;
+    font-size: 2.5vw;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+   .whataiwantFooter-wrapper {
+    width: 100%;
+  }
+  body {
+    overflow-x: hidden;
+  }

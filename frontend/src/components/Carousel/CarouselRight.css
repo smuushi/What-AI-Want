@@ -1,13 +1,12 @@
 .mySwiperRight {
-  width: 70vw;
-  height: 25vh;
- 
+  width: 99.7vw;
+  height: 28vh;
 }
 
 .slide-background-right {
   position: relative;
-  width: 70vw;
-  height: 25vh;
+  width: 99.7vw;
+  height: 28vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,7 +36,7 @@
 .corner-image-right {
   position: absolute;
   right: 0;
-  width: 14.25vw;
+  width: 16.25vw;
   /* border: solid 1px rgb(175, 177, 178); */
   transition: transform 0.5s ease-in-out; 
 }
@@ -72,11 +71,11 @@
 
 .slide-text-right {
   position: relative;
-  left: 11.5vw;
-  top: 8.5vh;
+  left: 16.5vw;
+  top: 7vh;
   color: #fcb480;
   font-weight: bold;
-  font-size: 90px;
+  font-size: 9vw;
   text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, 
                -2px -2px 0 #fcb480, 2px -2px 0 #fcb480, -2px 2px 0 #fcb480, 2px 2px 0 #fcb480; 
 }
