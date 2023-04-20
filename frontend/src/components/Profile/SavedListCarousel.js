@@ -27,7 +27,7 @@ export default function SavedListCarousel() {
   });
 
   const listObjectsListItems = listObjectsToRender.map((listObject) => {
-    return <ListItem prop={listObject} />;
+    return <ListItem key={JSON.stringify(listObject + "10399")} prop={listObject} />;
   });
 
   const splitItems = splitArray(listObjectsListItems, 1);
@@ -46,6 +46,7 @@ export default function SavedListCarousel() {
     <>
       <div className="swiper-container">
         <Swiper
+          key={"928488181818"}
           direction={"vertical"}
           slidesPerView={1}
           spaceBetween={30}
@@ -54,8 +55,8 @@ export default function SavedListCarousel() {
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           className="mySwiper"
         >
-          {splitItems.map((parts) => (
-            <SwiperSlide>
+          {splitItems.map((parts, idx) => (
+            <SwiperSlide key={idx}>
               <div className="savedlist-title-box">
                 <h1 className="savedlist-title">Saved List</h1>
               </div>
@@ -67,7 +68,7 @@ export default function SavedListCarousel() {
           ))}
         </Swiper>
         <div className="pagination-container">
-          <CustomPagination swiper={swiperInstance} />
+          <CustomPagination key={"sl082ls"} swiper={swiperInstance} />
         </div>
       </div>
     </>

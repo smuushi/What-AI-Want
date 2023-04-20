@@ -3,10 +3,10 @@ import ListOptions from "./ListOptions";
 
 function ListItem({ prop }) {
   return (
-    <div>
-      <ListOptions list = {prop}/>
+    <div key={JSON.stringify(prop)}>
+      <ListOptions key={JSON.stringify(prop?._id)} list = {prop}/>
       <div className="list-item-content">
-        <div className="list-item-grid">
+        <div key={JSON.stringify(prop)} className="list-item-grid">
           <p className="list-item-split">
             <span className="list-title-key">Art Style: </span>{" "}
             <span className="list-prop-info"> {prop?.artStyle}</span>
