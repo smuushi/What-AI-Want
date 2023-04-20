@@ -101,7 +101,7 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
-    lists: req.user.list,
+    lists: req.user.lists,
     images: req.user.images,
     profileImage:req.user.profileImage
 

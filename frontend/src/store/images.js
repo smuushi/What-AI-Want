@@ -5,7 +5,7 @@ export const RECEIVE_IMAGES = "images/RECEIVE_IMAGES";
 export const RECEIVE_IMAGE = "images/RECEIVE_IMAGE";
 export const REMOVE_IMAGE = "images/REMOVE_IMAGE";
 
-const receiveImages = (images) => ({
+export const receiveImages = (images) => ({
   type: RECEIVE_IMAGES,
   images,
 });

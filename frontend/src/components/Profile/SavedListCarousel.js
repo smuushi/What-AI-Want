@@ -18,7 +18,7 @@ function splitArray(array, size) {
 export default function SavedListCarousel() {
   const currentUser = useSelector((state) => state.session.user);
   const allListObjects = useSelector((state) => state.lists);
-  const userListsIdsArray = currentUser?.lists || [];
+  let userListsIdsArray = currentUser?.lists || [];
   const listObjectsToRender = userListsIdsArray.map((listId) => {
     const listObject = allListObjects[listId];
     return listObject;
@@ -29,6 +29,16 @@ export default function SavedListCarousel() {
   });
 
   const splitItems = splitArray(listObjectsListItems, 1);
+
+  console.log(splitItems)
+  console.log(splitItems)
+  console.log(splitItems)
+  console.log(splitItems)
+  console.log(splitItems)
+  console.log(splitItems)
+  console.log(splitItems)
+  console.log(splitItems)
+
 
   return (
     <>

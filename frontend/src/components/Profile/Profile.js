@@ -11,13 +11,20 @@ import "./Profile.css";
 function Profile() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const amountOfImages = Object.values(useSelector((state)=>state.images)).length
+  // const amountOfImages = Object.values(useSelector((state)=>state.images)).length
   
   useEffect(() => {
-    dispatch(getCurrentUser());
+    if (!currentUser) {
+      dispatch(getCurrentUser());
+
+    }
     dispatch(fetchUserLists(currentUser?._id));
-    dispatch(fetchUserImages(currentUser?._id));
-  }, [amountOfImages]);
+    // dispatch(fetchUserImages(currentUser?._id));
+  }, []);
+
+  // useEffect(()=> {
+  //   dispatch(fetchUserImages(currentUser?._id));
+  // },[amountOfImages])
 
   return (
     <div className="profile-main-box">
@@ -26,7 +33,7 @@ function Profile() {
         <SavedListCarousel />
       </div>
       <div className="profile-right-box">
-        <Collection />
+        <Collection currentUserId={currentUser?._id}/>
       </div>
     </div>
   );

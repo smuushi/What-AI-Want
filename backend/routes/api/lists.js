@@ -40,10 +40,10 @@ router.post("/", restoreUser, async (req, res, next) => {
   const mongooseUser = await User.findOne({_id: req.user._id})
 
 
-  mongooseUser["list"].push(list._id)
+  mongooseUser["lists"].push(list._id)
 
   await mongooseUser.save();
-
+  
   return res.json(list);
 });
 
@@ -179,7 +179,7 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
   try {
     const user = await User.findOne({ _id: req.params.userId });
     if (user) {
-      const lists = await Promise.all(user.list.map(async(listId) => {
+      const lists = await Promise.all(user.lists.map(async(listId) => {
         const mongooseListObj = await List.findById(listId);
         return mongooseListObj
       }))

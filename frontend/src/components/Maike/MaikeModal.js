@@ -5,6 +5,7 @@ import './MaikeModal.css'
 import { saveImage } from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { receiveImage, receiveImages } from '../../store/images';
 
 
 // import { useSelector } from "react-redux";
@@ -41,8 +42,10 @@ function MaikeModal(props) {
         
         if (res.ok){
             const data = await res.json()
+            // console.log(imageData)
+            // debugger
             setImageData(data.images)
-            console.log(imageData)
+            dispatch(receiveImages(data))
             setLoading(()=>false)
             console.log(data)
         
@@ -52,8 +55,11 @@ function MaikeModal(props) {
 
     const handleSaveClick = (e) =>{
         e.preventDefault()
-        dispatch(saveImage(focusedKey))
         setShowModal(false)
+        dispatch(saveImage(focusedKey)).then(() => {
+            
+            history.push('/profile')
+        })
 
 
         // props.setCreatedListId('')
@@ -63,7 +69,6 @@ function MaikeModal(props) {
         // props.setBackgroundValue('')
         // props.setArtStyleValue('')
         // props.setWebStyleValue('')
-        history.push('/profile')
 
     }
 
