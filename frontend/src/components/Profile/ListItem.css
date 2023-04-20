@@ -63,3 +63,130 @@
     left: 16vw;
     width: 5vw;
   }
+
+  #openlistDropdown{
+    position: relative;
+    bottom: 7.4vw;
+    left: 16vw;
+    width: 7vw;
+    border-radius:1vw;
+    font-size:1.5vw;
+    border: 1px solid #ff6900;
+    background-color:#ff6900;
+    color:white;
+  }
+
+  #openlistDropdown:hover{
+    cursor:pointer;
+    color:#ff6900;
+    background-color: white;
+
+  }
+  
+  #listOptions{
+    background-color: white;
+    border: 1px solid#ff6900;
+    width:10vw;
+    height:8vw;
+    z-index:20;
+    position:absolute;
+    right:1vw;
+    top:-4.5vw;
+    border-radius:1vw;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    row-gap:1.5vw;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+  }
+
+  #hideMenu{
+    display:none;
+  }
+
+  #updateListButton,#removeListButton{
+    width:7vw;
+    border-radius:0.8vw;
+    font-size:1.5vw;
+    border: 1px solid #ff6900;
+    background-color: white;
+    color:#ff6900;
+  }
+
+  #updateListButton:hover{
+    cursor:pointer;
+    color:white;
+    background-color:#00d084 ;
+    border: 1px solid #00d084;
+  }
+
+  #removeListButton:hover{
+    cursor:pointer;
+    color:white;
+    background-color: red;
+    border:1px solid red;
+  }
+
+  #removeListContainer{
+    width:330px;
+    height:120px;
+  }
+
+  .removelistModal{
+    position:relative;
+    left:92%;
+    top:6%;
+    font-size:25px;
+  }
+
+  #innerremoveList{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  #innerremoveList p {
+    font-size:30px;
+    color:#ff6900;
+    font-weight:bolder;
+  }
+
+  #removeListbuttons{
+    margin-top:4.5px;
+    display:flex;
+    align-items:Center;
+    column-gap:20px;
+  }
+
+  #removeListbuttons button{
+    font-size:25px;
+    width:115px;
+    border-radius:20px;
+  }
+
+  #cancelListRemove{
+    border:none;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid white;
+    color:grey;
+  }
+
+  #cancelListRemove:hover{
+    cursor:pointer;
+    background-color: rgb(227, 227, 227);
+  }
+
+  #confirmListRemove{
+    border: 1px solid red;
+    background-color: white;
+    color:red;
+  }
+
+  #confirmListRemove:hover{
+    background-color: red;
+    color:white;
+    cursor:pointer;
+  }
+

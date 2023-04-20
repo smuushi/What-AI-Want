@@ -9,10 +9,15 @@ import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
 import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
-import Profile from "./components/Profile/Profile";import Team from "./components/Team/Team";
+import Profile from "./components/Profile/Profile";
+import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
 import UserProfile from "./components/Utils/UserProfile";
+
 import SplashExample from "./components/SplashExample";
+
+
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -26,9 +31,11 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
+
 if (!loggedIn){
   redirect = <Redirect to = '/'/>
 }
+
 
   return (
     loaded && (
@@ -40,7 +47,7 @@ if (!loggedIn){
             {redirect}
           </Route>
           <Route exact path="/maike">
-            <MaikeForm type = {'Create'} />
+            <MaikeForm type={"Create"} />
             {redirect}
           </Route>
           {/* sara */}
@@ -50,15 +57,16 @@ if (!loggedIn){
           <Route exact path="/team">
             <Team />
           </Route>
-        <Route exact path="/upload">
-          <Upload/>
-        </Route>
+          <Route exact path="/upload">
+            <Upload />
+          </Route>
 
-        {/* you can change the route path  */}
-        <Route exact path="/profile/show">
-          <UserProfile/>
-        </Route>
+          {/* you can change the route path  */}
+          <Route exact path="/profile/show">
+            <UserProfile />
+          </Route>
           {/* sara */}
+
 
          <Route exact path = '/edit/:listId'>
             <MaikeForm type = {'Edit'}/>
@@ -70,11 +78,12 @@ if (!loggedIn){
         <Redirect to = '/'/>
         <SplashPage/>
       </Route>
+
         </Switch>
+        <Footer />
       </>
     )
   );
-
 }
 
 export default App;
