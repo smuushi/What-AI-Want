@@ -18,7 +18,7 @@ const About = ({
     AOS.refresh();
   }, []);
   return flip === true ? (
-    <div
+    <div id="about"
       className="about_wrapper"
       data-aos="fade-right"
       data-aos-offset="300"
@@ -37,7 +37,7 @@ const About = ({
       </div>
     </div>
   ) : (
-    <div
+    <div id="about"
       className="about_wrapper"
       data-aos="fade-left"
       data-aos-offset="300"

@@ -15,7 +15,12 @@ import Upload from "./components/Utils/Upload";
 import UserProfile from "./components/Utils/UserProfile";
 import SplashExample from "./components/SplashExample";
 import Footer from "./components/Footer/Footer";
+
+import FinalAbout from "./components/About/About_Final";
+
+
 import ScrollToTop from "./components/Utils/ScrollToTop";
+
 
 function App() {
   const loggedIn = useSelector((state) => !!state.session.user);
@@ -48,7 +53,7 @@ function App() {
           </Route>
           {/* sara */}
           <Route exact path="/about">
-            <About />
+            <FinalAbout/>
           </Route>
           <Route exact path="/team">
             <Team />
@@ -63,6 +68,7 @@ function App() {
           </Route>
           {/* sara */}
 
+
           <Route exact path="/edit/:listId">
             <MaikeForm type={"Edit"} />
           </Route>
@@ -72,6 +78,7 @@ function App() {
             <SplashExample />
             {/* <SplashPage/> */}
           </Route>
+
         </Switch>
         <Footer />
       </>

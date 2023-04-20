@@ -11,6 +11,12 @@ const Intro = () => {
     AOS.refresh();
   }, []);
 
+const handleScroll=()=>{
+const about = document.getElementById("about");
+if(about){
+    about.scrollIntoView({behavior:"smooth"})
+}
+}
   return (
     <div className="intro_wrapper" data-aos="fade-up">
       <div className="intro_text" data-aos="fade-down">
@@ -21,6 +27,10 @@ const Intro = () => {
           your unique style with <span>What-Ai-Want</span>'s advanced image
           generation technology.
         </p>
+        <div className="intro_button_div">
+            <div className="intro_button">Join Now</div>
+            <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
+        </div>
       </div>
 
       <div className="intro_image" data-aos="fade-down">
