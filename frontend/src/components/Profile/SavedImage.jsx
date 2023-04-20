@@ -15,6 +15,13 @@ export const SavedImage = (props) => {
     const imageObj = props.imageObj;
     const imageUrl = imageObj?.tempUrl;
 
+    const handleDownload = () =>{
+        const link = document.createElement('a')
+        link.href = imageUrl
+        link.download = 'aIvatar.png';
+        link.click()
+    }
+
     const handleClick = (e)=>{
         e.preventDefault();
         setShowModal(true);
@@ -32,9 +39,9 @@ export const SavedImage = (props) => {
     let presentingGender;
     let gender = imageObj?.prompts?.gender
 
-    if (gender === 'boy'){
+    if (gender === 'boy' || gender === 'man'){
         presentingGender = 'Male Presenting'
-    }else{
+    }else if (gender === 'girl' || gender === 'woman'){
         presentingGender = 'Female Presenting'
     }
     let button;
@@ -73,15 +80,16 @@ export const SavedImage = (props) => {
                 <div id = "imageShowContainer">
                     <i className="fa-solid fa-xmark modalShowClose" 
                         alt = '' onClick={(e)=>{e.stopPropagation()
-                        ;setShowModal(false)}}>
+                        ;setShowModal(false); setShowConfirm(false);}}>
                     </i>
                         <div id = 'innerImageShowContainer'>
 
                             <div>
                                     {description}
                             </div>
-                            <img id = 'showImageImage' src={imageUrl} />
-                            <div>
+                            <img alt = '' id = 'showImageImage' src={imageUrl} />
+                            <div id = 'imageShowButtons'>
+                                <button id = 'downloadImage' onClick={handleDownload}>Download</button>
                                 {button}
                             </div>
                         </div>

@@ -14,8 +14,8 @@ function Profile() {
   const amountOfImages = Object.values(useSelector((state)=>state.images)).length
   
   useEffect(() => {
-    dispatch(fetchUserLists(currentUser?._id));
     dispatch(getCurrentUser());
+    dispatch(fetchUserLists(currentUser?._id));
     dispatch(fetchUserImages(currentUser?._id));
   }, [amountOfImages]);
 

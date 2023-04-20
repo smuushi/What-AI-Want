@@ -93,7 +93,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
     let list = await List.findOne({ _id: req.params.id });
     let prompt;
     if (list) {
-      prompt = `${list.artStyle} key visual of a ${list.gender} with ${list.hairColor} hair and happy, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
+      prompt = `Extremely Detailed Professional ${list.artStyle} of a ${list.gender} with ${list.hairColor} hair, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
       //console.log(prompt)
       const numberOfImages = 4;
       const imageSize = "1024x1024";
