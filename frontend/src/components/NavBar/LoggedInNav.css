@@ -2,28 +2,34 @@
 
 .loggedin-nav-box{
     display: flex;
+    position: fixed;
+    top: 0.02vw;
+    /* margin-top: 7vw; */
     /* background-color: black; */
     gap: 10vw;
     /* margin-left: 20vw; */
     /* padding-bottom: 5vh; */
     align-items: center;
-    
+    z-index: 3;
 }
 
 .links-nav{
-    position: sticky;
-    left: 13.3vw;
+    /* left: 13.3vw; */
+    position: relative;
+    left: 12vw;
+    top: 0.2vw;
     display: flex;
     justify-content: space-around;
-    width:72vw;
-    gap: 14vw;
-    background-color: #25c8ffe5;
-    padding: 0.1vw;
-    border-radius: 50px;
-    border: 3px solid #25c7ff; 
+    width:52vw;
+    gap: 1vw;
+    /* background-color: #caeefbe5; */
+    padding: 0.2vw;
+    /* border: 3px solid #25c8ffc9;  */
     align-items:center;
+    margin-bottom: 3.6rem;
+    /* border-bottom: solid 3px var(--primary-1); */
     /* margin-top:1.8vw; */
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  /* overflow: hidden; */
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;   */
 }
 
 .links-nav a{
@@ -32,19 +38,18 @@
     font-size: 2vw;
     margin-left: 1vw;
     margin-right: 1vw;
-    color: white;
+    color: black;
     letter-spacing: 0.08vw;
     font-size: 3vw;
 }
 
 .links-nav a.active{
   font-weight:bolder;
-  color:#ff6900;
-  text-decoration: underline;
+  border-bottom: solid 3px var(--primary-1);
 }
 
 .links-nav a:hover{
-  color:#fcb480
+  color: var(--primary-2)
 }
 
 /* ----------------------------------- DROPDOWN */
@@ -57,14 +62,14 @@
   
   .dropdown-toggle i {
     position: relative;
-    /* left: 19vw; */
-    /* bottom: 0.5vh; */
+    bottom: 1.35vw;
+    left: 3vw;
     border:1px solid #25c7ff;
-    padding:1.1vw;
+    padding:1vw;
     border-radius:100%;
     color:white;
     background-color: #25c7ff;
-    font-size:2vw;
+    font-size:1.5vw;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;  /* overflow: hidden; */
   }
 
@@ -81,8 +86,8 @@
   
   .profileButtonDropdown {
     position: absolute;
-    left:-1.4vw;
-    top: 2vh;
+    left: -2.4vw;
+    top: -1vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,5 +116,9 @@
     cursor: pointer;
   }
   
+  .loggedin-logo{
+    position: relative;
+    right: 10.5vw;
+  }
   
 

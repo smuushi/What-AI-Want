@@ -3,11 +3,28 @@ import jwtFetch from "../../store/jwt";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "../../store/session";
 import { receiveCurrentUser } from "../../store/session";
+import './upload.css'
 
-const Upload = () => {
+const Upload = (props) => {
+  const currentUser = useSelector((state) => state.session.user);
+
+  const [image, setImage] = useState(null);
+useEffect(() => {
+  if (currentUser && currentUser.profileImage) {
+    fetch(`/api/users/profile/${currentUser.profileImage}`)
+      .then(async (response) => {
+        const contentType = response.headers.get("Content-Type");
+        const blob = await response.blob();
+        setImage(URL.createObjectURL(blob));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+}, [currentUser]);
+
   const uploadButton = useRef();
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.session.user);
 
   const [profileImage, setProfileImage] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
@@ -32,7 +49,7 @@ const Upload = () => {
 
     formData.append("profileImage", profileImage);
     formData.append("userId", currentUser._id);
-    // console.log("formData", formData);
+   
 
     const response = await jwtFetch("/api/users/upload", {
       method: "PATCH",
@@ -44,8 +61,9 @@ const Upload = () => {
 
     if (response.ok) {
       const data = await response.json();
-      dispatch(receiveCurrentUser(data.user))
       setProfileImage(null);
+      dispatch(receiveCurrentUser(data.user))
+      props.setShowModal(false)
     }
 
     if (!currentUser) {
@@ -53,18 +71,33 @@ const Upload = () => {
     }
   };
 
+  let showImage;
+  if (profileImage){
+    showImage = URL.createObjectURL(profileImage)
+  }else{
+    showImage = image
+  }
+  debugger
+
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        ref={uploadButton}
-        name="profileImage"
-        type="file"
-        onChange={handleFile}
-      />
-      {profileImage && <img src={URL.createObjectURL(profileImage)} />}
-      {/* {console.log("profileImage", profileImage)} */}
-      <button>Upload</button>
-      {/* {console.log(imageUrl)} */}
+    <form id = 'editPhotoContainer' onSubmit={handleSubmit}>
+    <div id = 'profilePhotobox'>
+      <img src={showImage} />
+    </div>
+        <div id = 'editProfilePhotoB'>
+        <label id = 'showProfilePhotoB'>
+          Change Photo
+          <input
+              id = 'profilePhotoButton'
+              ref={uploadButton}
+              name="profileImage"
+              type="file"
+              onChange={handleFile}
+          />
+        </label>
+          <button id ='uploadButton'>Upload</button>
+        </div>
+
     </form>
   );
 };

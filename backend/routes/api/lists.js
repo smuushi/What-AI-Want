@@ -12,12 +12,19 @@ const { uploadToAWSWithURL, getUrlFromAwsWithKey } = require("../../awsS3");
 const { restoreUser } = require("../../config/passport");
 
 const { Configuration, OpenAIApi } = require("openai");
-const { OPENAI_API_KEY } = require("../../config/keys");
+const { OPENAI_API_KEY_1 } = require("../../config/keys");
 const { Route53RecoveryCluster } = require("aws-sdk");
-const config = new Configuration({
-  apiKey: OPENAI_API_KEY,
+const config_1 = new Configuration({
+  apiKey: OPENAI_API_KEY_1,
 });
-const openai = new OpenAIApi(config);
+const config_2 = new Configuration({
+  apiKey: OPENAI_API_KEY_1,
+});
+
+const openai_1 = new OpenAIApi(config_1);
+const openai_2 = new OpenAIApi(config_2);
+
+const ais = [openai_1, openai_2]
 
 //POST /api/lists
 //string
@@ -110,7 +117,8 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
       //console.log(prompt)
       const numberOfImages = 4;
       const imageSize = "1024x1024";
-      openai
+      const selector = Math.round(Math.random())
+      ais[selector]
         .createImage({
           prompt: prompt,
           n: numberOfImages,

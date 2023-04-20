@@ -1,15 +1,30 @@
 
+.logged-out-logo{
+    position: relative;
+    right: 30.5vw;
+    top: 0.25vw;
+    /* right: 8vw; */
+}
 
 .loggedOutNav{
+    position: fixed;
     display:flex;
+    /* gap: 17vw; */
     align-items:center;
+    margin-top: 6rem;
+    z-index: 99999;
+    /* margin-right: 28vw; */
 }
 
 #signup{
     /* margin-right:34.5vw; */
+    position: relative;
+    right: 4.8vw;
     display:flex;
     flex-direction:column;
     align-items:center;
+    /* margin-left: 5vw; */
+    /* z-index: 3; */
     /* margin-left:auto; */
 }
 

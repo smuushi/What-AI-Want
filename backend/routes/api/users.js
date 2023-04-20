@@ -88,12 +88,63 @@ router.patch(
   }
 );
 
-router.patch("/:userId", restoreUser, async (req, res) => {
+router.patch("/:userId", restoreUser, async (req, res, next) => {
   //will return updated user info. 
   if (!req.user) return res.json(null);
   const mongooseUser = await User.findOne({_id: req.user._id});
 
   const newUserInfo = req.body;
+
+  if (newUserInfo?.email) {
+
+    const alreadyMongooseUser = await User.findOne({email: newUserInfo.email});
+
+    if (alreadyMongooseUser && alreadyMongooseUser.email !== mongooseUser.email) {
+      const err = new Error("super stinky ewwww for email")
+
+      let errors = {};
+      errors.email = "so stinky bad bad bad. try a different email, nerd";
+
+      err.errors = errors;
+
+      return next(err)
+
+    }
+    
+
+    if (newUserInfo.email.length < 6) {
+      
+      const err = new Error("Validation Error")
+      err.statusCode = 400;
+      let errors = {};
+      errors.email = "A stinky email this one";
+
+      
+      if (newUserInfo?.username) {
+        if (newUserInfo.username.length < 2) {
+          errors.username = "A stinky username.. pee eww"
+        }
+        
+      }
+      
+      err.errors = errors;
+      return next(err)
+    }
+  }
+
+  if (newUserInfo?.username) {
+    
+    
+    if (newUserInfo.username.length < 2) {
+      let errors = {};
+      const err = new Error("Validation Error");
+      errors.username = "A stinky username.. pee eww"
+      err.errors = errors;
+      return next(err)
+    }
+    
+
+  }
 
   const parametersToUpdate = Object.keys(newUserInfo);
 

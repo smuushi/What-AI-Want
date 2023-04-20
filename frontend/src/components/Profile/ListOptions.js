@@ -7,17 +7,19 @@ const ListOptions = (props)=>{
     const [showMenu,setShowMenu] = useState(false)
     const history = useHistory()
     const list = props.list 
-   
-    const openMenu = ()=>{
+
+    const openMenu = (e)=>{
+        e.stopPropagation();
         if (showMenu) return;
+        // setTimeout(()=>{setShowMenu(()=>!showMenu)},0)
         setShowMenu(true)
-        console.log(list)
     }
 
     useEffect(()=>{
         if (!showMenu) return;
+    
         const closeMenu = ()=>{
-            setShowMenu(false)
+            setShowMenu(false);
         }
         document.addEventListener('click',closeMenu)
         return ()=>document.removeEventListener("click",closeMenu)
@@ -35,11 +37,11 @@ const ListOptions = (props)=>{
             <div id = 'listOptionsContainer'>
                 <button id = 'openlistDropdown' onClick={openMenu}>Options</button>
             </div>
-            <ul key={JSON.stringify(displayMenu + list)} id = {displayMenu}>
-                <li key={JSON.stringify(list)}>
+            <ul id = {displayMenu}>
+                <li>
                     <button id = 'updateListButton' onClick={()=>history.push(`/edit/${list?._id}`)}>Update List</button>
                 </li>
-                <li key={JSON.stringify(list) + "399843"}>
+                <li>
                     <RemoveListModal list = {list}/>
                 </li>
             </ul>

@@ -13,12 +13,13 @@ import Profile from "./components/Profile/Profile";
 import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
 import UserProfile from "./components/Utils/UserProfile";
-
 import SplashExample from "./components/SplashExample";
-
-
 import Footer from "./components/Footer/Footer";
+
 import FinalAbout from "./components/About/About_Final";
+
+
+import ScrollToTop from "./components/Utils/ScrollToTop";
 
 
 function App() {
@@ -32,15 +33,14 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
-
-if (!loggedIn){
-  redirect = <Redirect to = '/'/>
-}
-
+  if (!loggedIn) {
+    redirect = <Redirect to="/" />;
+  }
 
   return (
     loaded && (
       <>
+        <ScrollToTop />
         <NavIndex />
         <Switch>
           <Route exact path="/profile">
@@ -69,15 +69,15 @@ if (!loggedIn){
           {/* sara */}
 
 
-         <Route exact path = '/edit/:listId'>
-            <MaikeForm type = {'Edit'}/>
-         </Route>
-
-      <Route path = '/'>
-        <Redirect to = '/'/>
-          <SplashExample/>
-        {/* <SplashPage/> */}
-      </Route>
+          <Route exact path="/edit/:listId">
+            <MaikeForm type={"Edit"} />
+          </Route>
+          <Route exact path="/splash"></Route>
+          <Route path="/">
+            <Redirect to="/" />
+            <SplashExample />
+            {/* <SplashPage/> */}
+          </Route>
 
         </Switch>
         <Footer />

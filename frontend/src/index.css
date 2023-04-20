@@ -67,16 +67,17 @@ table {
 
 }
 
-.ai-spans{
-    color:#fcb480
-}
-.ai-spans:hover{
+/* .ai-spans{
+    color:black
+} */
+/* .ai-spans:hover{
     color:#ff6900
-}
+} */
 
 *{
 
 	transition:ease-out 0.15s
 }
+
 
 
