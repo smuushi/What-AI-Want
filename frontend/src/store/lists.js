@@ -39,7 +39,7 @@ export const fetchUserLists = (userId) => async (dispatch) => {
   const response = await jwtFetch(`/api/lists/all/${userId}`);
   if (response.ok) {
     const lists = await response.json();
-    debugger
+    // debugger
     dispatch(receiveLists(lists));
   }
 };
@@ -118,7 +118,7 @@ const listsReducer = (state = {}, action) => {
   let nextState = { ...state };
   switch (action.type) {
     case RECEIVE_LISTS:
-      debugger
+      // debugger
       // return{...action.lists}
       action.lists.lists.forEach((list) => {
         nextState[list._id] = list;

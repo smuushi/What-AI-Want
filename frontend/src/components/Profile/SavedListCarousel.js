@@ -32,14 +32,14 @@ export default function SavedListCarousel() {
 
   const splitItems = splitArray(listObjectsListItems, 1);
 
-  console.log(splitItems)
-  console.log(splitItems)
-  console.log(splitItems)
-  console.log(splitItems)
-  console.log(splitItems)
-  console.log(splitItems)
-  console.log(splitItems)
-  console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
+  // console.log(splitItems)
 
 
   return (
