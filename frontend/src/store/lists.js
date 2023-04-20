@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { getCurrentUser, receiveCurrentUser } from "./session";
 
 export const RECEIVE_LISTS = "lists/RECEIVE_LISTS";
 export const RECEIVE_LIST = "lists/RECEIVE_LIST";
@@ -39,7 +40,7 @@ export const fetchUserLists = (userId) => async (dispatch) => {
   const response = await jwtFetch(`/api/lists/all/${userId}`);
   if (response.ok) {
     const lists = await response.json();
-    // debugger
+    debugger
     dispatch(receiveLists(lists));
   }
 };
@@ -48,6 +49,7 @@ export const fetchList = (listId) => async (dispatch) => {
   const response = await jwtFetch(`/api/lists/${listId}`);
   if (response.ok) {
     const list = await response.json();
+
     dispatch(receiveList(list));
   }
 };
@@ -110,7 +112,9 @@ export const deleteList = (listId) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
-    dispatch(removeList(listId));
+    const userInfo = await response.json();
+    debugger
+    dispatch(receiveCurrentUser(userInfo));
   }
 };
 
