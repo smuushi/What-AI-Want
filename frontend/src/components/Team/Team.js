@@ -66,7 +66,7 @@ const TeamMemberCard = (props) => {
         "https://cdn.discordapp.com/attachments/1068678911178850456/1070045360380186634/SNOW_20230131_131713_013.jpg";
       description = "Backend Lead";
       avatar =
-        "https://cdn.discordapp.com/attachments/1096463008143781951/1098416485891850301/1681940666248testimage2.png";
+        "https://cdn.discordapp.com/attachments/1096463008143781951/1098642554146279556/sorta_me.jpeg";
       github = "https://github.com/smuushi";
       linkedin = "https://www.linkedin.com/in/michael-shih-2422a1127/";
       break;
