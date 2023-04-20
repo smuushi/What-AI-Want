@@ -1,7 +1,7 @@
 .mySwiper {
     position: relative;
     top: 1vw;
-    height: 26.5vw;
+    height: 23.5vw;
     width: 24vw;
     border: solid 3px #25c7ff;
     border-radius: 20px;
@@ -46,4 +46,24 @@
     border-bottom: solid 3px #25c7ff ;
   }
 
+  .pagination-container {
+    position: relative;
+    bottom: 8.5vw;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .custom-pagination {
+    pointer-events: all;
+  }
+  
+  .swiper-container {
+    position: relative;
+  }
+  
+  .custom-pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
