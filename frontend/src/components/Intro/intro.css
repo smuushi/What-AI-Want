@@ -1,40 +1,93 @@
 div.intro_wrapper {
   height: 100%;
-  /* border: 1px solid red; */
   display: flex;
 }
 
 div.intro_text {
-  /* border: 1px solid blue; */
   width: 50%;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  padding-left:5rem;
+  padding-left: 5rem;
   justify-content: center;
 }
-h1.intro_header{
-    font-size: 8rem;
-    font-weight: 500;
+h1.intro_header {
+  font-size: 8rem;
+  font-weight: 500;
 }
-h1.intro_header.sub{
-color:var(--primary-1)
-}
-
-div.intro_text p{
-width:550px;
-font-size: 2rem;
-}
-div.intro_text p span{
-   color:var(--primary-1);
-   font-weight: 600;
-
+h1.intro_header.sub {
+  color: var(--primary-1);
 }
 
+div.intro_text p {
+  width: 37.5rem;
+  font-size: 2rem;
+}
+div.intro_text p span {
+  color: var(--primary-1);
+  font-weight: 600;
+}
+
+div.intro_button_div {
+  display: flex;
+  margin-top: 1rem;
+  width: 300px;
+  justify-content: space-between;
+}
+div.intro_button {
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-color: var(--primary-1);
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  animation: fadeAnimation 1s 2s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro_button::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #fff, transparent);
+  position: absolute;
+  top: 0;
+  left: -100%;
+  transform: skewX(-30deg);
+  transition: left 0.5s;
+}
+
+.intro_button:hover::before {
+  left: 100%;
+}
+
+@keyframes fadeAnimation {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+div.intro_button.learn {
+  background-color: #f3f3f3;
+  color: black;
+}
 div.intro_image {
   display: Flex;
   flex-direction: column;
   width: 50%;
   justify-content: space-between;
+  padding-right: 2rem;
 }
 
 div.intro_circle {
@@ -42,8 +95,8 @@ div.intro_circle {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 300px;
-  width: 300px;
+  height: 18.75rem;
+  width: 18.75rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
@@ -51,8 +104,8 @@ div.intro_circle {
 .bottom {
   display: flex;
   align-self: flex-end;
-  height: 400px;
-  width: 400px;
+  height: 25rem;
+  width: 25rem;
 }
 .top {
   display: flex;
@@ -61,11 +114,10 @@ div.intro_circle {
 
 div.intro_circle.top {
   background-image: url("https://cdn.discordapp.com/attachments/1096463008143781951/1097647313553477692/img-S5oQSB6K9IQBVJ52EUrm61IF.png");
-    transition: all 0.8s;
+  transition: all 0.8s;
 }
 
 div.intro_circle.bottom {
   background-image: url("https://cdn.discordapp.com/attachments/952591530626023464/1098635373292290203/1681939204993testimage2.png");
-    transition: all 0.8s;
+  transition: all 0.8s;
 }
-

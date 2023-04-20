@@ -18,6 +18,7 @@ import SplashExample from "./components/SplashExample";
 
 
 import Footer from "./components/Footer/Footer";
+import FinalAbout from "./components/About/About_Final";
 
 
 function App() {
@@ -52,7 +53,7 @@ if (!loggedIn){
           </Route>
           {/* sara */}
           <Route exact path="/about">
-            <About />
+            <FinalAbout/>
           </Route>
           <Route exact path="/team">
             <Team />
@@ -71,8 +72,7 @@ if (!loggedIn){
          <Route exact path = '/edit/:listId'>
             <MaikeForm type = {'Edit'}/>
          </Route>
-         <Route exact path ="/splash">
-         </Route>
+
       <Route path = '/'>
         <Redirect to = '/'/>
           <SplashExample/>
