@@ -26,8 +26,8 @@ export const Collection = (props) => {
     })
 
 
-    const imageListItems = imagesToRender?.map((imageObj) => {
-        const imageListItem = <SavedImage key={JSON.stringify(imageObj)} imageObj={imageObj}/>
+    const imageListItems = imagesToRender?.map((imageObj, idx) => {
+        const imageListItem = <SavedImage key={JSON.stringify(imageObj + `${(10293 * idx)}`)} imageObj={imageObj}/>
         return imageListItem
     })
 

@@ -88,6 +88,25 @@ router.patch(
   }
 );
 
+router.patch("/:userId", restoreUser, async (req, res) => {
+  //will return updated user info. 
+  if (!req.user) return res.json(null);
+  const mongooseUser = await User.findOne({_id: req.user._id});
+
+  const newUserInfo = req.body;
+
+  const parametersToUpdate = Object.keys(newUserInfo);
+
+  parametersToUpdate.forEach((parameter) => {
+    mongooseUser[parameter] = newUserInfo[parameter]
+  });
+
+  mongooseUser.save();
+
+  res.json(mongooseUser);
+  
+})
+
 router.get("/current", restoreUser, (req, res) => {
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
@@ -165,7 +184,7 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
 
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
     
-    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+    // return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
 

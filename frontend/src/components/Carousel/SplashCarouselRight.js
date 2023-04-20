@@ -10,7 +10,6 @@ import { fetchRandomImages } from "../../store/images";
 export default function SplashCarouselRight() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sampleImages, setSampleImages] = useState([]);
-  console.log(sampleImages);
   const dispatch = useDispatch();
 
   useEffect(() => {

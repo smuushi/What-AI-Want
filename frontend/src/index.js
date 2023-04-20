@@ -10,6 +10,7 @@ import jwtFetch from "./store/jwt";
 import * as listActions from './store/lists'
 import * as imageActions from './store/images'
 import * as userActions from './store/session'
+import { createRoot } from "react-dom/client";
 
 let store = configureStore({});
 
@@ -20,6 +21,8 @@ if (process.env.NODE_ENV !== 'production'){
   window.imageActions = imageActions;
   window.userActions = userActions;
 }
+
+
 
 function Root() {
   return (
@@ -33,9 +36,17 @@ function Root() {
   );
 }
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'))
+
+
+root.render(
   <React.StrictMode>
     <Root />
   </React.StrictMode>,
-  document.getElementById("root")
-);
+)
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Root />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );

@@ -35,11 +35,11 @@ const ListOptions = (props)=>{
             <div id = 'listOptionsContainer'>
                 <button id = 'openlistDropdown' onClick={openMenu}>Options</button>
             </div>
-            <ul id = {displayMenu}>
-                <li>
+            <ul key={JSON.stringify(displayMenu + list)} id = {displayMenu}>
+                <li key={JSON.stringify(list)}>
                     <button id = 'updateListButton' onClick={()=>history.push(`/edit/${list?._id}`)}>Update List</button>
                 </li>
-                <li>
+                <li key={JSON.stringify(list) + "399843"}>
                     <RemoveListModal list = {list}/>
                 </li>
             </ul>

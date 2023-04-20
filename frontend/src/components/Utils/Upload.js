@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import jwtFetch from "../../store/jwt";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "../../store/session";
+import { receiveCurrentUser } from "../../store/session";
 
 const Upload = () => {
   const uploadButton = useRef();
@@ -31,7 +32,7 @@ const Upload = () => {
 
     formData.append("profileImage", profileImage);
     formData.append("userId", currentUser._id);
-    console.log("formData", formData);
+    // console.log("formData", formData);
 
     const response = await jwtFetch("/api/users/upload", {
       method: "PATCH",
@@ -42,7 +43,8 @@ const Upload = () => {
     });
 
     if (response.ok) {
-      const post = await response.json();
+      const data = await response.json();
+      dispatch(receiveCurrentUser(data.user))
       setProfileImage(null);
     }
 
@@ -60,9 +62,9 @@ const Upload = () => {
         onChange={handleFile}
       />
       {profileImage && <img src={URL.createObjectURL(profileImage)} />}
-      {console.log("profileImage", profileImage)}
+      {/* {console.log("profileImage", profileImage)} */}
       <button>Upload</button>
-      {console.log(imageUrl)}
+      {/* {console.log(imageUrl)} */}
     </form>
   );
 };
