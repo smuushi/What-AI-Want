@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {clearSessionErrors,updateCurrentUser } from "../../store/session";
 
-const EditUserForm = ()=>{
+const EditUserForm = (props)=>{
     const currentUser = useSelector((state) => state.session.user);
 
     const [email, setEmail] = useState(currentUser.email);
@@ -36,13 +36,12 @@ const EditUserForm = ()=>{
       const handleSubmit = (e) => {
         e.preventDefault();
         const user = {...currentUser,email,username};
-        dispatch(updateCurrentUser(user));
+        dispatch(updateCurrentUser(user)).then(()=>{props.setShowModal(false)});
       };
 
      return (
          <form className="signup-form" onSubmit={handleSubmit}>
          <h2>Edit your info!</h2>
-     
          <div className="errors">{errors?.email}</div>
          <label>
      

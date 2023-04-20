@@ -24,7 +24,7 @@ function EditUserModal(){
             {showModal &&(
                 <Modal>
                 <i className="fa-solid fa-xmark removelistModal " onClick={()=>setShowModal(false)}></i>
-                <EditUserForm/>
+                <EditUserForm setShowModal = {setShowModal}/>
                 </Modal>
             )}
         </>
