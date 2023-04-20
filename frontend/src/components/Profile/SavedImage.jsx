@@ -19,6 +19,7 @@ export const SavedImage = (props) => {
         const link = document.createElement('a')
         link.href = imageUrl
         link.download = 'aIvatar.png';
+        link.target = '_blank';
         link.click()
     }
 
