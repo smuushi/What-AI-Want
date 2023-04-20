@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -6,6 +6,7 @@ import "./SavedListCarousel.css";
 import { Mousewheel, Pagination } from "swiper";
 import ListItem from "./ListItem";
 import { useSelector } from "react-redux";
+import CustomPagination from "./CustomPagination";
 
 function splitArray(array, size) {
   const parts = [];
@@ -16,6 +17,7 @@ function splitArray(array, size) {
 }
 
 export default function SavedListCarousel() {
+  const [swiperInstance, setSwiperInstance] = useState(null);
   const currentUser = useSelector((state) => state.session.user);
   const allListObjects = useSelector((state) => state.lists);
   const userListsIdsArray = currentUser?.lists || [];
@@ -32,26 +34,32 @@ export default function SavedListCarousel() {
 
   return (
     <>
-      <Swiper
-        direction={"vertical"}
-        slidesPerView={1}
-        spaceBetween={30}
-        mousewheel={true}
-        modules={[Mousewheel, Pagination]}
-        className="mySwiper"
-      >
-        {splitItems.map((parts) => (
-          <SwiperSlide>
-            <div className="savedlist-title-box">
-              <h1 className="savedlist-title">Saved List</h1>
-            </div>
-            <div className="savedlist-divider"></div>
-            <div className="save-list-content-box">
-              <span className="parts">{parts}</span>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="swiper-container">
+        <Swiper
+          direction={"vertical"}
+          slidesPerView={1}
+          spaceBetween={30}
+          mousewheel={true}
+          modules={[Mousewheel, Pagination]}
+          onSwiper={(swiper) => setSwiperInstance(swiper)}
+          className="mySwiper"
+        >
+          {splitItems.map((parts) => (
+            <SwiperSlide>
+              <div className="savedlist-title-box">
+                <h1 className="savedlist-title">Saved List</h1>
+              </div>
+              <div className="savedlist-divider"></div>
+              <div className="save-list-content-box">
+                <span className="parts">{parts}</span>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="pagination-container">
+          <CustomPagination swiper={swiperInstance} />
+        </div>
+      </div>
     </>
   );
 }
