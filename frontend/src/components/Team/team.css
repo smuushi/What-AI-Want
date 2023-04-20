@@ -1,27 +1,88 @@
-/*TeamMemberCard*/
-
-div.teamMemberCard_wrapper{
-    border: 3px solid rgb(178, 209, 250);
-    width:100%;
-    height:100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-div.teamMemberCard_wrapper div{
-    margin: 1vw;
-}
-
-.teamMember_image img{
-    width: 100%;
+div.teamMemberCard_wrapper {
+  /* border: 3px solid rgb(178, 209, 250); */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 250px;
+  height: 350px;
+  -webkit-animation: fade-in 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-.team_wrapper {
-    display: flex;
-    justify-content: space-evenly;
-    
+div.teamMember_image {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 70%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    transition: transform 0.6s ease;
 }
 
+div.team_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
 
+div.teamMember_ {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #c9c9c936;
+}
+div.teamMember_ h1 {
+  font-size: 40px;
+  font-weight: 550;
+}
+
+div.teamMember_ p {
+  font-size: 20px;
+}
+div.teamMember_logos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+div.teamMember_logos i {
+  font-size: 30px;
+  margin: 10px;
+  color:black;
+}
+div.teamMember_logos i:hover {
+
+    color: var(--primary-2);
+    transition:all 0.3s;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
