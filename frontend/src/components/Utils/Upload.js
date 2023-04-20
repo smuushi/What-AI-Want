@@ -21,7 +21,7 @@ useEffect(() => {
         console.error(error);
       });
   }
-}, [currentUser]);
+}, [currentUser.profileImage]);
 
   const uploadButton = useRef();
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ useEffect(() => {
   }else{
     showImage = image
   }
-  debugger
+  // debugger
 
   return (
     <form id = 'editPhotoContainer' onSubmit={handleSubmit}>
