@@ -1,31 +1,38 @@
 import "./team.css";
-
+import {useEffect} from "react"
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Team = () => {
 
-  return (
-    <>
+ useEffect(() => {
+   AOS.init({
+     once: false,
+   });
+   AOS.refresh();
+ }, []);
 
+  return (
+    <div className="team_container" data-aos="fade-up" >
+      <h1 data-aos="fade-up" >Meet Our Team</h1>
       <div className="team_wrapper">
         <TeamMemberCard person={"Michael Shih"} />
         <TeamMemberCard person={"Kaiter Wu"} />
         <TeamMemberCard person={"Sara Ryu"} />
         <TeamMemberCard person={"Tim Dong"} />
       </div>
-    </>
+    </div>
   );
 };
 
 export default Team;
 
-
-
 const TeamMemberCard = (props) => {
- let gravatar;
- let description;
- let name;
- let github;
- let avatar;
- let linkedin
+  let gravatar;
+  let description;
+  let name;
+  let github;
+  let avatar;
+  let linkedin;
   switch (props.person) {
     case "Sara Ryu":
       gravatar =
@@ -33,40 +40,40 @@ const TeamMemberCard = (props) => {
       description = "Backend/Flex";
       avatar =
         "https://cdn.discordapp.com/attachments/1096463008143781951/1098416485891850301/1681940666248testimage2.png";
-        github = "https://github.com/useNavigate";
-        linkedin = "https://www.linkedin.com/in/sara-ryu-798165261/";
+      github = "https://github.com/useNavigate";
+      linkedin = "https://www.linkedin.com/in/sara-ryu-798165261/";
       break;
     case "Kaiter Wu":
       gravatar =
         "https://secure.gravatar.com/avatar/1ff452cb3a2b20a3189c8879a6233e76?secure=true&size=300";
       description = "Frontend Lead";
-         avatar =
-           "https://cdn.discordapp.com/attachments/1070167591387136031/1098430398641479741/1681956583753testimage3.png";
-           github = "https://github.com/kaiterwu";
-             linkedin = "https://www.linkedin.com/in/kaiter-wu-7ba70a62/";
+      avatar =
+        "https://cdn.discordapp.com/attachments/1070167591387136031/1098430398641479741/1681956583753testimage3.png";
+      github = "https://github.com/kaiterwu";
+      linkedin = "https://www.linkedin.com/in/kaiter-wu-7ba70a62/";
       break;
     case "Tim Dong":
       gravatar =
         "https://secure.gravatar.com/avatar/69fcea611c648b1f4f2d78e093a9b8e0?secure=true&size=300";
       description = "Frontend/Flex";
-         avatar =
-           "https://cdn.discordapp.com/attachments/1096463008143781951/1097738088903614506/DALLE_2023-04-18_00.15.42_-_detailed_Anime_Key_Visual_of_a_woman_official_media_trending_on_twitter_high_quality_long_pink_haired_in_a_frilly_maid_uniform.png";
-        github = "https://github.com/Tysuiku";
-          linkedin = "https://www.linkedin.com/in/timothy-dong-19a700254/";
-           break;
+      avatar =
+        "https://cdn.discordapp.com/attachments/1096463008143781951/1097738088903614506/DALLE_2023-04-18_00.15.42_-_detailed_Anime_Key_Visual_of_a_woman_official_media_trending_on_twitter_high_quality_long_pink_haired_in_a_frilly_maid_uniform.png";
+      github = "https://github.com/Tysuiku";
+      linkedin = "https://www.linkedin.com/in/timothy-dong-19a700254/";
+      break;
     case "Michael Shih":
       gravatar =
         "https://cdn.discordapp.com/attachments/1068678911178850456/1070045360380186634/SNOW_20230131_131713_013.jpg";
       description = "Backend Lead";
-         avatar =
-           "https://cdn.discordapp.com/attachments/1096463008143781951/1098416485891850301/1681940666248testimage2.png";
-           github = "https://github.com/smuushi";
-             linkedin = "https://www.linkedin.com/in/michael-shih-2422a1127/";
+      avatar =
+        "https://cdn.discordapp.com/attachments/1096463008143781951/1098642554146279556/sorta_me.jpeg";
+      github = "https://github.com/smuushi";
+      linkedin = "https://www.linkedin.com/in/michael-shih-2422a1127/";
       break;
   }
 
   return (
-    <div className="teamMemberCard_wrapper">
+    <div className="teamMemberCard_wrapper" data-aos="fade-up">
       <div
         className="teamMember_image "
         style={{ backgroundImage: `url(${gravatar})` }}

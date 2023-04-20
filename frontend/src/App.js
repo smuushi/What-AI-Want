@@ -13,7 +13,12 @@ import Profile from "./components/Profile/Profile";
 import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
 import UserProfile from "./components/Utils/UserProfile";
+
+import SplashExample from "./components/SplashExample";
+
+
 import Footer from "./components/Footer/Footer";
+
 
 function App() {
   const loggedIn = useSelector((state) => !!state.session.user);
@@ -26,9 +31,11 @@ function App() {
     dispatch(getCurrentUser()).then(() => setLoaded(true));
   }, [dispatch]);
 
-  if (!loggedIn) {
-    redirect = <Redirect to="/" />;
-  }
+
+if (!loggedIn){
+  redirect = <Redirect to = '/'/>
+}
+
 
   return (
     loaded && (
@@ -60,13 +67,18 @@ function App() {
           </Route>
           {/* sara */}
 
-          <Route exact path="/edit/:listId">
-            <MaikeForm type={"Edit"} />
-          </Route>
-          <Route path="/">
-            <Redirect to="/" />
-            <SplashPage />
-          </Route>
+
+         <Route exact path = '/edit/:listId'>
+            <MaikeForm type = {'Edit'}/>
+         </Route>
+         <Route exact path ="/splash">
+          <SplashExample/>
+         </Route>
+      <Route path = '/'>
+        <Redirect to = '/'/>
+        <SplashPage/>
+      </Route>
+
         </Switch>
         <Footer />
       </>

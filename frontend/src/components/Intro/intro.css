@@ -1,0 +1,71 @@
+div.intro_wrapper {
+  height: 100%;
+  /* border: 1px solid red; */
+  display: flex;
+}
+
+div.intro_text {
+  /* border: 1px solid blue; */
+  width: 50%;
+  display:flex;
+  flex-direction: column;
+  padding-left:5rem;
+  justify-content: center;
+}
+h1.intro_header{
+    font-size: 8rem;
+    font-weight: 500;
+}
+h1.intro_header.sub{
+color:var(--primary-1)
+}
+
+div.intro_text p{
+width:550px;
+font-size: 2rem;
+}
+div.intro_text p span{
+   color:var(--primary-1);
+   font-weight: 600;
+
+}
+
+div.intro_image {
+  display: Flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: space-between;
+}
+
+div.intro_circle {
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 300px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.bottom {
+  display: flex;
+  align-self: flex-end;
+  height: 400px;
+  width: 400px;
+}
+.top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.intro_circle.top {
+  background-image: url("https://cdn.discordapp.com/attachments/1096463008143781951/1097647313553477692/img-S5oQSB6K9IQBVJ52EUrm61IF.png");
+    transition: all 0.8s;
+}
+
+div.intro_circle.bottom {
+  background-image: url("https://cdn.discordapp.com/attachments/952591530626023464/1098635373292290203/1681939204993testimage2.png");
+    transition: all 0.8s;
+}
+
