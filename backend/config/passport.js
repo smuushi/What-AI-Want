@@ -75,7 +75,7 @@ exports.restoreUser = (req, res, next) => {
     // console.log(user.toObject())
     // console.log(user)
     const mongooseUser = await User.findOne({_id: user._id})
-    console.log(mongooseUser)
+    // console.log(mongooseUser)
     next();
   })(req, res, next);
 };

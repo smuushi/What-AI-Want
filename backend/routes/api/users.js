@@ -15,26 +15,41 @@ const { Readable } = require("stream");
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.json({
-    message: "GET /api/users",
-  });
+router.get("/profile/:id", async (req, res) => {
+  try {
+    const fileId = req.params.id.trim();
+    const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+      bucketName: "profile",
+    });
+
+    console.log(fileId);
+    const downloadStream = bucket.openDownloadStream(
+      new mongoose.Types.ObjectId(fileId)
+    );
+
+    downloadStream.pipe(res);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 //patch
 // upload profile image
 router.patch(
   "/upload",
-     restoreUser,
+  restoreUser,
   upload.single("profileImage"),
   async (req, res) => {
+       if (!req.user) return res.json(null);
     try {
       const user = req.user;
       const buffer = req.file.buffer; // get the binary data of the uploaded file
       const contentType = req.file.mimetype;
       const filename = req.file.originalname;
-      const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db); // create a new GridFSBucket
+      const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+    bucketName: 'profile'
+  });
 
       // create a write stream to save the file to GridFS
       const uploadStream = bucket.openUploadStream(filename, {
@@ -73,7 +88,6 @@ router.patch(
   }
 );
 
-
 router.get("/current", restoreUser, (req, res) => {
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
@@ -87,12 +101,13 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
-    lists: req.user.list,
-    images: req.user.images
+
+    lists: req.user.lists,
+    images: req.user.images,
+    profileImage:req.user.profileImage
+
   });
 });
-
-
 
 // POST /api/users/register
 router.post("/register", validateRegisterInput, async (req, res, next) => {
@@ -155,8 +170,5 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
   })(req, res, next);
 });
 
-// router.get("/:id", async (req, res, next) => {
-//   const user =
-// })
 
 module.exports = router;
