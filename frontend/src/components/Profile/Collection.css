@@ -5,7 +5,7 @@ ul.imagesContainer {
     list-style-type: none;
     /* border: solid black 30px; */
     overflow-y: scroll;
-    border: solid 2px #25c7ff;
+    border: solid 3px #25c7ff;
     max-height: 37.5vw;
     padding:1vw;
     border-radius:20px;

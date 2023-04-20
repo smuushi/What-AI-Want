@@ -1,9 +1,10 @@
 .mySwiper {
     position: relative;
     top: 1vw;
-    height: 25vw;
-    width: 30vw;
-    border: solid 2px #25c7ff;
+    height: 23.5vw;
+    width: 24vw;
+    border: solid 3px #25c7ff;
+    border-radius: 20px;
   }
   
   .save-list-content-box{
@@ -30,10 +31,39 @@
 
   .savedlist-title{
       position: relative;
-      left: 10.3vw;
-      top: 1vw;
+      left: 1.8vw;
+      bottom: 0.5vw;
       font-size: 2.5vw;
       color: #ff6a00ee;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
       text-decoration: underline;
       letter-spacing: 0.2vw;
+      /* background-color: #25c7ff; */
   }
+
+  .savedlist-title-box{
+    padding-top: 1.5vw;
+    border-bottom: solid 3px #25c7ff ;
+  }
+
+  .pagination-container {
+    position: relative;
+    bottom: 8.5vw;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .custom-pagination {
+    pointer-events: all;
+  }
+  
+  .swiper-container {
+    position: relative;
+  }
+  
+  .custom-pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  

@@ -3,9 +3,7 @@ import "./ListItem.css";
 function ListItem({ prop }) {
   return (
     <div>
-      <div>
-        <div className="list-item-divider-horizontal"></div>
-      </div>
+      <button className="list-item-edit-button">edit</button>
       <div className="list-item-content">
         <div className="list-item-grid">
           <p className="list-item-split">
@@ -34,12 +32,8 @@ function ListItem({ prop }) {
           </p>
         </div>
       </div>
-      <div>
-        <div className="list-item-divider"></div>
-      </div>
-      <div>
-        <div className="list-item-divider-horizontal2"></div>
-      </div>
+
+      <div className="horizontal-divider1"></div>
     </div>
   );
 }
