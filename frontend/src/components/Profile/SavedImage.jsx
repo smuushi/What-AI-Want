@@ -38,8 +38,7 @@ export const SavedImage = (props) => {
     }
 
     let presentingGender;
-    let gender = imageObj?.prompts?.gender
-
+    let gender = imageObj?.prompts?.gender.toLowerCase()
     if (gender === 'boy' || gender === 'man'){
         presentingGender = 'Male Presenting'
     }else if (gender === 'girl' || gender === 'woman'){

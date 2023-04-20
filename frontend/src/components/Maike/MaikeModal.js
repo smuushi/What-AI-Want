@@ -104,7 +104,7 @@ function MaikeModal(props) {
     </div>
     }else if (imageData[0]){
         let presentingGender;
-        let gender = imageData[0].prompts?.gender
+        let gender = imageData[0].prompts?.gender.toLowerCase()
         if (gender === 'boy' || gender === 'man'){
             presentingGender = 'Male Presenting'
         }else if (gender === 'girl' || gender === 'woman'){
