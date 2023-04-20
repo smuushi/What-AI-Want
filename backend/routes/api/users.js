@@ -101,9 +101,11 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
+
     lists: req.user.lists,
     images: req.user.images,
     profileImage:req.user.profileImage
+
   });
 });
 
@@ -161,8 +163,12 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
+
+    return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
+    
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
+
 
 module.exports = router;

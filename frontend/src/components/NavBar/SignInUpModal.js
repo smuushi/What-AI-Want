@@ -15,7 +15,6 @@ function SignInUpModal(props) {
     const handleClick = (e)=>{
         e.preventDefault();
         setShowModal(true);
-        console.log(showModal)
       }
       const type = props.type
       let buttonText;
@@ -35,6 +34,7 @@ function SignInUpModal(props) {
                 <button onClick={handleClick}>{buttonText}</button>
                 {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
+                <i className="fa-solid fa-xmark modalClose" onClick={()=>setShowModal(false)}></i>
                     {formType}
                 </Modal>
                 )}

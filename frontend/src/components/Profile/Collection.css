@@ -1,0 +1,109 @@
+ul.imagesContainer {
+    display: grid;
+    width: 30vw;
+    grid-template-columns: 1fr 1fr;
+    list-style-type: none;
+    /* border: solid black 30px; */
+    overflow-y: scroll;
+    border: solid 2px #25c7ff;
+    max-height: 44.5vw;
+    padding:1vw;
+    border-radius:20px;
+}
+
+ul.imagesContainer li.savedImageItem{
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5vw;
+}
+
+ul.imagesContainer .savedImageItem img{
+    border-radius: 10px;
+    width: 100%;
+}   
+
+ul.imagesContainer .savedImageItem button{
+    /* position: absolute; */
+    position: absolute;
+    right: 2vw;
+    margin: 0.1vw;
+}
+
+/* .savedImageItem:hover{
+    cursor:pointer;
+    box-shadow:0px 0px 5px 2px #ff6900;
+} */
+
+.savedImageItem{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.savedImageItem img:hover{
+    cursor:pointer;
+    box-shadow:0px 0px 5px 5px #ff6900;
+    transform: translate(0px,-5px);
+
+}
+
+.modalShowClose{
+    position:relative;
+    left:96%;
+    top:3%;
+}
+#imageShowContainer{
+    width:75vw;
+    height:42vw;
+    /* display:flex; */
+
+}
+
+#innerImageShowContainer{
+    margin-top:0.5vw;
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+    height:auto;
+}
+
+#showImageImage{
+    height:38vw;
+    width:38vw;
+    border-radius:20px;
+}
+
+#deleteShowImage{
+    font-size:2vw;
+    margin-top:2vw;
+    color:#ff6900;
+    width:10vw;
+    background-color: white;
+    border:1px solid #ff6900;
+    border-radius:20px;
+    
+}
+
+#deleteShowImage:hover{
+    cursor:pointer;
+    background-color: #ff6900;
+    color:white;
+}
+
+#confirmDelete{
+    font-size:2vw;
+    margin-top:2vw;
+    color:red;
+    width:10vw;
+    background-color: white;
+    border:1px solid red;
+    border-radius:20px;
+}
+
+#confirmDelete:hover{
+    cursor:pointer;
+    background-color: red;
+    color:white;
+}

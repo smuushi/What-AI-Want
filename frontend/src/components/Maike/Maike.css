@@ -4,10 +4,11 @@
     flex-direction: column;
     align-items: center;
     border:5px solid #27c7ff;
-    height: 75vh;
+    height: fit-content;
     margin:auto;
+    /* margin-top:5.5vw; */
     border-radius:20px;
-    gap: 3vh;
+    gap: 2vw;
 }
 
 .maike-form-divider{
@@ -20,7 +21,7 @@
     position: relative;
     top: 0.4vh;
     width: 0.1vw;
-    height: 50vh; 
+    height: 27vw; 
     background-color: #27c7ff;
 }
 
@@ -28,26 +29,63 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10vh;
+    gap: 5vw;
 }
 
 .maike-avatar {
-    border: solid 1px gray;
     position: relative;
     top: 1.5vh;
-    width: 7vw;
-    height: 4vh;
-    font-size: 2vh;
+    width: 20vw;
+    /* height: 4vh; */
+    font-size: 4vh;
     border-radius: 20px;
-    background-color: #ff6a00ee;
+    background-color: #ff6900;
     color: white;
     cursor: pointer;
+    margin-top:-1.5vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px #ff6900;
   }
 
   .maike-avatar:hover{
     color: #fcb480;
     background-color: white;
     border: solid 2px #ff6900;
+  }
+
+  #hideSaveButton{
+    position: relative;
+    top:1.5vh;
+    width:20vw;
+    font-size:4vh;
+    border-radius:20px;
+    background-color: #00d084;
+    color:white;
+    margin-top:-1.5vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border: solid 2px #00d084;
+    cursor:default;
+  }
+
+  #hideMaikeButton{
+    position: relative;
+    top:1.5vh;
+    width:20vw;
+    height:auto;
+    font-size:4vh;
+    border-radius:20px;
+    background-color: rgb(198, 198, 198);
+    color:white;
+    margin-top:-1.5vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border: solid 2px rgb(198,198,198);
+    cursor:not-allowed;
   }
 
   .select-container {
@@ -57,10 +95,10 @@
   }
 
   .select-container select{
-    font-size: 2vh;
-    padding-left: 1vw;
+    font-size: 1.5vw;
+    /* padding-left: 1vw; */
     text-align: center; 
-    word-spacing: 0.5vw;
+    word-spacing: 0.5vw
   }
   
   select {
@@ -74,6 +112,8 @@
     color: white;
     width: 20vw;
     cursor: pointer;
+    border: solid 2px #25c7ff;
+    
   }
 
   select:hover{
@@ -82,11 +122,18 @@
     border: solid 2px #25c7ff;
   }
 
+  select:focus{
+    outline:none;
+    
+  }
+  
+
   #maike-title{
-    margin-top: 2vh;
+    margin-top: 1.5vw;
     font-size: 5vw;
     color: #ff6900;
     font-weight: bold;
+    margin-bottom:-1vw;
   }
 
   #maike-style{
@@ -105,6 +152,14 @@
     font-weight: bold;
   }
   
+  .list-maike-buttons{
+    display: flex;
+    gap: 5vw;
 
+
+    margin-bottom:3vw;
+
+    
+  }
   
   

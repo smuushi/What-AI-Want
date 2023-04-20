@@ -24,11 +24,12 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
   let keys = [];
 
   images.forEach((image) => {
-    keys.push(image.AWSKey)
+    keys.push(image?.AWSKey)
   })
 
   tempUrls = await Promise.all(
     keys.map(async (key) => {
+      if (!key) return 
       const tempUrl = await getUrlFromAwsWithKey(key);
       return tempUrl;
     })
@@ -59,9 +60,60 @@ router.post("/save/:imageId", restoreUser, async (req, res, next) => {
 
     mongooseUser.images.push(image._id);
 
+    await mongooseUser.save();
+
+    return res.json({user:mongooseUser,image:image});
+})
+
+router.delete("/:id", restoreUser, async (req, res, next) => {
+    if (!req.user) return res.json(null);
+
+    await Image.deleteOne({_id: req.params.id})
+
+    const mongooseUser = await User.findOne({_id: req.user._id});
+
+    const indexToDelete = mongooseUser.images.indexOf(req.params.id)
+
+    if (indexToDelete > -1) { // only splice array when item is found
+        mongooseUser.images.splice(indexToDelete, 1); // 2nd parameter means remove one item only
+    }
+
     mongooseUser.save();
 
-    return res.json(mongooseUser);
+    return res.json(mongooseUser)
+
+})
+
+router.get("/random", async (req, res, next) => {
+    const images = await Image.aggregate([{$sample: {size:10 }}])
+
+    const imageKeys = [];
+
+    images.forEach((image) => {
+        imageKeys.push(image.AWSKey);
+    })
+
+    const urls = await Promise.all(imageKeys.map(async (key)=> {
+        const url = await getUrlFromAwsWithKey(key);
+        return url
+    }))
+
+    const returns = images.map((imageObj, idx) => {
+
+        const resObj = {...imageObj,
+          tempUrl: urls[idx]
+        };
+
+        return resObj;
+    })
+
+
+
+    // console.log(images)
+
+
+    res.json({images: returns})
+
 })
 
 

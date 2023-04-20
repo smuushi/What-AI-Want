@@ -1,4 +1,3 @@
-
 import { Redirect, Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Route } from "react-router-dom";
@@ -10,14 +9,14 @@ import { useState } from "react";
 import NavIndex from "./components/NavBar/NavIndex";
 import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
-import Team from "./components/Team/Team";
+import Profile from "./components/Profile/Profile";import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
 import UserProfile from "./components/Utils/UserProfile";
 
 
 function App() {
-  const loggedIn = useSelector(state=>!!state.session.user)
-  const dispatch = useDispatch()
+  const loggedIn = useSelector((state) => !!state.session.user);
+  const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
   let redirect;
@@ -40,11 +39,11 @@ if (!loggedIn){
         <NavIndex />
         <Switch>
           <Route exact path="/profile">
-            <p> PROFILE testing</p>
+            <Profile />
             {redirect}
           </Route>
           <Route exact path="/maike">
-            <MaikeForm />
+            <MaikeForm type = {'Create'} />
             {redirect}
           </Route>
           {/* sara */}
@@ -57,19 +56,25 @@ if (!loggedIn){
         <Route exact path="/upload">
           <Upload/>
         </Route>
+
         {/* you can change the route path  */}
         <Route exact path="/profile/show">
           <UserProfile/>
         </Route>
           {/* sara */}
-          <Route path="/">
-            <Redirect to="/" />
-            <SplashPage />
-          </Route>
+      
+         <Route exact path = '/edit/:listId'>
+            <MaikeForm type = {'Edit'}/>
+         </Route>
+      <Route path = '/'>
+        <Redirect to = '/'/>
+        <SplashPage/>
+      </Route>
         </Switch>
       </>
     )
   );
+
 }
 
-export default App
+export default App;

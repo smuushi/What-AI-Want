@@ -1,0 +1,43 @@
+.profile-box-container{
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 3px #25c7ff;
+}
+
+.profile-box-container img{
+    width: 15vw;
+    height: auto;
+}
+
+.profile-image{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+    align-items: center;
+}
+
+.profile-info #username{
+    position: relative;
+    text-align: center;
+    top: 0.5vw;
+    font-size: 2vw;
+}
+
+.profile-info p{
+    text-align: center;
+    font-size: 2vw;
+    color: #ff6a00ee;
+}
+
+.profile-underline{
+    width: 15vw;
+    height: 0.2vw;
+    background-color: #25c7ff;
+}

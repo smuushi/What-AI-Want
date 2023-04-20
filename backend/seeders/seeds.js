@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { mongoURI: db } = require("../config/keys.js");
 const User = require("../models/User");
+const List = require("../models/List.js")
 const bcrypt = require("bcryptjs");
 const { faker } = require("@faker-js/faker");
 
@@ -67,4 +68,5 @@ const insertSeeds = () => {
       console.error(err.stack);
       process.exit(1);
     });
+
 };

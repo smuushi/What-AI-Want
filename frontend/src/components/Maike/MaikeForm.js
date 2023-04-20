@@ -1,52 +1,237 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { createList,updateList,getList,fetchList } from "../../store/lists";
 import "./Maike.css";
 
-const MaikeForm = () => {
+import MaikeModal from "./MaikeModal";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+// test list id '644010777927a88f28c4c4d4'
+
+const MaikeForm = (props) => {
+
+  const dispatch = useDispatch();
+  const formType = props.type
+  const {listId} = useParams()
+  const currentList = useSelector(getList(listId))
+
+
+  useEffect(()=>{
+    dispatch(fetchList(listId))
+  },[listId,dispatch])
+
+  
+
+let defaultClothing;
+let defaultHairColor;
+let defaultGender;
+let defaultBackground;
+let defaultArt;
+let defaultWeb;
+let defaultCreatedList;
+
+
+defaultClothing = ""
+defaultHairColor = ""
+defaultGender = ""
+defaultBackground = ""
+defaultArt = ""
+defaultWeb= ""
+defaultCreatedList= ""
+
+const [clothingValue, setClothingValue] = useState(defaultClothing);
+const [hairColorValue, setHairColorValue] = useState(defaultHairColor);
+const [genderValue, setGenderValue] = useState(defaultGender);
+const [backgroundValue, setBackgroundValue] = useState(defaultBackground);
+const [artStyleValue, setArtStyleValue] = useState(defaultArt);
+const [webStyleValue, setWebStyleValue] = useState(defaultWeb);
+const [createdListId, setCreatedListId] = useState(defaultCreatedList);
+const [loading,setLoading] = useState(false)
+const handleChange = (setter) => (event) => {
+  setter(event.target.value);
+};
+
+useEffect(()=>{
+
+  if (formType !== 'Create'){
+    setClothingValue(currentList?.clothingAccessory)
+    setHairColorValue(currentList?.hairColor)
+    setGenderValue(currentList?.gender)
+    setBackgroundValue(currentList?.background)
+    setArtStyleValue(currentList?.artStyle)
+    setWebStyleValue(currentList?.websiteStyle)
+    
+  }
+},[currentList,formType])
+
+
+  
+  const handleSaveList = () => {
+    const listData = {
+      clothingAccessory: clothingValue,
+      hairColor: hairColorValue,
+      gender: genderValue,
+      background: backgroundValue,
+      artStyle: artStyleValue,
+      websiteStyle: webStyleValue,
+    };
+    dispatch(createList(listData)).then((list) => {
+      setCreatedListId(() => list._id);
+    });
+  };
+  
+  // let saveButton;
+  
+  // let maikeButton;
+  // if (createdListId){
+  //   saveButton = <div id = 'hideSaveButton'>Saved !</div>
+  //   maikeButton = <MaikeModal loading = {loading}
+  //   imageData = {imageData}
+  //   createdListId = {createdListId}
+  //   setLoading = {setLoading}
+  //   setImageData = {setImageData}
+  //   setCreatedListId = {setCreatedListId}
+  //   setClothingValue = {setClothingValue}
+  //   setHairColorValue = {setHairColorValue}
+  //   setGenderValue = {setGenderValue}
+  //   setBackgroundValue = {setBackgroundValue}
+  //   setArtStyleValue = {setArtStyleValue}
+  //   setWebStyleValue = {setWebStyleValue}
+  //   />
+  // }else{
+  //   saveButton = <button className="maike-avatar" onClick={handleSaveList}>
+  //   Save List
+  // </button>
+  //   maikeButton = <button id = 'hideMaikeButton'> MAIke</button>
+  // }
+  // if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  // || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
+  //   saveButton = <div id = 'hideMaikeButton'>Save List</div>
+  // } 
+
+
+  const handleUpdateList = () =>{
+    const listData = {
+      clothingAccessory: clothingValue,
+      hairColor: hairColorValue,
+      gender: genderValue,
+      background: backgroundValue,
+      artStyle: artStyleValue,
+      websiteStyle: webStyleValue,
+      _id:listId
+    };
+    dispatch(updateList(listData)).then((list) => {
+      setCreatedListId(() => listData._id);
+    });
+  };
+  let buttonText;
+  if (formType === 'Edit'){
+    buttonText = 're'
+  }
+
+  let saveButton;
+  let maikeButton;
+
+  if (createdListId){
+    saveButton = <div id = 'hideSaveButton'>Saved !</div>
+    maikeButton = <MaikeModal loading = {loading}
+    createdListId = {createdListId}
+    setLoading = {setLoading}
+    setCreatedListId = {setCreatedListId}
+    setClothingValue = {setClothingValue}
+    setHairColorValue = {setHairColorValue}
+    setGenderValue = {setGenderValue}
+    setBackgroundValue = {setBackgroundValue}
+    setArtStyleValue = {setArtStyleValue}
+    setWebStyleValue = {setWebStyleValue}
+    formType = {formType}
+    />
+  }else{
+    if (formType === 'Create'){
+    saveButton = <button className="maike-avatar" onClick={handleSaveList}>
+    Save List
+    </button>
+    }else{
+      saveButton = <button className="maike-avatar" onClick={handleUpdateList}>
+      Update List
+      </button>
+    }
+    maikeButton = <button id = 'hideMaikeButton'>{buttonText}MAIke</button>
+  }
+  if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
+    saveButton = <div id = 'hideMaikeButton'>Save List</div>
+  } 
+
   const HairColor = {
-    Red: "red",
-    White: "white",
-    Pink: "pink",
-    Blue: "blue",
-    Black: "black",
-    Brown: "brown",
-    Green: "green",
+    Red: "Red",
+    Silver: 'Silver',
+    White: "White",
+    Pink: "Pink",
+    Blue: "Blue",
+    Black: "Black",
+    Brown: "Brown",
+    Green: "Green",
+    Blonde: 'Blonde',
+    Grey: 'Grey'
   };
 
+  
   const ClothingAcessory = {
-    "Maid Uniform": "maid uniform",
-    "T-shirt": "t-shirt",
-    "Sailor Uniform": "sailor uniform",
-    Tuxedo: "tuxedo",
-    Hoodie: "hoodie",
+    "T-shirt": "T-shirt",
+    Tuxedo: "Tuxedo",
+    Hoodie: "Hoodie",
+    'Business-Suit':'Business-Suit',
+    Blazer: 'Blazer',
+    Beanie: 'Beanie',
+    Scarf: 'Scarf',
+    Robe: 'Mage Robe',
+    "Maid-Uniform": "Maid-Uniform",
+    "Sailor-Uniform": "Sailor-Uniform",
+    
   };
-
+  
   const Gender = {
     "Male-Presenting": "boy",
     "Female-Presenting": "girl",
   };
-
+  
   const Background = {
-    Forest: "forest",
-    City: "city",
-    Arcade: "arcade",
-    Mall: "mall",
-    Park: "park",
-    Mountain: "mountain",
-    Beach: "beach",
-    Ocean: "ocean",
+
+    None: 'None',
+    Forest: "Forest",
+    Night: 'Night',
+    City: "City",
+    Arcade: "Arcade",
+    Mall: "Mall",
+    Park: "Park",
+    Mountain: "Mountain",
+    Beach: "Beach",
+    Ocean: "Ocean",
+    Desert: 'Desert',
+    Prairie: 'Prairie',
+    Lakes: 'Lakes',
+    Volcano: 'Volcano'
+
   };
 
   const ArtStyle = {
     Anime: "Anime Key Visuals",
     Game: "Game Key Visuals",
     Digital: "Digital Art",
-    "Visual Novel": "Visual Novel Key Visuals",
+    "Visual-Novel": "Visual Novel Key Visuals",
     "Kids Drawing": "Kids Drawing",
     Baroque: "Baroque Art",
+    "3D-Render": "3D-Render"
   };
 
   const WebStyle = {
-    Pixiv: "pixiv",
-    Twitter: "twitter",
+    Pixiv: "Pixiv",
+    Twitter: "Twitter",
+
+    Instagram: 'Instagram',
+    deviantart:'Deviantart'
   };
 
   return (
@@ -57,9 +242,13 @@ const MaikeForm = () => {
         <div className="maike-form-content">
           <h1 id="maike-appearance">APPEARANCE</h1>
           <div className="select-container">
-            <select>
-              <option value="" disabled selected>
-                Clothing/Acessory ▽
+            <select
+              value={clothingValue}
+              onChange={handleChange(setClothingValue)}
+            >
+
+              <option value="" disabled >
+                Clothing/Acessory ▼
               </option>
               {Object.entries(ClothingAcessory).map(([cloth, value]) => (
                 <option key={cloth} value={value}>
@@ -69,9 +258,14 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
-              <option value="" disabled selected>
-                Hair-Color ▽
+            <select
+              value={hairColorValue}
+              onChange={handleChange(setHairColorValue)}
+            >
+
+              <option value="" disabled>
+
+                Hair-Color ▼
               </option>
               {Object.entries(HairColor).map(([color, value]) => (
                 <option key={color} value={value}>
@@ -81,9 +275,12 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
-              <option value="" disabled selected>
-                Gender ▽
+            <select value={genderValue} onChange={handleChange(setGenderValue)}>
+
+
+              <option value="" disabled>
+
+                Gender ▼
               </option>
               {Object.entries(Gender).map(([gender, value]) => (
                 <option key={gender} value={value}>
@@ -99,9 +296,14 @@ const MaikeForm = () => {
         <div className="maike-form-content">
           <h1 id="maike-style">STYLE</h1>
           <div className="select-container">
-            <select>
-              <option value="" disabled selected>
-                Background ▽
+            <select
+              value={backgroundValue}
+              onChange={handleChange(setBackgroundValue)}
+            >
+
+              <option value="" disabled>
+
+                Background ▼
               </option>
               {Object.entries(Background).map(([background, value]) => (
                 <option key={background} value={value}>
@@ -111,9 +313,14 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
-              <option value="" disabled selected>
-                ArtStyle ▽
+            <select
+              value={artStyleValue}
+              onChange={handleChange(setArtStyleValue)}
+            >
+
+              <option value="" disabled>
+
+                Art-Style ▼
               </option>
               {Object.entries(ArtStyle).map(([artstyle, value]) => (
                 <option key={artstyle} value={value}>
@@ -123,9 +330,14 @@ const MaikeForm = () => {
             </select>
           </div>
           <div className="select-container">
-            <select>
-              <option value="" disabled selected>
-                WebStyle ▽
+            <select
+              value={webStyleValue}
+              onChange={handleChange(setWebStyleValue)}
+            >
+
+              <option value="" disabled>
+
+                Web-Style ▼
               </option>
               {Object.entries(WebStyle).map(([webstyle, value]) => (
                 <option key={webstyle} value={value}>
@@ -137,7 +349,12 @@ const MaikeForm = () => {
         </div>
       </div>
 
-      <button className="maike-avatar">Maike</button>
+      <div className="list-maike-buttons">
+        {saveButton}
+
+
+        {maikeButton}
+      </div>
     </div>
   );
 };

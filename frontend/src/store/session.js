@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { receiveImage } from "./images";
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
@@ -6,7 +7,7 @@ const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
 // Dispatch receiveCurrentUser when a user logs in.
-const receiveCurrentUser = (currentUser) => ({
+export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser,
 });
@@ -63,9 +64,9 @@ export const getCurrentUser = () => async (dispatch) => {
   return dispatch(receiveCurrentUser(user));
 };
 
-export const updateCurrentUser = currentUser => async(dispatch) => {
-  const {username,email,lists,images} = user
-  const res = await jwtFetch(`/api/users/${currentUser.id}`,{
+export const updateCurrentUser = user => async(dispatch) => {
+  const {username,email,lists,images} = user;
+  const res = await jwtFetch(`/api/users/${user.id}`,{
     method: 'PATCH',
     body: JSON.stringify({
       user:{
@@ -76,8 +77,8 @@ export const updateCurrentUser = currentUser => async(dispatch) => {
       }
     })
   });
-  let user = await res.json()
-  return dispatch(receiveCurrentUser(user))
+  let userData = await res.json()
+  return dispatch(receiveCurrentUser(userData))
 }
 
 export const saveImage = (imageId)=> async(dispatch) => {
@@ -86,8 +87,9 @@ export const saveImage = (imageId)=> async(dispatch) => {
   })
 
   if (response.ok){
-      const user = await response.json()
-      dispatch(receiveCurrentUser(user))
+      const data = await response.json()
+      dispatch(receiveCurrentUser(data.user))
+      dispatch(receiveImage(data.image))
   }
 }
 
