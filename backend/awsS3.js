@@ -7,7 +7,7 @@ const AWS = require("aws-sdk");
 const s3 = new AWS.S3({ apiVersion: "2006-03-01", accessKeyId: accessKey, secretAccessKey: secretKey});
 
 
-const NAME_OF_BUCKET = (process.env.NODE_ENV === "production")? "what-ai-want-mern-prod" : "what-ai-want-mern-dev"; // <-- Use your bucket name here
+const NAME_OF_BUCKET = (process.env.NODE_ENV === "production")? "what-ai-want-mern-dev" : "what-ai-want-mern-dev"; // <-- Use your bucket name here
 const fs = require("fs")
 
 const fetch = require("node-fetch")
