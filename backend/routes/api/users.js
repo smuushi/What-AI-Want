@@ -14,28 +14,7 @@ const { Readable } = require("stream");
 
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
-// //getting profile pictures from db
 
-// router.get("/profile/:id", async (req, res) => {
-//   try {
-//     const fileId = req.params.id;
-//     const bucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
-//       bucketName: "profile",
-//     });
-
-//     console.log(fileId)
-//   const downloadStream = bucket.openDownloadStream(
-//     new mongoose.Types.ObjectId(fileId)
-//   );
-
-//     downloadStream.pipe(res);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ message: "Server error" });
-//   }
-
-
-// });
 router.get("/profile/:id", async (req, res) => {
   try {
     const fileId = req.params.id.trim();

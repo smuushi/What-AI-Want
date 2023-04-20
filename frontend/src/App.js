@@ -12,7 +12,7 @@ import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
 import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
-import UserProfile from "./components/UserProfile/UserProfile";
+import UserProfile from "./components/Utils/UserProfile";
 
 
 function App() {
