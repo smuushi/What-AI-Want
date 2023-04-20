@@ -112,7 +112,6 @@ export const deleteList = (listId) => async (dispatch) => {
   });
   if (response.ok) {
     const userInfo = await response.json();
-    debugger
     dispatch(receiveCurrentUser(userInfo));
   }
 };

@@ -23,8 +23,8 @@ function EditAvModal(){
             </button>
             {showModal &&(
                 <Modal>
-                <i className="fa-solid fa-xmark removelistModal " onClick={()=>setShowModal(false)}></i>
-                <Upload/>
+                <i className="fa-solid fa-xmark editAvModalX " onClick={()=>setShowModal(false)}></i>
+                <Upload setShowModal = {setShowModal}/>
                 </Modal>
             )}
         </>
