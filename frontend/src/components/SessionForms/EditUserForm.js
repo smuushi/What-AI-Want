@@ -36,7 +36,9 @@ const EditUserForm = (props)=>{
       const handleSubmit = (e) => {
         e.preventDefault();
         const user = {...currentUser,email,username};
-        dispatch(updateCurrentUser(user)).then(()=>{props.setShowModal(false)});
+        dispatch(updateCurrentUser(user)).then(()=>{props.setShowModal(false)}).catch(() => {
+          console.log("hi. i love to just take up space on the console.. hehe")
+        });
       };
 
      return (
@@ -44,7 +46,9 @@ const EditUserForm = (props)=>{
          <h2>Edit your info!</h2>
          <div className="errors">{errors?.email}</div>
          <label>
-     
+            <div>
+               Email 
+            </div>
              <input
              type="text"
              value={email}
@@ -54,7 +58,9 @@ const EditUserForm = (props)=>{
          </label>
          <div className="errors">{errors?.username}</div>
          <label>
-         
+            <div>
+              Username
+            </div>
              <input
              type="text"
              value={username}
