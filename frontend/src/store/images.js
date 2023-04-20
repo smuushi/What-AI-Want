@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { receiveCurrentUser } from "./session";
 
 export const RECEIVE_IMAGES = "images/RECEIVE_IMAGES";
 export const RECEIVE_IMAGE = "images/RECEIVE_IMAGE";
@@ -9,7 +10,7 @@ const receiveImages = (images) => ({
   images,
 });
 
-const receiveImage = (image) => ({
+export const receiveImage = (image) => ({
   type: RECEIVE_IMAGE,
   image,
 });
@@ -65,7 +66,9 @@ export const deleteImage = (imageId) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
+    const data = await response.json()
     dispatch(removeImage(imageId));
+    dispatch(receiveCurrentUser(data))
   }
 };
 
@@ -73,7 +76,6 @@ const imagesReducer = (state = {}, action) => {
   let nextState = { ...state };
   switch (action.type) {
     case RECEIVE_IMAGES:
-      debugger;
       action.images.images.forEach((image) => {
         nextState[image._id] = image;
       });

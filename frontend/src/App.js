@@ -11,6 +11,7 @@ import MaikeForm from "./components/Maike/MaikeForm";
 import About from "./components/About/About";
 import Profile from "./components/Profile/Profile";import Team from "./components/Team/Team";
 import Upload from "./components/Utils/Upload";
+import UserProfile from "./components/Utils/UserProfile";
 
 
 function App() {
@@ -55,16 +56,24 @@ if (!loggedIn){
         <Route exact path="/upload">
           <Upload/>
         </Route>
-      <Route exact path = '/edit/:listId'>
-        <MaikeForm type = {'Edit'}/>
-      </Route>
+
+        {/* you can change the route path  */}
+        <Route exact path="/profile/show">
+          <UserProfile/>
+        </Route>
+          {/* sara */}
+      
+         <Route exact path = '/edit/:listId'>
+            <MaikeForm type = {'Edit'}/>
+         </Route>
       <Route path = '/'>
         <Redirect to = '/'/>
         <SplashPage/>
       </Route>
-      </Switch>
-    </>
-  ))
+        </Switch>
+      </>
+    )
+  );
 
 }
 
