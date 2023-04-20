@@ -191,6 +191,7 @@ useEffect(()=>{
     Beanie: 'Beanie',
     Scarf: 'Scarf',
     Headphones: 'Headphones',
+    Sunglasses: 'Sunglasses',
     Robe: 'Mage Robe',
     Armor: 'Armor',
     "Maid-Uniform": "Maid-Uniform",
@@ -199,10 +200,10 @@ useEffect(()=>{
   };
   
   const Gender = {
-    "Male-Presenting": "boy",
-    'Male-Presenting(older)': 'man',
-    "Female-Presenting": "girl",
-    "Female-Presenting(older)": "woman",
+    "Male-Presenting": "Boy",
+    'Male-Presenting(older)': 'Man',
+    "Female-Presenting": "Girl",
+    "Female-Presenting(older)": "Woman",
     
   };
   
@@ -213,6 +214,7 @@ useEffect(()=>{
     Winter: 'Winter',
     Night: 'Night',
     City: "City",
+    Cafe: 'Cafe',
     Arcade: "Arcade",
     Mall: "Mall",
     Park: "Park",
@@ -229,7 +231,7 @@ useEffect(()=>{
 
   const ArtStyle = {
     Anime: "Anime Key Visuals",
-    Game: "Video Game Promotional Art",
+    Game: "Video Game Promo Art",
     "Visual-Novel": "Visual Novel Key Visuals",
     "Kids Drawing": "Kids Drawing",
     "3D-Render": "3D-Render",
@@ -238,7 +240,8 @@ useEffect(()=>{
     Impresssionism: 'Impressionism Art',
     Digital: "Digital Art",
     "Pixel-Art": "Pixel-Art",
-    "Cel-Shaded-Art": 'Cel-Shaded-Art'
+    "Cel-Shaded-Art": 'Cel-Shaded-Art',
+    Pixar:'Pixar-Art-Style'
   };
 
   const WebStyle = {

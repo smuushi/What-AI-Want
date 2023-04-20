@@ -51,8 +51,9 @@ ul.imagesContainer .savedImageItem button{
 
 .modalShowClose{
     position:relative;
-    left:96%;
+    left:95%;
     top:3%;
+    font-size:2vw;
 }
 #imageShowContainer{
     width:75vw;
@@ -62,7 +63,7 @@ ul.imagesContainer .savedImageItem button{
 }
 
 #innerImageShowContainer{
-    margin-top:0.5vw;
+    /* margin-top:0.5vw; */
     display:flex;
     align-items:center;
     justify-content: space-evenly;

@@ -48,7 +48,7 @@ export const SavedImage = (props) => {
     let button;
     if(showConfirm){
         button = <button
-            onClick={handleDeleteClick} id = 'confirmDelete'>Confirm?</button>
+            onClick={handleDeleteClick} id = 'confirmDelete'>Confirm?</button> 
     }else{
         button= <button id = 'deleteShowImage'
             onClick={()=>{setShowConfirm(true)}}>Delete?</button>
@@ -98,7 +98,7 @@ export const SavedImage = (props) => {
 
                 </Modal>
                 )}
-                <img src={imageUrl} />
+                <img alt = '' src={imageUrl} />
                 
             </li>
         </>
