@@ -1,21 +1,27 @@
 .profile-box-container{
     width: 15vw;
     display: flex;
+    position:relative;
     flex-direction: column;
     align-items: center;
     border: solid 3px #25c7ff;
     border-radius: 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .profile-box-container img{
     width: 15vw;
     height: auto;
+    border-top-left-radius: 18px; 
+     border-top-right-radius: 18px;
 }
 
 .profile-image{
     display: flex;
     flex-direction: column;
+    /* border-top-left-radius: 15px; */
+    /* border-top-right-radius: 15px; */
+    /* overflow:hidden; */
 }
 
 .profile-info{
@@ -44,4 +50,48 @@
     width: 15vw;
     height: 0.2vw;
     background-color: #25c7ff;
+}
+
+#editUserButton{
+    position:absolute;
+    left:16vw;
+    top:16.6vw;
+    border:none;
+    background-color: #ff6900;
+    color:white;
+    width:3vw;
+    font-size:1.5vw;
+    border-radius:0.8vw;
+    border:1px solid #ff6900;
+    
+}
+
+#editUserButton:hover{
+    cursor:pointer;
+    background-color: white;
+    color:#ff6900
+}
+
+#editPhotoButton{
+    position:absolute;
+    background-color: #ff6900;
+    color:white;
+    border-top:1px solid #ff6900;
+    border-left:1px solid #ff6900;
+    border-right:none;
+    border-bottom:none;
+    padding-top:0.4vw;
+    left: 12.5vw;
+    top:12.5vw;
+    width:2.5vw;
+    height:2.5vw;
+    font-size:1vw;
+    /* border-radius:100%; */
+    border-top-left-radius:0.5vw;
+}
+
+#editPhotoButton:hover{
+    cursor:pointer;
+    background-color: white;
+    color:#ff6900
 }

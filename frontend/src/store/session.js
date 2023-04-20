@@ -65,17 +65,10 @@ export const getCurrentUser = () => async (dispatch) => {
 };
 
 export const updateCurrentUser = user => async(dispatch) => {
-  const {username,email,lists,images} = user;
-  const res = await jwtFetch(`/api/users/${user.id}`,{
+  const {username,email} = user;
+  const res = await jwtFetch(`/api/users/${user._id}`,{
     method: 'PATCH',
-    body: JSON.stringify({
-      user:{
-        username,
-        email,
-        lists,
-        images
-      }
-    })
+    body: JSON.stringify({...user})
   });
   let userData = await res.json()
   return dispatch(receiveCurrentUser(userData))
@@ -89,7 +82,7 @@ export const saveImage = (imageId)=> async(dispatch) => {
   if (response.ok){
       const data = await response.json()
       dispatch(receiveCurrentUser(data.user))
-      console.log(data)
+      // console.log(data)
       // dispatch(receiveImage(data.image))
       return data
   }
