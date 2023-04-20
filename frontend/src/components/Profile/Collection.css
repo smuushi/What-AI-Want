@@ -40,6 +40,7 @@ ul.imagesContainer .savedImageItem button{
     display:flex;
     justify-content: center;
     align-items:center;
+    
 }
 
 .savedImageItem img:hover{
@@ -74,6 +75,7 @@ ul.imagesContainer .savedImageItem button{
     height:38vw;
     width:38vw;
     border-radius:20px;
+    
 }
 
 #imageShowButtons{

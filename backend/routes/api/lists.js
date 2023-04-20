@@ -77,7 +77,20 @@ router.delete("/:id", restoreUser, async (req, res, next) => {
      if (!req.user) return res.json(null);
   try {
     const deletedList = await List.findOneAndDelete({ _id: req.params.id });
-    return res.json(deletedList);
+
+
+    const mongooseUser = await User.findOne({_id: req.user._id});
+
+    const indexToDelete = mongooseUser.lists.indexOf(req.params.id);
+
+    if (indexToDelete > -1) { // only splice array when item is found
+        mongooseUser.lists.splice(indexToDelete, 1); // 2nd parameter means remove one item only
+    }
+
+    mongooseUser.save();
+
+
+    return res.json(mongooseUser);
   } catch (err) {
     console.error(err);
     return next(err);

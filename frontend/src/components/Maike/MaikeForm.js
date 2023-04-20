@@ -190,6 +190,7 @@ useEffect(()=>{
     "T-shirt": "T-shirt",
     Beanie: 'Beanie',
     Scarf: 'Scarf',
+    'Baseball-Cap':'Baseball-Cap',
     Headphones: 'Headphones',
     Sunglasses: 'Sunglasses',
     Robe: 'Mage Robe',

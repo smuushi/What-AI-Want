@@ -1,9 +1,10 @@
 import "./ListItem.css";
+import ListOptions from "./ListOptions";
 
 function ListItem({ prop }) {
   return (
     <div>
-      <button className="list-item-edit-button">edit</button>
+      <ListOptions list = {prop}/>
       <div className="list-item-content">
         <div className="list-item-grid">
           <p className="list-item-split">
