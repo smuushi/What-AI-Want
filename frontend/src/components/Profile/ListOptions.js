@@ -17,5 +17,29 @@ const ListOptions = (props)=>{
         }
         document.addEventListener('click',closeMenu)
         return ()=>document.removeEventListener("click",closeMenu)
-    })
+    },[showMenu]);
+
+    let displayMenu;
+    if (showMenu){
+        displayMenu = 'listOptions'
+    }else{
+        displayMenu = 'hideMenu'
+    }
+
+    return(
+        <>
+            <div id = 'listOptionsContainer'>
+                <button onClick={openMenu}></button>
+            </div>
+            <ul id = {displayMenu}>
+                <li>
+
+                </li>
+                <li>
+
+                </li>
+            </ul>
+
+        </>
+    )
 }
