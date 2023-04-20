@@ -6,7 +6,7 @@ ul.imagesContainer {
     /* border: solid black 30px; */
     overflow-y: scroll;
     border: solid 2px #25c7ff;
-    max-height: 44.5vw;
+    max-height: 37.5vw;
     padding:1vw;
     border-radius:20px;
 }
@@ -75,6 +75,11 @@ ul.imagesContainer .savedImageItem button{
     border-radius:20px;
 }
 
+#imageShowButtons{
+    display:flex;
+    flex-direction:column;
+}
+
 #deleteShowImage{
     font-size:2vw;
     margin-top:2vw;
@@ -89,6 +94,23 @@ ul.imagesContainer .savedImageItem button{
 #deleteShowImage:hover{
     cursor:pointer;
     background-color: #ff6900;
+    color:white;
+}
+
+#downloadImage{
+    font-size:2vw;
+    margin-top:2vw;
+    color:white;
+    width:10vw;
+    background-color: #ff6900;
+    border:1px solid #ff6900;
+    border-radius:20px;
+}
+
+#downloadImage:hover{
+    cursor:pointer;
+    background-color: #00d084;
+    border:1px solid #00d084;
     color:white;
 }
 

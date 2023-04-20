@@ -179,14 +179,20 @@ useEffect(()=>{
 
   
   const ClothingAcessory = {
-    "T-shirt": "T-shirt",
-    Tuxedo: "Tuxedo",
-    Hoodie: "Hoodie",
+    Formal:'Formal',
     'Business-Suit':'Business-Suit',
+    Tuxedo: "Tuxedo",
+    Cardigan: 'Cardigan',
+    Peacoat: 'Peacoat',
     Blazer: 'Blazer',
+    Hoodie: "Hoodie",
+    'Track-Suit' : 'Track-Suit',
+    "T-shirt": "T-shirt",
     Beanie: 'Beanie',
     Scarf: 'Scarf',
+    Headphones: 'Headphones',
     Robe: 'Mage Robe',
+    Armor: 'Armor',
     "Maid-Uniform": "Maid-Uniform",
     "Sailor-Uniform": "Sailor-Uniform",
     
@@ -194,42 +200,51 @@ useEffect(()=>{
   
   const Gender = {
     "Male-Presenting": "boy",
+    'Male-Presenting(older)': 'man',
     "Female-Presenting": "girl",
+    "Female-Presenting(older)": "woman",
+    
   };
   
   const Background = {
 
     None: 'None',
     Forest: "Forest",
+    Winter: 'Winter',
     Night: 'Night',
     City: "City",
     Arcade: "Arcade",
     Mall: "Mall",
     Park: "Park",
+    Castle: 'Castle',
+    Mansion: 'Mansion',
     Mountain: "Mountain",
     Beach: "Beach",
-    Ocean: "Ocean",
     Desert: 'Desert',
-    Prairie: 'Prairie',
-    Lakes: 'Lakes',
-    Volcano: 'Volcano'
+    Volcano: 'Volcano',
+    Magical: 'Magical',
+    Musical: 'Musical'
 
   };
 
   const ArtStyle = {
     Anime: "Anime Key Visuals",
-    Game: "Game Key Visuals",
-    Digital: "Digital Art",
+    Game: "Video Game Promotional Art",
     "Visual-Novel": "Visual Novel Key Visuals",
     "Kids Drawing": "Kids Drawing",
+    "3D-Render": "3D-Render",
+    Realistic: 'Realistic',
     Baroque: "Baroque Art",
-    "3D-Render": "3D-Render"
+    Impresssionism: 'Impressionism Art',
+    Digital: "Digital Art",
+    "Pixel-Art": "Pixel-Art",
+    "Cel-Shaded-Art": 'Cel-Shaded-Art'
   };
 
   const WebStyle = {
     Pixiv: "Pixiv",
     Twitter: "Twitter",
-
+    Artvee: 'Artvee',
     Instagram: 'Instagram',
     deviantart:'Deviantart'
   };
