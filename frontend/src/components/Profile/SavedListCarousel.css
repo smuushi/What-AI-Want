@@ -1,9 +1,11 @@
 .mySwiper {
     position: relative;
     top: 1vw;
+    right: 5vw;
     height: 23.5vw;
-    width: 24vw;
-    border: solid 3px #25c7ff;
+    width: 33vw;
+    /* border: solid 3px #25c7ff; */
+    box-shadow: 0 4px 8px 2px grey;
     border-radius: 20px;
   }
   
@@ -31,19 +33,19 @@
 
   .savedlist-title{
       position: relative;
-      left: 1.8vw;
+      left: 2vw;
       bottom: 0.5vw;
       font-size: 2.5vw;
-      color: #ff6a00ee;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-      text-decoration: underline;
-      letter-spacing: 0.2vw;
+      color: black;
+      /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); */
+      /* text-decorats */
+      /* letter-spacing: 0.2vw; */
       /* background-color: #25c7ff; */
   }
 
   .savedlist-title-box{
     padding-top: 1.5vw;
-    border-bottom: solid 3px #25c7ff ;
+    background-color: #00000012;
   }
 
   .pagination-container {

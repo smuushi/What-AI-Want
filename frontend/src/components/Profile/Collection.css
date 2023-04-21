@@ -1,12 +1,13 @@
 ul.imagesContainer {
     display: grid;
-    width: 38vw;
+    width: 42vw;
     grid-template-columns: 1fr 1fr 1fr;
     list-style-type: none;
     /* border: solid black 30px; */
     overflow-y: scroll;
-    border: solid 3px #25c7ff;
-    max-height: 37.5vw;
+    /* border: solid 3px #25c7ff; */
+    box-shadow: 0 4px 8px 2px grey;
+    max-height: 40.19vw;
     padding:1vw;
     border-radius:20px;
 }
@@ -141,11 +142,13 @@ ul.imagesContainer .savedImageItem button{
 
 #collectionImageContainer h1{
     font-size:3vw;
-    color:#ff6900;
-    text-decoration: underline;
+    color: #f07f2fd9;
+    /* text-decoration: underline; */
     margin-bottom:0.5vw;
 }
 
 #collectionImageContainer h1 span{
-    color:#25c7ff;
+    color: #FF6900;
+    font-weight: bold;
+    /* font-size: 2.5vw; */
 }
