@@ -9,8 +9,13 @@
     gap: 10vw;
     /* margin-left: 20vw; */
     /* padding-bottom: 5vh; */
+    height:5vw;
+    /* border: 1px solid red; */
     align-items: center;
     z-index: 3;
+    background-color: white;
+    width:100%;
+    box-shadow:0 0.5px 3px 1px rgb(208, 207, 207);
 }
 
 .links-nav{
@@ -26,7 +31,7 @@
     padding: 0.2vw;
     /* border: 3px solid #25c8ffc9;  */
     align-items:center;
-    margin-bottom: 3.6rem;
+    /* margin-bottom: 3.6rem; */
     /* border-bottom: solid 3px var(--primary-1); */
     /* margin-top:1.8vw; */
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;   */
@@ -41,6 +46,10 @@
     color: black;
     letter-spacing: 0.08vw;
     font-size: 3vw;
+}
+
+.links-nav span{
+  color:#ff6900;
 }
 
 .links-nav a.active{
@@ -61,9 +70,7 @@
   }
   
   .dropdown-toggle i {
-    position: relative;
-    bottom: 1.35vw;
-    left: 3vw;
+    margin-left:5vw;
     border:1px solid #25c7ff;
     padding:1vw;
     border-radius:100%;
@@ -86,8 +93,8 @@
   
   .profileButtonDropdown {
     position: absolute;
-    left: -2.4vw;
-    top: -1vw;
+    /* left: -2.4vw; */
+    top:-0.1vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,9 +123,5 @@
     cursor: pointer;
   }
   
-  .loggedin-logo{
-    position: relative;
-    right: 10.5vw;
-  }
   
 

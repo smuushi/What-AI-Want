@@ -1,6 +1,5 @@
 import React, {useState,createContext} from 'react'
 import { Modal } from '../../context/Modal'
-import { useDispatch } from 'react-redux'
 import EditUserForm from './EditUserForm'
 
 
@@ -10,7 +9,7 @@ export {ModalContext}
 
 function EditUserModal(){
     const [showModal,setShowModal] = useState(false)
-    const dispatch = useDispatch()
+
    
 
     const handleClick = (e)=>{

@@ -18,6 +18,10 @@ h1.intro_header.sub {
   color: var(--primary-1);
 }
 
+h1.intro_header.sub span{
+  color: #ff6900;
+}
+
 div.intro_text p {
   width: 37.5rem;
   font-size: 2rem;

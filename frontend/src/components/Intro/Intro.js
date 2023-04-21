@@ -21,7 +21,7 @@ if(about){
     <div className="intro_wrapper" data-aos="fade-up">
       <div className="intro_text" data-aos="fade-down">
         <h1 className="intro_header">Express Your</h1>
-        <h1 className="intro_header sub">Maike</h1>
+        <h1 className="intro_header sub">M<span>AI</span>ke!</h1>
         <p>
           Create your own custom character with just a few clicks and show off
           your unique style with <span>What-Ai-Want</span>'s advanced image

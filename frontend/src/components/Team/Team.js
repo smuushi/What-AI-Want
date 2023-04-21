@@ -29,7 +29,6 @@ export default Team;
 const TeamMemberCard = (props) => {
   let gravatar;
   let description;
-  let name;
   let github;
   let avatar;
   let linkedin;
@@ -70,6 +69,9 @@ const TeamMemberCard = (props) => {
       github = "https://github.com/smuushi";
       linkedin = "https://www.linkedin.com/in/michael-shih-2422a1127/";
       break;
+
+      default:
+        return
   }
 
   return (
