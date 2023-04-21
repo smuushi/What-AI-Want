@@ -19,7 +19,7 @@ function EditUserModal(){
 
     return(
         <>
-            <button onClick={handleClick} id  ='editUserButton'>Edit</button>
+            <button onClick={handleClick} id  ='editUserButton'><i className="fa-solid fa-user-pen"></i></button>
             {showModal &&(
                 <Modal>
                 <i className="fa-solid fa-xmark removelistModal " onClick={()=>setShowModal(false)}></i>

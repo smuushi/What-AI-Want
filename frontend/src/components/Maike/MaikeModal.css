@@ -127,12 +127,16 @@
     border:1px solid #25c7ff;
     box-shadow: 0 0 10px 5px #25c7ff;
     transform: translate(0px,-5px);
+    filter:contrast(130%);
+    filter:brightness(1.05)
 }
 
 #upperLeftModal:focus,#bottomLeftModal:focus,#upperRightModal:focus,#bottomRightModal:focus{
     border:1px solid #ff6900;
     box-shadow: 0 0 10px 5px #ff6900;
     transform: translate(0px,-5px);
+    filter:contrast(130%);
+    filter:brightness(1.05)
     
 }
 

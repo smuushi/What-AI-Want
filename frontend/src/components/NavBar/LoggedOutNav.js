@@ -12,7 +12,6 @@ const LoggedOutNav = () => {
           <Logo />
         
         <div id="signup">
-          <p>Make your Aivatar Today!</p>
           <div id="userAuthButtons">
             <SignInUpModal type={signUp} />
             <SignInUpModal id="login" type={login} />

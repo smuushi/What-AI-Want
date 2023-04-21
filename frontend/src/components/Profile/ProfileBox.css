@@ -42,7 +42,7 @@
     position: relative;
     text-align: center;
     top: 0.5vw;
-    font-size: 2vw;
+    font-size: 3vw;
     color: black;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     text-transform: capitalize;
@@ -64,15 +64,19 @@
 
 #editUserButton{
     position:absolute;
-    left:16vw;
-    top:16.6vw;
+    left:12.5vw;
+    top:16vw;
     border:none;
     background-color: #ff6900;
     color:white;
-    width:3vw;
-    font-size:1.5vw;
-    border-radius:0.8vw;
+    width:2.5vw;
+    font-size:1vw;
+    border-radius:0.5vw;
     border:1px solid #ff6900;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    height:2.5vw;
     
 }
 
@@ -92,7 +96,7 @@
     border-bottom:none;
     padding-top:0.4vw;
     left: 12.5vw;
-    top:12.3vw;
+    top:12.5vw;
     width:2.5vw;
     height:2.5vw;
     font-size:1vw;

@@ -2,21 +2,40 @@ import "./intro.css";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SignInUpModal from "../NavBar/SignInUpModal";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Intro = () => {
+  const history = useHistory()
   useEffect(() => {
     AOS.init({
       once: false,
     });
     AOS.refresh();
   }, []);
-
+const loggedIn = useSelector((state) => !!state.session.user);
 const handleScroll=()=>{
 const about = document.getElementById("about");
 if(about){
     about.scrollIntoView({behavior:"smooth"})
 }
-}
+} 
+  let buttons;
+  if (!loggedIn){
+    buttons = 
+    <>
+      <SignInUpModal page = {'splash'}/>
+            <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
+    </>
+  }else{
+    buttons = 
+    <>
+      <div onClick={()=>history.push('/maike')} 
+      className="intro_button"> Let's M<span style = {{color:'#ffb347',opacity:'100%'}}>AI</span>ke!</div>
+      <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
+    </>
+  }
   return (
     <div className="intro_wrapper" data-aos="fade-up">
       <div className="intro_text" data-aos="fade-down">
@@ -28,8 +47,8 @@ if(about){
           generation technology.
         </p>
         <div className="intro_button_div">
-            <div className="intro_button">Join Now</div>
-            <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
+            {/* <div className="intro_button">Join Now</div> */}
+            {buttons}
         </div>
       </div>
 
