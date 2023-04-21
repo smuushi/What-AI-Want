@@ -18,7 +18,7 @@ function Profile() {
 
     }
     dispatch(fetchUserLists(currentUser?._id));
-  }, []);
+  }, [dispatch,currentUser]);
 
   useEffect(() => {
     AOS.init({

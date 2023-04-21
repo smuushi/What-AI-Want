@@ -18,7 +18,7 @@ export const Collection = (props) => {
         if (currentUserId) {
             dispatch(fetchUserImages(currentUserId))
         }
-    },[])
+    },[dispatch,currentUserId])
 
     const imagesToRender = usersSavedImageIdsArray?.map((id) => {
         const imageObj = allImages[id]

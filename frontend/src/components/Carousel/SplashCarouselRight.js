@@ -19,7 +19,7 @@ export default function SplashCarouselRight() {
       });
       setSampleImages(() => images);
     });
-  }, []);
+  }, [dispatch]);
 
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
@@ -76,7 +76,7 @@ export default function SplashCarouselRight() {
               index + 1
             }`}
           >
-            <img className="corner-image-right" src={imageUrl} />
+            <img alt = "" className="corner-image-right" src={imageUrl} />
             <div className="slide-text-right">Pick Your Image!</div>
           </div>
         </SwiperSlide>
