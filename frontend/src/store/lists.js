@@ -1,5 +1,5 @@
 import jwtFetch from "./jwt";
-import { getCurrentUser, receiveCurrentUser } from "./session";
+import { receiveCurrentUser } from "./session";
 
 export const RECEIVE_LISTS = "lists/RECEIVE_LISTS";
 export const RECEIVE_LIST = "lists/RECEIVE_LIST";
@@ -112,6 +112,7 @@ export const deleteList = (listId) => async (dispatch) => {
   });
   if (response.ok) {
     const userInfo = await response.json();
+    dispatch(removeList(listId))
     dispatch(receiveCurrentUser(userInfo));
   }
 };

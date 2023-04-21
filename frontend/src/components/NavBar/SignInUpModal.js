@@ -27,11 +27,17 @@ function SignInUpModal(props) {
         buttonText = 'Get Started'
         formType = <SignupForm/>
     }
+    let newButton;
+    if (props.page === 'splash'){
+        newButton = <div onClick={handleClick} className="intro_button">Join Now!</div>
+    }else{
+        newButton = <button onClick={handleClick}>{buttonText}</button>
+    }
    
     return(
         <>
             <div>
-                <button onClick={handleClick}>{buttonText}</button>
+                {newButton}
                 {showModal && (
                 <Modal onClose={()=> setShowModal(false)}>
                 <i className="fa-solid fa-xmark modalClose" onClick={()=>setShowModal(false)}></i>
