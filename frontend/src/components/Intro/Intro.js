@@ -72,11 +72,11 @@ if(about){
           onMouseOver={(e) => {
             e.currentTarget.style.transform = "rotateY(180deg)";
             e.currentTarget.style.backgroundImage =
-              "url(https://cdn.discordapp.com/attachments/952591530626023464/1098635373292290203/1681939204993testimage2.png)";
+              "url(https://cdn.discordapp.com/attachments/952591530626023464/1098640362802794617/1681947212867testimage2.png)";
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = "rotateY(0deg)";
-            e.currentTarget.style.backgroundImage = `url(https://cdn.discordapp.com/attachments/952591530626023464/1098640362802794617/1681947212867testimage2.png)`;
+            e.currentTarget.style.backgroundImage = `url(https://cdn.discordapp.com/attachments/952591530626023464/1098635373292290203/1681939204993testimage2.png)`;
           }}
         ></div>
       </div>

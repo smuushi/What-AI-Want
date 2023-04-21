@@ -10,13 +10,12 @@ const LoggedOutNav = () => {
       <div className="loggedOutNav">
         
           <Logo />
-        
-        <div id="signup">
+
           <div id="userAuthButtons">
             <SignInUpModal type={signUp} />
             <SignInUpModal id="login" type={login} />
           </div>
-        </div>
+        {/* </div> */}
       </div>
     </>
   );

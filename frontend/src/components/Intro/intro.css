@@ -11,8 +11,10 @@ div.intro_text {
   justify-content: center;
 }
 h1.intro_header {
-  font-size: 8rem;
+  font-size: 6rem;
   font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  font-weight: 800;
 }
 h1.intro_header.sub {
   color: var(--primary-1);

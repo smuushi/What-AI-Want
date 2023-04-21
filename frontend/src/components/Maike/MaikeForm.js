@@ -21,7 +21,7 @@ const MaikeForm = (props) => {
     dispatch(fetchList(listId))
   },[listId,dispatch])
 
-  
+
 
 let defaultClothing;
 let defaultHairColor;
@@ -61,12 +61,12 @@ useEffect(()=>{
     setBackgroundValue(currentList?.background)
     setArtStyleValue(currentList?.artStyle)
     setWebStyleValue(currentList?.websiteStyle)
-    
+
   }
 },[currentList,formType])
 
 
-  
+
   const handleSaveList = () => {
     const listData = {
       clothingAccessory: clothingValue,
@@ -80,9 +80,9 @@ useEffect(()=>{
       setCreatedListId(() => list._id);
     });
   };
-  
+
   // let saveButton;
-  
+
   // let maikeButton;
   // if (createdListId){
   //   saveButton = <div id = 'hideSaveButton'>Saved !</div>
@@ -105,10 +105,10 @@ useEffect(()=>{
   // </button>
   //   maikeButton = <button id = 'hideMaikeButton'> MAIke</button>
   // }
-  // if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  // if (clothingValue === "" || hairColorValue === "" || genderValue === ""
   // || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
   //   saveButton = <div id = 'hideMaikeButton'>Save List</div>
-  // } 
+  // }
 
 
   const handleUpdateList = () =>{
@@ -159,10 +159,10 @@ useEffect(()=>{
     }
     maikeButton = <button id = 'hideMaikeButton'>{buttonText}MAIke</button>
   }
-  if (clothingValue === "" || hairColorValue === "" || genderValue === "" 
+  if (clothingValue === "" || hairColorValue === "" || genderValue === ""
   || backgroundValue === "" || artStyleValue === "" || webStyleValue === "" ) {
     saveButton = <div id = 'hideMaikeButton'>Save List</div>
-  } 
+  }
 
   const HairColor = {
     Red: "Red",
@@ -177,7 +177,7 @@ useEffect(()=>{
     Grey: 'Grey'
   };
 
-  
+
   const ClothingAcessory = {
     Formal:'Formal',
     'Business-Suit':'Business-Suit',
@@ -197,17 +197,17 @@ useEffect(()=>{
     Armor: 'Armor',
     "Maid-Uniform": "Maid-Uniform",
     "Sailor-Uniform": "Sailor-Uniform",
-    
+
   };
-  
+
   const Gender = {
     "Male-Presenting": "Boy",
     'Male-Presenting(older)': 'Man',
     "Female-Presenting": "Girl",
     "Female-Presenting(older)": "Woman",
-    
+
   };
-  
+
   const Background = {
 
     None: 'None',
@@ -265,9 +265,8 @@ useEffect(()=>{
               value={clothingValue}
               onChange={handleChange(setClothingValue)}
             >
-
-              <option value="" disabled >
-                Clothing/Acessory ▼
+              <option id="option" value="" disabled>
+                <p>Clothing/Acessory</p>
               </option>
               {Object.entries(ClothingAcessory).map(([cloth, value]) => (
                 <option key={cloth} value={value}>
@@ -275,16 +274,17 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
+            <span className="select_arrow">
+              <i className="fa-solid fa-caret-down"></i>
+            </span>
           </div>
           <div className="select-container">
             <select
               value={hairColorValue}
               onChange={handleChange(setHairColorValue)}
             >
-
               <option value="" disabled>
-
-                Hair-Color ▼
+                Hair-Color
               </option>
               {Object.entries(HairColor).map(([color, value]) => (
                 <option key={color} value={value}>
@@ -292,14 +292,14 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
+            <span className="select_arrow">
+              <i className="fa-solid fa-caret-down"></i>
+            </span>
           </div>
           <div className="select-container">
             <select value={genderValue} onChange={handleChange(setGenderValue)}>
-
-
               <option value="" disabled>
-
-                Gender ▼
+                Gender
               </option>
               {Object.entries(Gender).map(([gender, value]) => (
                 <option key={gender} value={value}>
@@ -307,6 +307,9 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
+            <span className="select_arrow">
+              <i className="fa-solid fa-caret-down"></i>
+            </span>
           </div>
         </div>
 
@@ -319,10 +322,8 @@ useEffect(()=>{
               value={backgroundValue}
               onChange={handleChange(setBackgroundValue)}
             >
-
               <option value="" disabled>
-
-                Background ▼
+                Background
               </option>
               {Object.entries(Background).map(([background, value]) => (
                 <option key={background} value={value}>
@@ -330,16 +331,17 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
+            <span className="select_arrow">
+              <i className="fa-solid fa-caret-down"></i>
+            </span>
           </div>
           <div className="select-container">
             <select
               value={artStyleValue}
               onChange={handleChange(setArtStyleValue)}
             >
-
               <option value="" disabled>
-
-                Art-Style ▼
+                Art-Style
               </option>
               {Object.entries(ArtStyle).map(([artstyle, value]) => (
                 <option key={artstyle} value={value}>
@@ -347,16 +349,17 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
+            <span className="select_arrow">
+              <i className="fa-solid fa-caret-down"></i>
+            </span>
           </div>
           <div className="select-container">
             <select
               value={webStyleValue}
               onChange={handleChange(setWebStyleValue)}
             >
-
               <option value="" disabled>
-
-                Web-Style ▼
+                Web-Style
               </option>
               {Object.entries(WebStyle).map(([webstyle, value]) => (
                 <option key={webstyle} value={value}>
@@ -364,13 +367,15 @@ useEffect(()=>{
                 </option>
               ))}
             </select>
+            <span className="select_arrow">
+              <i className="fa-solid fa-caret-down"></i>
+            </span>
           </div>
         </div>
       </div>
 
       <div className="list-maike-buttons">
         {saveButton}
-
 
         {maikeButton}
       </div>
