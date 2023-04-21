@@ -41,7 +41,7 @@ useEffect(() => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,7 +82,7 @@ useEffect(() => {
   return (
     <form id = 'editPhotoContainer' onSubmit={handleSubmit}>
     <div id = 'profilePhotobox'>
-      <img src={showImage} />
+      <img alt = '' src={showImage} />
     </div>
         <div id = 'editProfilePhotoB'>
         <label id = 'showProfilePhotoB'>

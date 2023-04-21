@@ -5,7 +5,7 @@ import './MaikeModal.css'
 import { saveImage } from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { receiveImage, receiveImages } from '../../store/images';
+import { receiveImages } from '../../store/images';
 
 
 // import { useSelector } from "react-redux";

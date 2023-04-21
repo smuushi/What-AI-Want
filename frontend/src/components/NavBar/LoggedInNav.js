@@ -23,9 +23,9 @@ function LoggedInNav() {
 
   return (
     <div className="loggedin-nav-box">
-      <div className="loggedin-logo">
+    
         <Logo />
-      </div>
+  
 
       <div className="links-nav">
         <NavLink to="/" isActive={() => location.pathname === "/"}>
@@ -33,7 +33,7 @@ function LoggedInNav() {
         </NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/team">Team</NavLink>
-        <NavLink to="/maike">MAIke</NavLink>
+        <NavLink to="/maike">M<span>AI</span>ke</NavLink>
         <NavLink to="/profile">Profile</NavLink>
       </div>
 

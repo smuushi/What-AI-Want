@@ -27,7 +27,9 @@ export default function SavedListCarousel() {
   });
 
   const listObjectsListItems = listObjectsToRender.map((listObject) => {
-    return <ListItem key={JSON.stringify(listObject + "10399")} prop={listObject} />;
+    return (
+      <ListItem key={JSON.stringify(listObject + "10399")} prop={listObject} />
+    );
   });
 
   const splitItems = splitArray(listObjectsListItems, 1);
@@ -40,7 +42,6 @@ export default function SavedListCarousel() {
   // console.log(splitItems)
   // console.log(splitItems)
   // console.log(splitItems)
-
 
   return (
     <>
@@ -58,7 +59,7 @@ export default function SavedListCarousel() {
           {splitItems.map((parts, idx) => (
             <SwiperSlide key={idx}>
               <div className="savedlist-title-box">
-                <h1 className="savedlist-title">Saved List</h1>
+                <h1 className="savedlist-title">Saved AI Images</h1>
               </div>
               <div className="savedlist-divider"></div>
               <div className="save-list-content-box">

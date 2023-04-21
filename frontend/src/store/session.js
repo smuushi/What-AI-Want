@@ -1,5 +1,4 @@
 import jwtFetch from "./jwt";
-import { receiveImage } from "./images";
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
@@ -65,10 +64,7 @@ export const getCurrentUser = () => async (dispatch) => {
 };
 
 export const updateCurrentUser = user => async(dispatch) => {
-  const {username,email} = user;
-
   try{
-
     const res = await jwtFetch(`/api/users/${user._id}`,{
       method: 'PATCH',
       body: JSON.stringify({...user})
