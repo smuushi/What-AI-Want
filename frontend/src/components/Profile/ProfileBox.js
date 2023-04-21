@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import "./ProfileBox.css";
-import profileTemp from "./temp.png";
 import EditUserModal from "../SessionForms/EditUserModal";
 import EditAvModal from "../SessionForms/EditAvModal";
 import { useState } from "react";
@@ -13,7 +12,7 @@ function ProfileBox() {
     if (currentUser && currentUser.profileImage) {
       fetch(`/api/users/profile/${currentUser.profileImage}`)
         .then(async (response) => {
-          const contentType = response.headers.get("Content-Type");
+          // const contentType = response.headers.get("Content-Type");
           const blob = await response.blob();
           setImage(URL.createObjectURL(blob));
         })
@@ -26,7 +25,7 @@ function ProfileBox() {
   return (
     <div className="profile-box-container">
       <span className="profile-image">
-        <img src={image} />
+        <img alt = '' src={image} />
       </span>
 
       <span className="profile-info">

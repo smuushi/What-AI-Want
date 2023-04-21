@@ -5,8 +5,13 @@ import { useHistory } from "react-router-dom";
 
 const Logo = () => {
   const history = useHistory()
+
+  const handleClick = ()=>{
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.push('/')
+  }
   return (
-    <div onClick={()=>{history.push('/')}} className="what-ai-want-logo">
+    <div onClick={handleClick} className="what-ai-want-logo">
         <p id="what-ai-logo">What</p>
         <div id ='circleLogoContainer'
           style={{ backgroundImage: `url(${logoImage})` }}>

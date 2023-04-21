@@ -5,8 +5,9 @@ import { getCurrentUser } from "../../store/session";
 import ProfileBox from "./ProfileBox";
 import SavedListCarousel from "./SavedListCarousel";
 import { Collection } from "./Collection";
-import { fetchUserImages } from "../../store/images";
 import "./Profile.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -17,17 +18,24 @@ function Profile() {
 
     }
     dispatch(fetchUserLists(currentUser?._id));
+  }, [dispatch,currentUser]);
+
+  useEffect(() => {
+    AOS.init({
+      once: false,
+    });
+    AOS.refresh();
   }, []);
 
   
 
   return (
     <div className="profile-main-box">
-      <div className="profile-left-box">
+      <div data-aos="zoom-out-up" className="profile-left-box">
         <ProfileBox />
         <SavedListCarousel />
       </div>
-      <div className="profile-right-box">
+      <div data-aos="zoom-out-down" className="profile-right-box">
         <Collection currentUserId={currentUser?._id}/>
       </div>
     </div>

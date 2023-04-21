@@ -16,6 +16,10 @@ function LoggedInNav() {
     setDropdownVisible(!dropdownVisible);
   };
 
+  const handleClick = ()=>{
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   const logoutUser = (e) => {
     e.preventDefault();
     dispatch(logout());
@@ -28,7 +32,7 @@ function LoggedInNav() {
   
 
       <div className="links-nav">
-        <NavLink to="/" isActive={() => location.pathname === "/"}>
+        <NavLink onClick={handleClick} to="/" isActive={() => location.pathname === "/"}>
           Home
         </NavLink>
         <NavLink to="/about">About</NavLink>

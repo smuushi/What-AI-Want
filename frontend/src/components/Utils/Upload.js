@@ -13,7 +13,7 @@ useEffect(() => {
   if (currentUser && currentUser.profileImage) {
     fetch(`/api/users/profile/${currentUser.profileImage}`)
       .then(async (response) => {
-        const contentType = response.headers.get("Content-Type");
+        // const contentType = response.headers.get("Content-Type");
         const blob = await response.blob();
         setImage(URL.createObjectURL(blob));
       })
@@ -27,7 +27,7 @@ useEffect(() => {
   const dispatch = useDispatch();
 
   const [profileImage, setProfileImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
 
   const handleFile = ({ currentTarget }) => {
     const file = currentTarget.files[0];
@@ -35,7 +35,7 @@ useEffect(() => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      setImageUrl(reader.result);
+      // setImageUrl(reader.result);
     };
   };
 
