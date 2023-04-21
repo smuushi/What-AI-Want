@@ -1,6 +1,6 @@
 .custom-pagination {
     position: relative;
-    right: 13.5vw;
+    right: 22.9vw;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -11,20 +11,20 @@
   .custom-bullet {
     width: 1.2vw;
     height: 1.2vw;
-    background-color: white;
-    border: 2px solid #38b9ec;
+    background-color: rgba(172, 162, 162, 0.481);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1vw;
     border-radius: 20px;
     cursor: pointer;
-    color: #38b9ec;
+    color: white;
     z-index: 20; 
   }
   
   .custom-bullet-active {
-    background-color: #25c7ff;
+    background-color: #ff6a00ee;
     color: #fff;
   }
   

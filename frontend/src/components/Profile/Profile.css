@@ -1,7 +1,7 @@
 .profile-main-box{
     display: flex;
     justify-content: space-between;
-    margin-top: 1.3vw;
+    /* margin-top: 1.2vw; */
    
 }
 
@@ -15,4 +15,5 @@
 
 .profile-right-box{
     margin-right: 15vw;
+    margin-bottom: 1vw;
 }
