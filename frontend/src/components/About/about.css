@@ -7,6 +7,7 @@
   --highlight-1: #ff6900;
   --highlight-2: #00d084;
   --highlight-3: #9b51e0;
+  --buttonHeight:3rem;
 }
 
 div.about_wrapper {
@@ -43,8 +44,10 @@ div.about_text {
 }
 div.about_text h1 {
   color: white;
-  font-size: 6rem;
-  font-weight: 400;
+  font-size: 5rem;
+  margin-bottom:1rem;
+  font-weight: 500;
+    font-family: 'Lato', sans-serif;
 }
 div.about_text p{
     color:white;
