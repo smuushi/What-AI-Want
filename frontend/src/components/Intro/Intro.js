@@ -20,18 +20,18 @@ const about = document.getElementById("about");
 if(about){
     about.scrollIntoView({behavior:"smooth"})
 }
-} 
+}
   let buttons;
   if (!loggedIn){
-    buttons = 
+    buttons =
     <>
       <SignInUpModal page = {'splash'}/>
             <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
     </>
   }else{
-    buttons = 
+    buttons =
     <>
-      <div onClick={()=>history.push('/maike')} 
+      <div onClick={()=>history.push('/maike')}
       className="intro_button"> Let's M<span style = {{color:'#ffb347',opacity:'100%'}}>AI</span>ke!</div>
       <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
     </>
