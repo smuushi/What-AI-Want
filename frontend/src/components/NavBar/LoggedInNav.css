@@ -51,6 +51,13 @@
 
 .links-nav span{
   color:#ff6900;
+  letter-spacing: 0.08vw;
+    font-size: 2vw;
+  font-family: 'Lato', sans-serif;
+  text-decoration: none;
+    font-weight: bold;
+    font-size: 2vw;
+    
 }
 
 .links-nav a.active{

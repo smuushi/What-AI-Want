@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createList,updateList,getList,fetchList } from "../../store/lists";
 import "./Maike.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import MaikeModal from "./MaikeModal";
 import { useParams } from "react-router-dom";
@@ -10,6 +12,13 @@ import { useSelector } from "react-redux";
 // test list id '644010777927a88f28c4c4d4'
 
 const MaikeForm = (props) => {
+
+  useEffect(() => {
+    AOS.init({
+      once: false,
+    });
+    AOS.refresh();
+  }, []);
 
   const dispatch = useDispatch();
   const formType = props.type
@@ -254,7 +263,7 @@ useEffect(()=>{
   };
 
   return (
-    <div className="maike-form-box">
+    <div data-aos="fade-left" className="maike-form-box">
       <h1 id="maike-title">What do you want?</h1>
 
       <div className="maike-form-divider">
