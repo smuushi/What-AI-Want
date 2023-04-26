@@ -6,6 +6,12 @@ What-Ai-Want is a web application that allows users to create their own avatar b
 
 # [Wireframe](Assets/what_AI_want__2.pdf)
 
+# Screenshot
+
+![Screenshot](Assets/SplashDemo.gif)
+![Screenshot](Assets/MaikeDemo.gif)
+![Screenshot](Assets/ProfileUpload.gif)
+
 # Background and Overview
 
 In a world where personal expression is highly valued, people are always looking for new ways to stand out and showcase their unique style. However, not everyone has the artistic talent or resources to create their own custom avatar. This is where What-Ai-Want comes in.
