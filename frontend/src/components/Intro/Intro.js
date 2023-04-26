@@ -5,9 +5,12 @@ import "aos/dist/aos.css";
 import SignInUpModal from "../NavBar/SignInUpModal";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/session";
 
 const Intro = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
   useEffect(() => {
     AOS.init({
       once: false,
@@ -21,12 +24,17 @@ if(about){
     about.scrollIntoView({behavior:"smooth"})
 }
 }
+const handleClick = (e) => {
+  e.preventDefault();
+  dispatch(login({email:"admin@gmail.com",password:"password"}));
+}
   let buttons;
   if (!loggedIn){
     buttons =
     <>
       <SignInUpModal page = {'splash'}/>
             <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
+            <div className= "intro_button" onClick={handleClick}>Demo Login</div>
     </>
   }else{
     buttons =
@@ -34,8 +42,10 @@ if(about){
       <div onClick={()=>history.push('/maike')}
       className="intro_button"> Let's M<span style = {{color:'#ffb347',opacity:'100%'}}>AI</span>ke!</div>
       <div className="intro_button learn" onClick={handleScroll}>Learn More</div>
+
     </>
   }
+  
   return (
     <div className="intro_wrapper" data-aos="fade-up">
       <div className="intro_text" data-aos="fade-down">

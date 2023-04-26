@@ -33,6 +33,25 @@ export default function SavedListCarousel() {
   });
 
   const splitItems = splitArray(listObjectsListItems, 1);
+  let listDisplay;
+  if (splitItems.length){
+    listDisplay = splitItems.map((parts, idx) => (
+      <SwiperSlide key={idx}>
+        <div className="savedlist-title-box">
+          <h1 className="savedlist-title">Saved AI Images</h1>
+        </div>
+        <div className="savedlist-divider"></div>
+        <div className="save-list-content-box">
+          <span className="parts">{parts}</span>
+        </div>
+      </SwiperSlide>
+    ))
+  }else{
+    listDisplay = 
+    <SwiperSlide>
+      <div id = 'emptyList'> Saved Preferences go here!</div>
+    </SwiperSlide>
+  }
 
   // console.log(splitItems)
   // console.log(splitItems)
@@ -56,17 +75,7 @@ export default function SavedListCarousel() {
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           className="mySwiper"
         >
-          {splitItems.map((parts, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="savedlist-title-box">
-                <h1 className="savedlist-title">Saved AI Images</h1>
-              </div>
-              <div className="savedlist-divider"></div>
-              <div className="save-list-content-box">
-                <span className="parts">{parts}</span>
-              </div>
-            </SwiperSlide>
-          ))}
+          {listDisplay}
         </Swiper>
         <div className="pagination-container">
           <CustomPagination key={"sl082ls"} swiper={swiperInstance} />

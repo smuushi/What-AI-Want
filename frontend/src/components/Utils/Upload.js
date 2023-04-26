@@ -77,7 +77,7 @@ useEffect(() => {
   }else{
     showImage = image
   }
-  debugger
+
 
   return (
     <form id = 'editPhotoContainer' onSubmit={handleSubmit}>

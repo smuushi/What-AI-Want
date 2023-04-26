@@ -120,6 +120,8 @@ div.intro_button_div {
   margin-top: 1rem;
   width: 300px;
   justify-content: space-between;
+  width:fit-content;
+  column-gap:0.5vw;
 }
 div.intro_button {
   width: 8rem;
@@ -169,6 +171,7 @@ div.intro_button {
 div.intro_button.learn {
   background-color: #f3f3f3;
   color: black;
+  
 }
 div.intro_image {
   display: Flex;

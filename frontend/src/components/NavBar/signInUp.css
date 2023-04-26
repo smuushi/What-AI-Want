@@ -177,3 +177,14 @@
 #emptyNav{
     width:5.5vw;
 }
+
+#nullDemoEmail{
+    font-style:bold;
+    color:red;
+    font-size:20px;
+    
+}
+
+#nullDemoEmail:hover{
+    cursor:not-allowed;
+}
