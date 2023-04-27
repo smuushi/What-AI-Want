@@ -74,15 +74,16 @@
 #submitSignUp{
     margin-top:25px;
     margin-bottom:25px;
-    border: 1px solid #27c7ff;
-    background-color: #27c7ff;
+    width:194px;
+    border: 1px solid #ff6900;
+    background-color: #ff6900;
     color:white;
 }
 
 #submitSignUp:hover{
     cursor:pointer;
-    background-color: white;
-    color:#27c7ff;
+    background-color: #00d084;
+    border: 1px solid #00d084;
 
 }
 
@@ -112,21 +113,22 @@
     border: 1px solid #27c7ff;
     border-radius:20px;
     padding-left:10px;
+   
 }
 
 .login-form button{
     width:180px;
     font-size:20px;
-    border: 1px solid #27c7ff;
-    background-color: #27c7ff;
+    border: 1px solid #ff6900;
+    background-color: #ff6900;
     color:white;
     margin-bottom:25px;
     border-radius:20px;
 }
 
 .login-form button:hover{
-    background-color: white;
-    color:#27c7ff;
+    background-color: #00d084;
+    border: 1px solid #00d084;
     cursor:pointer;
     
 }
@@ -134,14 +136,14 @@
 #submitLogin{
     margin-top:25px;
     margin-bottom:25px;
-    border: 1px solid #27c7ff;
-    background-color: #27c7ff;
+    border: 1px solid #ff6900;
+    background-color: #ff6900;
     color:white;
 }
 
 #submitLogin:hover{
-    background-color: white;
-    color:#27c7ff;
+    background-color: #00d084;
+    border: 1px solid #00d084;
     cursor:pointer;
 }
 

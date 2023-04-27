@@ -42,7 +42,9 @@ const EditUserForm = (props)=>{
       };
 
       let emailInput;
-      if (!currentUser._id === "643fe8ace00313f56f1588a2"){
+      if (currentUser._id === "643fe8ace00313f56f1588a2"){
+        emailInput = <div id = 'nullDemoEmail'>Can't Change Demo  Email!</div>
+      }else{
         emailInput = <label>
         <div>
            Email 
@@ -54,8 +56,6 @@ const EditUserForm = (props)=>{
          placeholder="Email"
          />
      </label>
-      }else{
-        emailInput = <div id = 'nullDemoEmail'>Can't Change Demo  Email!</div>
       }
      return (
          <form className="signup-form" onSubmit={handleSubmit}>

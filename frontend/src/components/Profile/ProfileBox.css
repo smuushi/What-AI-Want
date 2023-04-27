@@ -123,3 +123,13 @@
     background-color: white;
     color:#ff6900
 }
+
+.editUserModal{
+    position:relative;
+    left:90%;
+    padding-top:8px;    
+    /* top:20%; */
+    font-size:20px;
+   
+    
+}
