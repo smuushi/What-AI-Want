@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 // import "./SessionForm.css";
 
-import { login, clearSessionErrors } from "../../store/session";
+import { login, clearSessionErrors, receiveErrors } from "../../store/session";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -26,6 +26,12 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // debugger
+    if (email === "" || password === ""){
+      // debugger
+      dispatch(receiveErrors({email: "can't be blank..", password: "can't be blank....."}));
+      return;
+    }
     dispatch(login({ email, password }));
   };
 
@@ -57,7 +63,7 @@ function LoginForm() {
           placeholder="Password"
         />
       </label>
-      <input id = 'submitLogin' type="submit" value="Go!" disabled={!email || !password} />
+      <input id = 'submitLogin' type="submit" value="Go!" />
       <button onClick={handleClick}>Demo Login</button>
     </form>
   );

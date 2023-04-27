@@ -12,7 +12,7 @@ export const receiveCurrentUser = (currentUser) => ({
 });
 
 // Dispatch receiveErrors to show authentication errors on the frontend.
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors,
 });
