@@ -1,5 +1,6 @@
 import jwtFetch from "./jwt";
 import { receiveCurrentUser } from "./session";
+import { pushListId } from "./session";
 
 export const RECEIVE_LISTS = "lists/RECEIVE_LISTS";
 export const RECEIVE_LIST = "lists/RECEIVE_LIST";
@@ -10,7 +11,7 @@ const receiveLists = (lists) => ({
   lists,
 });
 
-const receiveList = (list) => ({
+export const receiveList = (list) => ({
   type: RECEIVE_LIST,
   list,
 });
@@ -75,6 +76,7 @@ export const createList = (list) => async (dispatch) => {
   });
   if (response.ok) {
     const list = await response.json();
+    dispatch(pushListId(list._id))
     dispatch(receiveList(list));
     return list;
   }

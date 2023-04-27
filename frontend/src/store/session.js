@@ -17,6 +17,11 @@ export const receiveErrors = (errors) => ({
   errors,
 });
 
+export const pushListId = (listId) =>({
+  type: 'papaya',
+  listId
+})
+
 // Dispatch logoutUser to clear the session user when a user logs out.
 const logoutUser = () => ({
   type: RECEIVE_USER_LOGOUT,
@@ -104,6 +109,10 @@ const sessionReducer = (state = initialState, action) => {
       return { user: action.currentUser };
     case RECEIVE_USER_LOGOUT:
       return initialState;
+    case 'papaya':
+      let nextState  = {...state};
+       nextState.user.lists.push(action.listId)
+       return nextState
     default:
       return state;
   }
