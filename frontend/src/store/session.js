@@ -111,6 +111,9 @@ const sessionReducer = (state = initialState, action) => {
       return initialState;
     case 'papaya':
       let nextState  = {...state};
+      if (!nextState.user.lists){
+        nextState.user.lists = []
+      }
        nextState.user.lists.push(action.listId)
        return nextState
     default:
