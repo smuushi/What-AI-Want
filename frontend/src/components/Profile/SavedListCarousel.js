@@ -34,7 +34,7 @@ export default function SavedListCarousel() {
 
   const splitItems = splitArray(listObjectsListItems, 1);
   let listDisplay;
-  if (splitItems.length){
+  if (splitItems.length) {
     listDisplay = splitItems.map((parts, idx) => (
       <SwiperSlide key={idx}>
         <div className="savedlist-title-box">
@@ -45,22 +45,26 @@ export default function SavedListCarousel() {
           <span className="parts">{parts}</span>
         </div>
       </SwiperSlide>
-    ))
-  }else{
-    listDisplay = 
-    <SwiperSlide>
-      <div id = 'emptyList'> Saved Preferences go here!</div>
-    </SwiperSlide>
+    ));
+  } else {
+    listDisplay = (
+      <SwiperSlide>
+        <div id="emptyList"> Saved Preferences go here!</div>
+      </SwiperSlide>
+    );
   }
 
-  // console.log(splitItems)
-  // console.log(splitItems)
-  // console.log(splitItems)
-  // console.log(splitItems)
-  // console.log(splitItems)
-  // console.log(splitItems)
-  // console.log(splitItems)
-  // console.log(splitItems)
+  const scrollToTop = () => {
+    if (swiperInstance) {
+      swiperInstance.slideTo(0);
+    }
+  };
+
+  const scrollToBottom = () => {
+    if (swiperInstance) {
+      swiperInstance.slideTo(swiperInstance.slides.length - 1);
+    }
+  };
 
   return (
     <>
@@ -77,6 +81,14 @@ export default function SavedListCarousel() {
         >
           {listDisplay}
         </Swiper>
+        <div className="custom-scrollbar">
+          <div className="scroll-arrow scroll-top" onClick={scrollToTop}>
+            &#9650;
+          </div>
+          <div className="scroll-arrow scroll-bottom" onClick={scrollToBottom}>
+            &#9660;
+          </div>
+        </div>
         <div className="pagination-container">
           <CustomPagination key={"sl082ls"} swiper={swiperInstance} />
         </div>
