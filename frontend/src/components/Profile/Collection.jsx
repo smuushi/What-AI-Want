@@ -30,7 +30,7 @@ export const Collection = (props) => {
          imageListItems = imagesToRender?.map((imageObj, idx) => {
             const imageListItem = <SavedImage key={JSON.stringify(imageObj + `${(10293 * idx)}`)} imageObj={imageObj}/>
             return imageListItem
-        })
+        }).reverse()
     }else{
         imageListItems = <div id = 'emptyGenImages'>Generated images are saved here!</div>
     }
