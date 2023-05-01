@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
@@ -9,12 +8,9 @@ import "./LoggedInNav.css";
 
 function LoggedInNav() {
   const dispatch = useDispatch();
-  const [dropdownVisible, setDropdownVisible] = useState(false);
   const location = useLocation();
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
+
 
   const handleClick = ()=>{
     window.scrollTo({ top: 0, behavior: 'smooth' });
