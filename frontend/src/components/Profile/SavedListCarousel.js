@@ -45,7 +45,7 @@ export default function SavedListCarousel() {
           <span className="parts">{parts}</span>
         </div>
       </SwiperSlide>
-    ));
+    )).reverse();
   } else {
     listDisplay = (
       <SwiperSlide>
@@ -79,7 +79,7 @@ export default function SavedListCarousel() {
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           className="mySwiper"
         >
-          {listDisplay.reverse()}
+          {listDisplay}
         </Swiper>
         <div className="custom-scrollbar">
           <div className="scroll-arrow scroll-top" onClick={scrollToTop}>
