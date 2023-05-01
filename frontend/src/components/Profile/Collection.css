@@ -109,7 +109,7 @@ ul.imagesContainer .savedImageItem button{
 
 #deleteShowImage:hover{
     cursor:pointer;
-    background-color: #ff6900;
+    background-color: red;
     color:white;
 }
 

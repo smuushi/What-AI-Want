@@ -7,6 +7,7 @@
     /* margin-top: 7vw; */
     /* background-color: black; */
     gap: 10vw;
+    justify-content: space-between;
     /* margin-left: 20vw; */
     /* padding-bottom: 5vh; */
     height:5vw;
@@ -40,13 +41,34 @@
 .links-nav a{
     text-decoration: none;
     font-weight: bold;
-    font-size: 2vw;
+    font-size:2vw;
     margin-left: 1vw;
     margin-right: 1vw;
     color: black;
     letter-spacing: 0.08vw;
     font-size: 2vw;
   font-family: 'Lato', sans-serif;
+}
+
+#logoutButton{
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 3vw;
+  margin-right: 1vw;
+  color: black;
+  letter-spacing: 0.08vw;
+  font-size: 1vw;
+  font-family: 'Lato', sans-serif;
+  color:white;
+  padding:0.8vw;
+  border-radius:1vw;
+  background-color: #ff6900;
+  min-width:4w;
+}
+
+#logoutButton:hover{
+  cursor:pointer;
+  background-color: red;
 }
 
 .links-nav span{

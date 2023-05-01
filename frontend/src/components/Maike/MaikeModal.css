@@ -181,12 +181,14 @@
 #parameterContainer h2{
     margin-bottom:1vw;
     font-size:1.5vw;
-    color:#ff6900
+    color:#25c7ff;
+    font-weight:bolder;
 }
 
 #parameterContainer p{
     font-size:2.5vw;
-    color:#25c7ff
+    color:#ff6900;
+    font-weight:lighter;
 }
 
 #parameterContainer h1{

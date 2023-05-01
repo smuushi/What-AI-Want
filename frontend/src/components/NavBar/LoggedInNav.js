@@ -40,28 +40,7 @@ function LoggedInNav() {
         <NavLink to="/maike">M<span>AI</span>ke</NavLink>
         <NavLink to="/profile">Profile</NavLink>
       </div>
-
-      <div className="dropdown">
-        <button className="dropdown-toggle" onClick={toggleDropdown}>
-          <i className="fa-solid fa-bars"></i>
-        </button>
-
-        {dropdownVisible && (
-          <div className="dropdown-menu">
-            <div className="profileButtonDropdown">
-              <button className="profileButtonDropdownItem">
-                <Link to="/profile">Profile</Link>
-              </button>
-              <button
-                onClick={logoutUser}
-                className="profileButtonDropdownItem"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
+     <div id = "logoutButton" onClick={logoutUser}>Logout <i className="fa-solid fa-arrow-right-from-bracket"></i> </div>
     </div>
   );
 }
