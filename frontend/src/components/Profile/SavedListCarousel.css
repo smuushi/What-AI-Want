@@ -50,7 +50,7 @@
 
   .pagination-container {
     position: relative;
-    bottom: 8.5vw;
+    bottom:26.5vw;
     transform: translateY(-50%);
     pointer-events: none;
   }
@@ -77,3 +77,42 @@
     padding-top:10vw;
     text-align:center;
   }
+
+  .custom-scrollbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-left: 10px; */
+    /* position: absolute; */
+    gap: 13vw;
+    position: relative;
+    margin-right: 41vw;
+    bottom: 19vw;
+    z-index: 20;
+  }
+  
+  .scroll-arrow {
+    cursor: pointer;
+    font-size: 1.5vw;
+    background-color: rgba(0, 0, 0, 0.296);
+    color: white;
+    padding: 0.3vw;
+    padding-top: 0.4vw;
+    border-radius: 3px;
+    position: relative;
+    left: -3.5vw;
+
+    border-radius: 20px;
+    /* margin: 5px; */
+  }
+  
+  
+  .scroll-top {
+    margin-bottom: 1vw;
+  }
+  
+  .scroll-bottom {
+    margin-top: 1vw;
+  }
+  
+  

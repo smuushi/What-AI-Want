@@ -1,27 +1,35 @@
 .custom-pagination {
     position: relative;
-    right: 22.9vw;
-    top: 0;
+    right: 23.9vw;
+    top: -30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 10;
+
   }
   
   .custom-bullet {
-    width: 1.2vw;
+    width: 2.2vw;
     height: 1.2vw;
     background-color: rgba(172, 162, 162, 0.481);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1vw;
+
+    margin: .7vw;
+    margin-right: 1vw; 
+    padding: 1.5px;
+    padding-top: 3px;
     border-radius: 20px;
     cursor: pointer;
     color: white;
-    z-index: 20; 
+    z-index: 20;
+    text-align: center; 
   }
+
+ 
   
   .custom-bullet-active {
     background-color: #ff6a00ee;
