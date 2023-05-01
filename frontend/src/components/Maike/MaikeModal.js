@@ -26,7 +26,7 @@ function MaikeModal(props) {
 
     const formType = props.formType
 
-    let load; 
+    let load;
 
     const handleDivClick = (e)=>{
         const key = e.target.getAttribute('alt');
@@ -36,28 +36,26 @@ function MaikeModal(props) {
     const handleMaikeClick = async (e)=>{
         e.preventDefault()
         setShowModal(true);
-        if (!createdListId) return 
+        if (!createdListId) return
         setLoading(()=>true)
         const res = await jwtFetch(`/api/lists/image/${createdListId}`)
-        
+
         if (res.ok){
             const data = await res.json()
-            // console.log(imageData)
-            // debugger
             setImageData(data.images)
             dispatch(receiveImages(data))
             setLoading(()=>false)
             console.log(data)
-        
+
         }
-   
+
     }
 
     const handleSaveClick = (e) =>{
         e.preventDefault()
         setShowModal(false)
         dispatch(saveImage(focusedKey)).then(() => {
-            
+
             history.push('/profile')
         })
 
@@ -110,8 +108,8 @@ function MaikeModal(props) {
         }else if (gender === 'girl' || gender === 'woman'){
             presentingGender = 'Female Presenting'
         }
-          
-            load = 
+
+            load =
             <div id = 'fullImageContainer'>
                 <div id='parameterContainer'>
                     <h1>Preferences</h1>
@@ -127,14 +125,14 @@ function MaikeModal(props) {
                     <h2>{imageData[0].prompts.artStyle}</h2>
                     <p>Website-Style</p>
                     <h2>{imageData[0].prompts.websiteStyle}</h2>
-    
+
                 </div>
                 <div id = 'createModalImageContainer'>
                    <div id = 'leftCreateModal'>
-                        <div onClick = {handleDivClick} tabIndex={0}  alt = {imageData[0]._id} id = 'upperLeftModal'> 
+                        <div onClick = {handleDivClick} tabIndex={0}  alt = {imageData[0]._id} id = 'upperLeftModal'>
                         <img alt = {imageData[0]._id} src = {imageData[0].tempUrl}/>
                         </div>
-                        <div onClick = {handleDivClick} tabIndex={0}  alt = {imageData[1]._id} id = 'bottomLeftModal'> 
+                        <div onClick = {handleDivClick} tabIndex={0}  alt = {imageData[1]._id} id = 'bottomLeftModal'>
                         <img alt = {imageData[1]._id} src = {imageData[1].tempUrl}/>
                         </div>
                    </div>
@@ -178,7 +176,7 @@ function MaikeModal(props) {
                 </Modal>
                 )}
             </div>
-           
+
         </>
     );
 }

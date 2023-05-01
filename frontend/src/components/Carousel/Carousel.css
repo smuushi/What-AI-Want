@@ -4,11 +4,6 @@
   border: none;
 }
 
-.mySwiper2 {
-  width: 99.7vw;
-  height: 28vh;
-}
-
 .slide-background {
   position: relative;
   width: 99.7vw;
@@ -16,22 +11,29 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: background-color 0.5s ease-in-out;
 }
 
-.slide-background-1 {
-  background: linear-gradient(308deg, rgba(206, 226, 235, 0.8) 0%, rgb(253, 255, 255) 100%);
+/* .slide-background-1 {
+  background: linear-gradient(308deg,
+      rgba(206, 226, 235, 0.8) 0%,
+      rgb(253, 255, 255) 100%);
 }
 
 .slide-background-2 {
-  background: linear-gradient(308deg, rgba(206, 226, 235, 0.8) 0%, rgb(253, 255, 255) 100%);
+  background: linear-gradient(308deg,
+      rgba(206, 226, 235, 0.8) 0%,
+      rgb(253, 255, 255) 100%);
 }
 
 .slide-background-3 {
-  background: linear-gradient(308deg, rgba(206, 226, 235, 0.8) 0%, rgb(253, 255, 255) 100%);
-}
+  background: linear-gradient(308deg,
+      rgba(206, 226, 235, 0.8) 0%,
+      rgb(253, 255, 255) 100%);
+} */
 
 .slide-background:hover {
-  background: #46d1ff81;
+  background-color: #46d1ff81;
 }
 
 .slide-background:hover .slide-text {
@@ -39,48 +41,41 @@
 }
 
 .corner-image {
-  /* border: solid 1px rgb(175, 177, 178); */
   width: 16.25vw;
   height: auto;
-  transition: transform 0.5s ease-in-out; 
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide-background:hover .corner-image {
-  transform: scale(1.1); 
-}
-
-
-.slide-text.active {
-  animation: slideIn 2.5s ease-in-out;
-}
-
-.slide-background.active {
-  animation: slideIn 2.5s ease-in-out;
-}
-
-.corner-image.active {
-  animation: slideIn 2.5s ease-in-out;
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  transform: scale(1.1);
 }
 
 .slide-text {
-  position: relative;
-  bottom: 23vh;
-  left: 30.5vw;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + (16.25vw / 2));
+  transform: translate(-50%, -50%);
+  width: 80%;
   color: #25c7ff;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 9vw;
-  text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white, 
-               -2px -2px 0 #25c7ff, 2px -2px 0 #25c7ff, -2px 2px 0 #25c7ff, 2px 2px 0 #25c7ff; 
+  transition: color 0.5s ease-in-out;
 }
 
+.slide-text_right{
+
+      position: absolute;
+      top: 50%;
+      left:auto;
+      right: 50% ;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      font-weight: 600;
+      font-size: 9vw;
+      transition: color 0.5s ease-in-out;
+
+}
+.swiper-slide-next .slide-text,
+.swiper-slide-prev .slide-text {
+  transform: translate(-50%, -50%) !important;
+}
