@@ -52,12 +52,10 @@ function App() {
           <Route exact path="/about">
             <FinalAbout/>
           </Route>
-          <Route exact path="/team">
-            <Team />
-          </Route>
-          
 
-         
+
+
+
 
 
           <Route exact path="/edit/:listId">

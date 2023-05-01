@@ -13,7 +13,7 @@ const Team = () => {
 
   return (
     <div className="team_container" data-aos="fade-up" >
-      <h1 data-aos="fade-up" >Meet Our Team</h1>
+      <h1 data-aos="fade-up" className="team_heading" >Meet Our Team</h1>
       <div className="team_wrapper">
         <TeamMemberCard person={"Michael Shih"} />
         <TeamMemberCard person={"Kaiter Wu"} />
