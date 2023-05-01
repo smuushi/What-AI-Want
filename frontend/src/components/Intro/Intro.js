@@ -5,9 +5,12 @@ import "aos/dist/aos.css";
 import SignInUpModal from "../NavBar/SignInUpModal";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import { useDispatch } from "react-redux";
+import { login } from "../../store/session";
 import Coin from "./Coin";
+
 const Intro = () => {
+  const dispatch = useDispatch()
   const history = useHistory();
 
   const loggedIn = useSelector((state) => !!state.session.user);
@@ -17,6 +20,10 @@ const Intro = () => {
       about.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(login({email:"admin@gmail.com",password:"password"}));
+  }
 
 
   useEffect(() => {
@@ -35,6 +42,7 @@ const Intro = () => {
         <div className="intro_button learn" onClick={handleScroll}>
           Learn More
         </div>
+        <div onClick={handleClick} className="intro_button">Demo Login</div>
       </>
     );
   } else {
