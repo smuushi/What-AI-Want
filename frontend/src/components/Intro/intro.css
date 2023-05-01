@@ -133,7 +133,7 @@ div.intro_button {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   background-color: var(--primary-1);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: white;
   cursor: pointer;
   animation: fadeAnimation 1s 2s forwards;
@@ -171,7 +171,7 @@ div.intro_button {
 div.intro_button.learn {
   background-color: #f3f3f3;
   color: black;
-  
+
 }
 div.intro_image {
   display: Flex;
