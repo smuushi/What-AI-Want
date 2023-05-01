@@ -5,6 +5,7 @@ import "aos/dist/aos.css";
 import SignInUpModal from "../NavBar/SignInUpModal";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import Coin from "./Coin";
 const Intro = () => {
   const history = useHistory();
@@ -17,12 +18,14 @@ const Intro = () => {
     }
   };
 
+
   useEffect(() => {
     AOS.init({
       once: false,
     });
     AOS.refresh();
   }, []);
+
 
   let buttons;
   if (!loggedIn) {
@@ -57,6 +60,7 @@ const Intro = () => {
     "https://cdn.discordapp.com/attachments/952591530626023464/1098640362802794617/1681947212867testimage2.png";
   let url4 =
     "https://cdn.discordapp.com/attachments/952591530626023464/1098635373292290203/1681939204993testimage2.png";
+
   return (
     <div className="intro_wrapper" data-aos="fade-up">
       <div className="intro_text" data-aos="fade-down">

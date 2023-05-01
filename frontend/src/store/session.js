@@ -12,10 +12,15 @@ export const receiveCurrentUser = (currentUser) => ({
 });
 
 // Dispatch receiveErrors to show authentication errors on the frontend.
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors,
 });
+
+export const pushListId = (listId) =>({
+  type: 'papaya',
+  listId
+})
 
 // Dispatch logoutUser to clear the session user when a user logs out.
 const logoutUser = () => ({
@@ -104,6 +109,13 @@ const sessionReducer = (state = initialState, action) => {
       return { user: action.currentUser };
     case RECEIVE_USER_LOGOUT:
       return initialState;
+    case 'papaya':
+      let nextState  = {...state};
+      if (!nextState.user.lists){
+        nextState.user.lists = []
+      }
+       nextState.user.lists.push(action.listId)
+       return nextState
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import { createList,updateList,getList,fetchList } from "../../store/lists";
 import "./Maike.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { receiveList } from "../../store/lists";
 
 import MaikeModal from "./MaikeModal";
 import { useParams } from "react-router-dom";
@@ -86,7 +87,8 @@ useEffect(()=>{
       websiteStyle: webStyleValue,
     };
     dispatch(createList(listData)).then((list) => {
-      setCreatedListId(() => list._id);
+      setCreatedListId(() => list._id)
+      dispatch(receiveList(list))
     });
   };
 

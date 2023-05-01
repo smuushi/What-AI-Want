@@ -10,16 +10,20 @@ import { fetchRandomImages } from "../../store/images";
 export default function SplashCarouselRight() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sampleImages, setSampleImages] = useState([]);
+  const [imagesFetched, setImagesFetched] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchRandomImages()).then((data) => {
-      const images = data.images.map((image) => {
-        return image.tempUrl;
+    if (!imagesFetched) {
+      dispatch(fetchRandomImages()).then((data) => {
+        const images = data.images.map((image) => {
+          return image.tempUrl;
+        });
+        setSampleImages(() => images);
+        setImagesFetched(() => true);
       });
-      setSampleImages(() => images);
-    });
-  }, [dispatch]);
+    }
+  }, []);
 
   const handleSlideChange = (swiper) => {
     setActiveIndex(swiper.activeIndex);
@@ -76,7 +80,7 @@ export default function SplashCarouselRight() {
               index + 1
             }`}
           >
-            <img alt = "" className="corner-image-right" src={imageUrl} />
+            <img alt="" className="corner-image-right" src={imageUrl} />
             <div className="slide-text-right">Pick Your Image!</div>
           </div>
         </SwiperSlide>

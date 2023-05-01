@@ -41,21 +41,27 @@ const EditUserForm = (props)=>{
         });
       };
 
+      let emailInput;
+      if (currentUser._id === "643fe8ace00313f56f1588a2"){
+        emailInput = <div id = 'nullDemoEmail'>Can't Change Demo  Email!</div>
+      }else{
+        emailInput = <label>
+        <div>
+           Email 
+        </div>
+         <input
+         type="text"
+         value={email}
+         onChange={update("email")}
+         placeholder="Email"
+         />
+     </label>
+      }
      return (
          <form className="signup-form" onSubmit={handleSubmit}>
          <h2>Edit your info!</h2>
          <div className="errors">{errors?.email}</div>
-         <label>
-            <div>
-               Email 
-            </div>
-             <input
-             type="text"
-             value={email}
-             onChange={update("email")}
-             placeholder="Email"
-             />
-         </label>
+         {emailInput}
          <div className="errors">{errors?.username}</div>
          <label>
             <div>

@@ -13,16 +13,20 @@ import { fetchRandomImages } from "../../store/images";
 export default function SplashCarouselLeft() {
   useSwiperEffect("mySwiper1");
   const [sampleImages, setSampleImages] = useState([]);
+  const [imagesFetched, setImagesFetched] = useState(false);
   console.log(sampleImages);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchRandomImages()).then((data) => {
-      const images = data.images.map((image) => {
-        return image.tempUrl;
+    if (!imagesFetched) {
+      dispatch(fetchRandomImages()).then((data) => {
+        const images = data.images.map((image) => {
+          return image.tempUrl;
+        });
+        setSampleImages(() => images);
+        setImagesFetched(() => true);
       });
-      setSampleImages(() => images);
-    });
+    }
   }, []);
 
   return (

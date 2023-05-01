@@ -21,11 +21,16 @@ function ProfileBox() {
         });
     }
   }, [currentUser]);
-
+  let userAvatar
+  if (!currentUser?.profileImage){
+    userAvatar = <div id = 'userAvatar'>Upload Profile Photo here!</div>
+  }else{
+    userAvatar = <img alt = '' src={image} />
+  }
   return (
     <div className="profile-box-container">
       <span className="profile-image">
-        <img alt = '' src={image} />
+        {userAvatar}
       </span>
 
       <span className="profile-info">

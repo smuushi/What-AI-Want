@@ -40,12 +40,19 @@ function SignupForm() {
   };
 
   const handleSubmit = (e) => {
+
+    // if (email === "" || username === "" || password === "") {
+    //   dispatch(receiveErrors({email: "can't be blank", username: "can't be blank", password: "can't be blank"}))
+    // }
+
     e.preventDefault();
     const user = {
       email,
       username,
       password,
     };
+
+
 
     dispatch(signup(user));
   };
@@ -97,8 +104,7 @@ function SignupForm() {
       </label>
       <input id = "submitSignUp"
         type="submit"
-        value="Sign Up"
-        disabled={!email || !username || !password || password !== password2}
+        value="Sign Up" 
       />
     </form>
   );
