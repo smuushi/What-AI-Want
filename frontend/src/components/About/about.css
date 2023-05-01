@@ -33,20 +33,24 @@ div.about_image_bg_div {
 div.about_text_div {
     display:flex;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.6) 0px 18px 36px -18px inset;
+    height:100%;
+    flex-direction: column;
+    justify-content: space-around;
 }
 div.about_text {
   display: flex;
   flex-direction: column;
   width: 90%;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   margin:auto;
+  height: 100%;
 }
 div.about_text h1 {
   color: white;
   font-size: 5rem;
-  margin-bottom:1rem;
-  font-weight: 500;
+  /* margin-bottom:1rem; */
+  font-weight: 800;
     font-family: 'Lato', sans-serif;
 }
 div.about_text p{
