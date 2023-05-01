@@ -53,7 +53,7 @@
 #logoutButton{
   text-decoration: none;
   font-weight: bold;
-  margin-left: 3vw;
+  margin-left: 4vw;
   margin-right: 1vw;
   color: black;
   letter-spacing: 0.08vw;
@@ -61,9 +61,9 @@
   font-family: 'Lato', sans-serif;
   color:white;
   padding:0.8vw;
-  border-radius:1vw;
+  border-radius:0.6vw;
   background-color: #ff6900;
-  min-width:4w;
+  min-width:5vw;
 }
 
 #logoutButton:hover{
