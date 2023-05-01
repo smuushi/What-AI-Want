@@ -79,14 +79,14 @@ export default function SavedListCarousel() {
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           className="mySwiper"
         >
-          {listDisplay}
+          {listDisplay.reverse()}
         </Swiper>
         <div className="custom-scrollbar">
           <div className="scroll-arrow scroll-top" onClick={scrollToTop}>
-            &#9650;
+            Newest
           </div>
           <div className="scroll-arrow scroll-bottom" onClick={scrollToBottom}>
-            &#9660;
+            Oldest
           </div>
         </div>
         <div className="pagination-container">

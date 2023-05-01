@@ -93,13 +93,19 @@
   
   .scroll-arrow {
     cursor: pointer;
-    font-size: 1vw;
+    font-size: 1.5vw;
     background-color: rgba(0, 0, 0, 0.296);
     color: white;
     padding: 0.3vw;
+    padding-top: 0.4vw;
     border-radius: 3px;
+    position: relative;
+    left: -3.5vw;
+
+    border-radius: 20px;
     /* margin: 5px; */
   }
+  
   
   .scroll-top {
     margin-bottom: 1vw;

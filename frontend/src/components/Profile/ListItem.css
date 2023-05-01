@@ -14,7 +14,8 @@
  flex-direction: column;
  position: relative;
  /* text-align: center; */
- color: rgba(116, 116, 116, 0.526);
+ /* color: rgba(116, 116, 116, 0.526); */
+ color: #5C6380;
  font-size: 2vw;
  bottom: 4.22vw;
  left: 3.5vw;
