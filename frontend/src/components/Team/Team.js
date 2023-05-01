@@ -2,6 +2,8 @@ import "./team.css";
 import {useEffect} from "react"
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useState } from "react";
+
 const Team = () => {
 
  useEffect(() => {
@@ -26,7 +28,12 @@ const Team = () => {
 
 export default Team;
 
+
+
 const TeamMemberCard = (props) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [timerId, setTimerId] = useState(null);
+
   let gravatar;
   let description;
   let github;
@@ -74,20 +81,32 @@ const TeamMemberCard = (props) => {
         return
   }
 
+  const handleMouseOver = () => {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    setTimerId(setTimeout(() => setIsHovered(true), 200));
+  };
+  const handleMouseOut = () => {
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    setTimerId(setTimeout(() => setIsHovered(false), 200));
+  };
   return (
     <div className="teamMemberCard_wrapper" data-aos="fade-up">
       <div
         className="teamMember_image "
-        style={{ backgroundImage: `url(${gravatar})` }}
-        onMouseOver={(e) => {
-          e.currentTarget.style.transform = "rotateY(180deg)";
-          e.currentTarget.style.backgroundImage = `url(${avatar})`;
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.transform = "rotateY(0deg)";
-          e.currentTarget.style.backgroundImage = `url(${gravatar})`;
-        }}
-      ></div>
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+
+        style=
+        {{
+          transform: isHovered ? "rotateY(180deg)" : "rotateY(0deg)",
+          transition:"ease-in 0.35s",
+          backgroundImage: isHovered ? `url(${avatar})` : `url(${gravatar})`,
+        }}>
+      </div>
       <div className="teamMember_">
         <h1>{props.person}</h1>
         <p>{description}</p>
