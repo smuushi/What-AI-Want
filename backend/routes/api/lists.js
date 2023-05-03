@@ -114,7 +114,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
     let prompt;
     if (list) {
       prompt = `Extremely Detailed Professional ${list.artStyle} of a ${list.gender} with ${list.hairColor} hair, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
-      //console.log(prompt)
+      //// console.log(prompt)
       const numberOfImages = 4;
       const imageSize = "1024x1024";
       const selector = Math.round(Math.random())
@@ -158,7 +158,7 @@ router.get("/image/:id", restoreUser, async (req, res, next) => {
           );
 
           const returns = imageObjects.map((imageObj, idx) => {
-            // console.log(imageObj)
+            // // console.log(imageObj)
             const resObj = {...imageObj.toObject(),
               tempUrl: tempUrls[idx]
             };

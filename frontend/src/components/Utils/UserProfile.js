@@ -34,7 +34,7 @@ useEffect(() => {
           <p>No profile image available</p>
         )}
       </div>
-      {console.log(image)}
+      {// console.log(image)}
     </div>
   );
 }

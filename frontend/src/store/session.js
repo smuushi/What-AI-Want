@@ -96,7 +96,7 @@ export const saveImage = (imageId)=> async(dispatch) => {
   if (response.ok){
       const data = await response.json()
       dispatch(receiveCurrentUser(data.user))
-      // console.log(data)
+      // // console.log(data)
       // dispatch(receiveImage(data.image))
       return data
   }

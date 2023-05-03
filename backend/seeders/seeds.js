@@ -45,7 +45,7 @@ const { faker } = require("@faker-js/faker");
 // mongoose
 //   .connect(db, { useNewUrlParser: true })
 //   .then(() => {
-//     console.log("Connected to MongoDB successfully");
+//     // console.log("Connected to MongoDB successfully");
 //     insertSeeds();
 //   })
 //   .catch((err) => {
@@ -61,7 +61,7 @@ const { faker } = require("@faker-js/faker");
 //     .drop()
 //     .then(() => User.insertMany(users))
 //     .then(() => {
-//       console.log("Done!");
+//       // console.log("Done!");
 //       mongoose.disconnect();
 //     })
 //     .catch((err) => {

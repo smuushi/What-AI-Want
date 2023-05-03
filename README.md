@@ -51,10 +51,6 @@ The application is built using the MERN stack along with other technologies, inc
 
 # Technical Implementation Details & Challenges
 
-## Technical Implementation Details
-
-The user authentication system was implemented using Passport.js, which provides various authentication strategies like Local, JWT. We have implemented the Local authentication strategy using the passport-local package. The passwords are hashed and salted using the bcrypt package.
-
 ## Technical Challenges
 
 - AWS Hosting and OpenAI api calls
@@ -62,13 +58,110 @@ The user authentication system was implemented using Passport.js, which provides
 - Moderation and Throttling
 - Implementing MERN Stack
 
-## Image Upload
+## Image Storage
 
-We use AWS S3 to store user-uploaded images. When a user uploads an image, it is first stored on the server, then uploaded to AWS S3 using the aws-sdk package.
+We used AWS S3 to store our images. The image generation API returns a url with the image that is valid for only 10 minutes. Part of our challenge was to implement a backend lifecycle to take those urls and forward the image to AWS. 
+
+To do this, we made our own custom AWS functions to interact with image binary large objects (blobs). 
+
+```javascript
+const uploadToAWSWithURL = async (url, title) => {
+ 
+    const res = await fetch(url)
+    const blob = await res.blob();
+    const arrayBuffer = await blob.arrayBuffer();
+
+    const buffer = Buffer.from(arrayBuffer)
+
+    const key = singleFileUpload(buffer, title);
+
+    return key
+}
+```
 
 ## OpenAI API
 
-We use the OpenAI API to generate avatar images based on the user's selected options.
+We use the OpenAI API to generate avatar images based on the user's selected options. 
+
+[See OpenAI's image API](https://platform.openai.com/docs/guides/images/usage)
+
+Inside the code below, some standout points are how we:
+
+- implemented alternating different API keys using a simple `Math.random()` call 
+- utilized `promise.all` to asynchronously map through our generated images and upload to AWS
+- nested multiple objects in our return statement to communicate with the frontend 
+- interpolated the list preferences into a specific AI prompt
+
+
+```javascript
+try {
+    let list = await List.findOne({ _id: req.params.id });
+
+    let prompt;
+
+    if (list) {
+      prompt = `Extremely Detailed Professional ${list.artStyle} of a ${list.gender} with ${list.hairColor} hair, wearing an ${list.clothingAccessory}, official media, trending on ${list.websiteStyle}, background ${list.background}`;
+
+
+      const numberOfImages = 4;
+      const imageSize = "1024x1024";
+      const selector = Math.round(Math.random())
+      ais[selector]
+        .createImage({
+          prompt: prompt,
+          n: numberOfImages,
+          size: imageSize,
+        })
+        .then(async (data) => {
+          let imageKeys = [];
+
+          imageKeys = await Promise.all(
+            data.data.data.map(async (image, idx) => {
+              const imageKeyPromise = uploadToAWSWithURL(
+                image.url,
+                `image${idx}.png`
+              );
+              const imageKey = await imageKeyPromise;
+              return imageKey;
+            })
+          );
+
+          let imageObjects = await Promise.all(imageKeys.map(async (key) => {
+            let newImage = new Image({
+              prompts: list,
+              AWSKey: key
+            })
+
+            const image = await newImage.save();
+            return image;
+          }))
+
+          let tempUrls = [];
+
+          tempUrls = await Promise.all(
+            imageKeys.map(async (key) => {
+              const tempUrl = await getUrlFromAwsWithKey(key);
+              return tempUrl;
+            })
+          );
+
+          const returns = imageObjects.map((imageObj, idx) => {
+            const resObj = {...imageObj.toObject(),
+              tempUrl: tempUrls[idx]
+            };
+            return resObj
+          })
+
+          return res.json({
+            list: list,
+            images: returns,
+          });
+        });
+    }
+  } catch (err) {
+    return res.json(err);
+  }
+```
 
 # Architecture
 
@@ -77,6 +170,49 @@ We use the OpenAI API to generate avatar images based on the user's selected opt
 The front-end of What-Ai-Want is built using React.js and Redux for state management. React is used to create a responsive and user-friendly interface, while Redux is used to manage the state of the application across different components.
 
 To handle user input and display the options for avatar customization, we will use forms, dropdown menus, modal and other input elements from the React library. We will also use CSS for styling and layout.
+
+See our routing with React-Router-Dom v5.
+
+One standout point was how we reused our `<MaikeForm>` component to work for creating and editing, saving a ton of codespace. Within our router, we passed a prop that would indicate what task to render. 
+
+```javascript
+<>
+  <ScrollToTop />
+  <NavIndex />
+  <Switch>
+    <Route exact path="/profile">
+      <Profile />
+      {redirect}
+    </Route>
+
+    <Route exact path="/maike">
+      <MaikeForm type={"Create"} />
+      {redirect}
+    </Route>
+
+    <Route exact path="/about">
+      <FinalAbout/>
+    </Route>
+
+    <Route exact path="/team">
+      <Team />
+    </Route>
+    
+    <Route exact path="/edit/:listId">
+      <MaikeForm type={"Edit"} />
+    </Route>
+
+    <Route path="/">
+      <SplashExample />
+    </Route>
+
+  </Switch>
+
+  <Footer />
+</>
+
+
+```
 
 ## Back-end
 
@@ -94,10 +230,10 @@ Overall, this separation of front-end and back-end technologies allows for a mor
 
 ## Team
 
-- Michael Shih : Project/Backend Lead
-- Sara Ryu : Backend/Flex
-- Kaiter Wu : Frontend Lead
-- Timothy Dong : Frontend/Flex
+- Michael Shih : Project Lead / GitHub Reviewer
+- Sara Ryu : Backend Lead / Flex Designer
+- Kaiter Wu : Frontend Lead / Full Stack Flex
+- Timothy Dong : Frontend / CSS Detailer
 
 ## Work Breakdown
 

@@ -1,7 +1,7 @@
 const secretKey = process.env.AWS_SECRET_ACCESS_KEY;
 const accessKey = process.env.AWS_ACCESS_KEY_ID;
-// console.log(accessKey);
-// console.log(secretKey);
+// // console.log(accessKey);
+// // console.log(secretKey);
 const AWS = require("aws-sdk");
 // const multer = require("multer"); // might not use since our files are just 3mb at a time.. 
 const s3 = new AWS.S3({ apiVersion: "2006-03-01", accessKeyId: accessKey, secretAccessKey: secretKey});
@@ -47,7 +47,7 @@ const singleFileUpload = async (buffer, title) => {
     // Return the link if public. If private, return the name of the file in your
     // S3 bucket as the key in your database for subsequent retrieval.
 
-    // console.log(result)
+    // // console.log(result)
 
 
     return result.Key;
@@ -80,7 +80,7 @@ const uploadToAWSWithURL = async (url, title) => {
 
     const res = await fetch(url)
 
-    // console.log(res)
+    // // console.log(res)
 
     const blob = await res.blob();
 
@@ -88,10 +88,10 @@ const uploadToAWSWithURL = async (url, title) => {
 
     const buffer = Buffer.from(arrayBuffer)
 
-    // console.log(buffer)
+    // // console.log(buffer)
     // const file = await fs.writeFile(title, buffer)
 
-    // console.log(file)
+    // // console.log(file)
 
     // const buffer = await blob.arrayBuffer();
 
@@ -106,7 +106,7 @@ const uploadToAWSWithURL = async (url, title) => {
 
 // var params = {Bucket: 'bucket', Key: 'key', Expires: 60};
 // var url = s3.getSignedUrl('getObject', params);
-// console.log('The URL is', url);
+// // console.log('The URL is', url);
 
 const getUrlFromAwsWithKey = async (key) => {
     const url = s3.getSignedUrl("getObject",{
@@ -115,7 +115,7 @@ const getUrlFromAwsWithKey = async (key) => {
         Expires: 1200
     })
 
-    // console.log(url)
+    // // console.log(url)
     return url
 }
 
