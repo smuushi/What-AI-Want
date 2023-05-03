@@ -113,7 +113,7 @@
     border: 1px solid #27c7ff;
     border-radius:20px;
     padding-left:10px;
-   
+
 }
 
 .login-form button{
@@ -130,7 +130,7 @@
     background-color: #00d084;
     border: 1px solid #00d084;
     cursor:pointer;
-    
+
 }
 
 #submitLogin{
@@ -164,7 +164,7 @@
     background-color: #27c7ff;
     border:none;
     color:white;
-    font-size:20px;
+    font-size:30px;
     border-radius:20px;
     border: 1px solid #27c7ff;
 }
@@ -184,7 +184,7 @@
     font-style:bold;
     color:red;
     font-size:20px;
-    
+
 }
 
 #nullDemoEmail:hover{

@@ -1,6 +1,6 @@
 
 import About from "./About";
-
+import Team from "../Team/Team";
 
 const FinalAbout = () => {
   return (
@@ -13,6 +13,7 @@ const FinalAbout = () => {
         h1="Express Yourself!"
         p="Using the latest in image generation technology, the OpenAI API, What-Ai-Want is able to take these user preferences and generate a unique and personalized avatar in real-time. The avatars are not only customizable but also highly expressive and detailed, allowing users to truly showcase their individuality"
       />
+      <Team/>
     </>
   );
 };

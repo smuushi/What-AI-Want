@@ -3,17 +3,20 @@
 div.team_container{
       height: 80vh;
         width: 100%;
-        /* margin: auto; */
+  margin-top:1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
+
 }
 
-div.team_container h1{
-  font-size: 5rem;
-  font-weight: 500;
-
+h1.team_heading{
+  font-size: 4rem;
+  font-weight: 600;
+  font-family: 'Lato',
+    sans-serif;
+    margin-bottom:3rem;
 }
 
 div.teamMemberCard_wrapper  {
@@ -62,12 +65,15 @@ div.teamMember_ {
   background: #c9c9c936;
 }
 div.teamMember_ h1 {
-  font-size: 40px;
+  font-size: 2rem;
   font-weight: 550;
+  margin:0;
 }
 
 div.teamMember_ p {
-  font-size: 20px;
+  font-size: 1rem;
+  font-family: lato;
+  color:rgba(0,0,0,0.7)
 }
 div.teamMember_logos {
   width: 100%;

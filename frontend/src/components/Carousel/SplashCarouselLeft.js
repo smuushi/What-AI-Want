@@ -10,7 +10,7 @@ import { Autoplay, Navigation } from "swiper";
 import { useSwiperEffect } from "./CarouselUtils";
 import { fetchRandomImages } from "../../store/images";
 
-export default function SplashCarouselLeft() {
+export default function SplashCarouselLeft({ time, heading, flip }) {
   useSwiperEffect("mySwiper1");
   const [sampleImages, setSampleImages] = useState([]);
   const [imagesFetched, setImagesFetched] = useState(false);
@@ -35,17 +35,34 @@ export default function SplashCarouselLeft() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 5000,
+          delay: time,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Navigation]}
         className="mySwiper1"
       >
         {sampleImages.map((imageUrl, index) => (
-          <SwiperSlide key={index}>
-            <div className={`slide-background slide-background-${index + 1}`}>
-              <img className="corner-image" src={imageUrl} />
-              <div className="slide-text">Pick Your Preferences!</div>
+          <SwiperSlide key={imageUrl + index}>
+            <div
+              className="slide-background slide-background"
+              style={{
+                backgroundImage: `url(${imageUrl})`,
+                backgroundSize: "contain",
+                backgroundPosition: flip ? "left top" : "right top",
+                fontFamily: "lato",
+                fontSize: "6rem",
+              }}
+            >
+              <div
+                className={flip ? "slide-text" : "slide-text_right"}
+                style={{
+                  color: flip ? "#25c7ff" : "#fcb480",
+                  fontFamily: "lato",
+                  fontSize: "6rem",
+                }}
+              >
+                {heading}
+              </div>
             </div>
           </SwiperSlide>
         ))}

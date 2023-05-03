@@ -89,7 +89,7 @@ router.patch(
 );
 
 router.patch("/:userId", restoreUser, async (req, res, next) => {
-  //will return updated user info. 
+  //will return updated user info.
   if (!req.user) return res.json(null);
   const mongooseUser = await User.findOne({_id: req.user._id});
 
@@ -100,49 +100,49 @@ router.patch("/:userId", restoreUser, async (req, res, next) => {
     const alreadyMongooseUser = await User.findOne({email: newUserInfo.email});
 
     if (alreadyMongooseUser && alreadyMongooseUser.email !== mongooseUser.email) {
-      const err = new Error("super stinky ewwww for email")
+      const err = new Error("Email is taken:(")
 
       let errors = {};
-      errors.email = "so stinky bad bad bad. try a different email, nerd";
+      errors.email = "Email is taken:(";
 
       err.errors = errors;
 
       return next(err)
 
     }
-    
+
 
     if (newUserInfo.email.length < 6) {
-      
+
       const err = new Error("Validation Error")
       err.statusCode = 400;
       let errors = {};
-      errors.email = "A stinky email this one";
+      errors.email = "Invalid email sorry!";
 
-      
+
       if (newUserInfo?.username) {
         if (newUserInfo.username.length < 2) {
-          errors.username = "A stinky username.. pee eww"
+          errors.username = "Invalid user name sorry!"
         }
-        
+
       }
-      
+
       err.errors = errors;
       return next(err)
     }
   }
 
   if (newUserInfo?.username) {
-    
-    
+
+
     if (newUserInfo.username.length < 2) {
       let errors = {};
       const err = new Error("Validation Error");
-      errors.username = "A stinky username.. pee eww"
+      errors.username = "Invalid user name sorry!";
       err.errors = errors;
       return next(err)
     }
-    
+
 
   }
 
@@ -155,7 +155,7 @@ router.patch("/:userId", restoreUser, async (req, res, next) => {
   mongooseUser.save();
 
   res.json(mongooseUser);
-  
+
 })
 
 router.get("/current", restoreUser, (req, res) => {
@@ -234,7 +234,7 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
     }
 
     return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
-    
+
     // return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
   })(req, res, next);
 });
