@@ -71,11 +71,11 @@ exports.restoreUser = (req, res, next) => {
   return passport.authenticate("jwt", { session: false }, async function (err, user) {
     if (err) return next(err);
     if (user) req.user = user;
-    // console.log(user);
-    // console.log(user.toObject())
-    // console.log(user)
+    // // console.log(user);
+    // // console.log(user.toObject())
+    // // console.log(user)
     const mongooseUser = await User.findOne({_id: user._id})
-    // console.log(mongooseUser)
+    // // console.log(mongooseUser)
     next();
   })(req, res, next);
 };

@@ -36,7 +36,7 @@ router.get("/all/:userId", restoreUser, async (req, res, next) => {
   );
 
   const returns = images.map((imageObj, idx) => {
-    // console.log(imageObj)
+    // // console.log(imageObj)
     const resObj = {...imageObj.toObject(),
       tempUrl: tempUrls[idx]
     };
@@ -109,7 +109,7 @@ router.get("/random", async (req, res, next) => {
 
 
 
-    // console.log(images)
+    // // console.log(images)
 
 
     res.json({images: returns})

@@ -111,10 +111,10 @@ const TeamMemberCard = (props) => {
         <h1>{props.person}</h1>
         <p>{description}</p>
         <div className="teamMember_logos">
-          <a href={github}>
+          <a href={github} target="_blank" rel="noopener noreferrer">
             <i className="fa-brands fa-github"></i>
           </a>
-          <a href={linkedin}>
+          <a href={linkedin} target="_blank" rel="noopener noreferrer">
             <i className="fa-brands fa-linkedin"></i>
           </a>
         </div>

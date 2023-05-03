@@ -22,7 +22,7 @@ router.get("/profile/:id", async (req, res) => {
       bucketName: "profile",
     });
 
-    console.log(fileId);
+    // console.log(fileId);
     const downloadStream = bucket.openDownloadStream(
       new mongoose.Types.ObjectId(fileId)
     );

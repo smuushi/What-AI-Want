@@ -37,7 +37,7 @@ const EditUserForm = (props)=>{
         e.preventDefault();
         const user = {...currentUser,email,username};
         dispatch(updateCurrentUser(user)).then(()=>{props.setShowModal(false)}).catch(() => {
-          console.log("hi. i love to just take up space on the console.. hehe")
+          // console.log("hi. i love to just take up space on the console.. hehe")
         });
       };
 

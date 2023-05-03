@@ -14,7 +14,7 @@ export default function SplashCarouselLeft({ time, heading, flip }) {
   useSwiperEffect("mySwiper1");
   const [sampleImages, setSampleImages] = useState([]);
   const [imagesFetched, setImagesFetched] = useState(false);
-  console.log(sampleImages);
+  // console.log(sampleImages);
   const dispatch = useDispatch();
 
   useEffect(() => {

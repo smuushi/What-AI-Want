@@ -42,10 +42,12 @@ function MaikeModal(props) {
 
         if (res.ok){
             const data = await res.json()
+
             setImageData(data.images)
             dispatch(receiveImages(data))
             setLoading(()=>false)
             console.log(data)
+
 
         }
 
