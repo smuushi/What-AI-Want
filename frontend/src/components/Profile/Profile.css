@@ -1,7 +1,9 @@
 .profile-main-box{
     display: flex;
     justify-content: space-between;
+   
     /* margin-top: 1.2vw; */
+    height:42vw
    
 }
 

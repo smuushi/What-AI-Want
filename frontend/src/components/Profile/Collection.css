@@ -11,6 +11,7 @@ ul.imagesContainer {
     max-height: 41.5vw;
     padding:1vw;
     border-radius:20px;
+    margin-left:-7vw;
 }
 
 ul.imagesContainer li.savedImageItem{
@@ -154,7 +155,7 @@ ul.imagesContainer .savedImageItem button{
 }
 
 #collectionImageContainer h1{
-    margin-left:30vw;
+    margin-left:23vw;
     font-size:3vw;
     color: #f07f2fd9;
     /* text-decoration: underline; */
