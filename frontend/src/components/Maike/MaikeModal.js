@@ -18,11 +18,12 @@ function MaikeModal(props) {
     const [showModal, setShowModal] = useState(false);
     const [imageData,setImageData] = useState('')
     const [focusedKey,setFocusedKey] = useState('')
+    const [loading,setLoading] = useState(false);
     const history = useHistory()
     const dispatch = useDispatch()
-    const loading = props.loading
+    // const loading = props.loading
     const createdListId = props.createdListId
-    const setLoading = props.setLoading
+    // const setLoading = props.setLoading
 
     const formType = props.formType
 
@@ -60,32 +61,21 @@ function MaikeModal(props) {
 
             history.push('/profile')
         })
-
-
-        // props.setCreatedListId('')
-        // props.setClothingValue('')
-        // props.setHairColorValue('')
-        // props.setGenderValue('')
-        // props.setBackgroundValue('')
-        // props.setArtStyleValue('')
-        // props.setWebStyleValue('')
-
     }
 
     const handleCloseClick = (e)=>{
         e.preventDefault()
         setShowModal(false)
+        if (formType !== 'remaike'){
 
-        props.setCreatedListId('')
-        props.setClothingValue('')
-        props.setHairColorValue('')
-        props.setGenderValue('')
-        props.setBackgroundValue('')
-        props.setArtStyleValue('')
-        props.setWebStyleValue('')
-
-
-
+            props.setCreatedListId('')
+            props.setClothingValue('')
+            props.setHairColorValue('')
+            props.setGenderValue('')
+            props.setBackgroundValue('')
+            props.setArtStyleValue('')
+            props.setWebStyleValue('')
+        }
     }
 
     if (loading){
@@ -156,15 +146,22 @@ function MaikeModal(props) {
             </div>
     }
     let buttonText;
-    if (formType === 'Edit'){
+    let buttonStyle;
+    if (formType === 'Edit' || formType === 'remaike'){
        buttonText="re"
+    }
+
+    if (formType === 'remaike'){
+        buttonStyle = 'remaikeButton'
+    }else{
+        buttonStyle = 'maike-avatar'
     }
 
 
     return(
         <>
             <div>
-                <button className='maike-avatar' onClick={handleMaikeClick}>
+                <button className={buttonStyle} onClick={handleMaikeClick}>
 
                     {buttonText}M<span className="ai-spans">AI</span>ke
                 </button>

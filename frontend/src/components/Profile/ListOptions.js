@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import RemoveListModal from "./removeListModal";
+import MaikeModal from "../Maike/MaikeModal";
 
 const ListOptions = (props)=>{
     const [showMenu,setShowMenu] = useState(false)
@@ -31,11 +32,14 @@ const ListOptions = (props)=>{
     }else{
         displayMenu = 'hideMenu'
     }
+
+    
    
     return(
         <>
             <div id = 'listOptionsContainer'>
                 <button id = 'openlistDropdown' onClick={openMenu}>Options</button>
+                <MaikeModal formType = 'remaike' createdListId = {list?._id}/>
             </div>
             <ul id = {displayMenu}>
                 <li>

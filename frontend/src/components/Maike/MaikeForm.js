@@ -57,7 +57,6 @@ const [backgroundValue, setBackgroundValue] = useState(defaultBackground);
 const [artStyleValue, setArtStyleValue] = useState(defaultArt);
 const [webStyleValue, setWebStyleValue] = useState(defaultWeb);
 const [createdListId, setCreatedListId] = useState(defaultCreatedList);
-const [loading,setLoading] = useState(false)
 const handleChange = (setter) => (event) => {
   setter(event.target.value);
 };
@@ -146,9 +145,8 @@ useEffect(()=>{
 
   if (createdListId){
     saveButton = <div id = 'hideSaveButton'>Saved !</div>
-    maikeButton = <MaikeModal loading = {loading}
+    maikeButton = <MaikeModal 
     createdListId = {createdListId}
-    setLoading = {setLoading}
     setCreatedListId = {setCreatedListId}
     setClothingValue = {setClothingValue}
     setHairColorValue = {setHairColorValue}
@@ -249,7 +247,7 @@ useEffect(()=>{
     "3D-Render": "3D-Render",
     Realistic: 'Realistic',
     Baroque: "Baroque Art",
-    Impresssionism: 'Impressionism Art',
+    Impressionism: 'Impressionism Art',
     Digital: "Digital Art",
     "Pixel-Art": "Pixel-Art",
     "Cel-Shaded-Art": 'Cel-Shaded-Art',
@@ -277,7 +275,7 @@ useEffect(()=>{
               onChange={handleChange(setClothingValue)}
             >
               <option id="option" value="" disabled>
-                <p>Clothing/Acessory</p>
+                Clothing/Acessory
               </option>
               {Object.entries(ClothingAcessory).map(([cloth, value]) => (
                 <option key={cloth} value={value}>

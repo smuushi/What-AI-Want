@@ -139,6 +139,7 @@ div.intro_button {
   animation: fadeAnimation 1s 2s forwards;
   position: relative;
   overflow: hidden;
+  line-height: normal;
 }
 
 .intro_button::before {
