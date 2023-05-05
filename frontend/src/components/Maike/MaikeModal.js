@@ -56,7 +56,9 @@ function MaikeModal(props) {
 
     const handleSaveClick = (e) =>{
         e.preventDefault()
+        e.stopPropagation()
         setShowModal(false)
+        if (props.setShowModal)props.setShowModal(false);
         dispatch(saveImage(focusedKey)).then(() => {
 
             history.push('/profile')
@@ -66,7 +68,7 @@ function MaikeModal(props) {
     const handleCloseClick = (e)=>{
         e.preventDefault()
         setShowModal(false)
-        if (formType !== 'remaike'){
+        if (formType !== 'remaike' || formType !== 'remaikeImage'){
 
             props.setCreatedListId('')
             props.setClothingValue('')
@@ -147,13 +149,17 @@ function MaikeModal(props) {
     }
     let buttonText;
     let buttonStyle;
-    if (formType === 'Edit' || formType === 'remaike'){
+    if (formType === 'Edit' || formType === 'remaike' || formType === 'remaikeImage'){
        buttonText="re"
     }
 
     if (formType === 'remaike'){
         buttonStyle = 'remaikeButton'
-    }else{
+    
+    }else if (formType === 'remaikeImage'){
+        buttonStyle = 'remaikeImage'
+    }
+    else{
         buttonStyle = 'maike-avatar'
     }
 
