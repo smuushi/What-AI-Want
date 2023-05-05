@@ -124,6 +124,22 @@ ul.imagesContainer .savedImageItem button{
     border-radius:20px;
 }
 
+.remaikeImage{
+    font-size:2vw;
+    margin-top:2vw;
+    color:white;
+    width:10vw;
+    background-color: #ff6900;
+    border:1px solid #ff6900;
+    border-radius:20px;
+}
+
+.remaikeImage:hover{
+    background-color: #00d084;
+    border:1px solid #00d084;
+    cursor:pointer;
+}
+
 #downloadImage:hover{
     cursor:pointer;
     background-color: #00d084;

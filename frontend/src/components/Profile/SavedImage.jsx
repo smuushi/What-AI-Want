@@ -3,6 +3,7 @@ import React, { useState,createContext } from 'react';
 import './Collection.css'
 import { useDispatch } from "react-redux";
 import { deleteImage } from "../../store/images";
+import MaikeModal from "../Maike/MaikeModal";
 
 
 const ModalContext = createContext()
@@ -89,6 +90,7 @@ export const SavedImage = (props) => {
                             </div>
                             <img alt = '' id = 'showImageImage' src={imageUrl} />
                             <div id = 'imageShowButtons'>
+                                <MaikeModal formType = 'remaikeImage' createdListId = {imageObj.prompts?._id} setShowModal = {setShowModal}/>
                                 <button id = 'downloadImage' onClick={handleDownload}>Download</button>
                                 {button}
                             </div>
