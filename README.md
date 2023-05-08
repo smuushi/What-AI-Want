@@ -230,8 +230,8 @@ Overall, this separation of front-end and back-end technologies allows for a mor
 
 ## Team
 
-- Michael Shih : Project Lead 
-- Sara Ryu : Backend Lead 
+- Michael Shih : Project Lead
+- Sara Ryu : Backend Lead / Flex 
 - Kaiter Wu : Frontend Lead 
 - Timothy Dong : Frontend Engineer
 
