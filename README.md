@@ -230,10 +230,10 @@ Overall, this separation of front-end and back-end technologies allows for a mor
 
 ## Team
 
-- Michael Shih : Project Lead / GitHub Reviewer
-- Sara Ryu : Backend Lead / Flex
-- Kaiter Wu : Frontend Lead / Full Stack Flex
-- Timothy Dong : Frontend / CSS Designer
+- Michael Shih : Project Lead 
+- Sara Ryu : Backend Lead 
+- Kaiter Wu : Frontend Lead 
+- Timothy Dong : Frontend Engineer
 
 ## Work Breakdown
 
